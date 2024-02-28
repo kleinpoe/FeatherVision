@@ -26,8 +26,10 @@
 `sudo apt install git`
 8. Initialize git repository or clone it
 9. Install apt packages
-    1. PiCamera2 \
+    1. PiCamera2: Test using NP scripts \
     `sudo apt install -y python3-picamera2 --no-install-recommends`
+    2. Maybe not needed? (at some point it would not work anymore) \
+    `sudo apt-get install python3-dev`
 10. Create a Virtual python environment \
 `python -m venv .venv --system-site-packages`\
 and activate it \
@@ -36,4 +38,6 @@ and activate it \
 11. Install necessary packages:
     1. Application needs to get ip and hostname of raspberry\
     `python -m pip install netifaces`
+    2. To get Hardware information\
+    `python -m pip install psutil`
 

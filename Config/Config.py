@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import timedelta
+import logging
 import os
 
 from Config.Environment import Environment
@@ -25,10 +26,10 @@ class WebInterfaceConfig:
 @dataclass    
 class LoggingConfig:
     LogToFile = True
-    LogFilePath = os.path.join(Environment.GetApplicationDirectory(), 'LogFiles', 'log.txt')
     MaximumLogBytes = 2000000
     LogBackupFiles = 5
     PerformanceMonitorLoggingIntervalInSeconds = 600
+    LogLevel = logging.DEBUG
     
 @dataclass
 class DetectionConfig:
@@ -51,6 +52,8 @@ class LocationConfig:
 @dataclass
 class StorageConfig:
     ApplicationDataDirectory = os.path.join(Environment.GetApplicationDirectory(), 'ApplicationData')
+    LogFileDirectory = os.path.join(ApplicationDataDirectory, 'LogFiles')
+    LogFilePath = os.path.join(LogFileDirectory, 'log.txt')
     OutputDirectory = os.path.join(ApplicationDataDirectory, 'Recordings')
     ThumbnailDirectory = os.path.join(ApplicationDataDirectory, 'RecordingThumbnails')
     ArchiveDirectory = os.path.join(ApplicationDataDirectory, 'RecordingArchive')
