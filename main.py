@@ -6,6 +6,7 @@ from Infrastructure.PerformanceMonitor import PerformanceMonitor
 
 config = Config()
 logger = LoggerFactory(config).CreateLogger()
+networkChecker = NetworkChecker(logger)
+performanceMonitor = PerformanceMonitor(config,networkChecker,logger)
 
-
-print(PerformanceMonitor.GetCpuTemperature())
+logger.info(performanceMonitor.GetPerformanceInfo())

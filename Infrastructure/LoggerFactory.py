@@ -23,3 +23,5 @@ class LoggerFactory:
         LoggerName: str = "ApplicationLogger"
         ApplicationLogger = logging.getLogger(LoggerName)
         ApplicationLogger.setLevel(config.LoggingConfig.LogLevel)
+        
+        return ApplicationLogger

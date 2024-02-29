@@ -28,8 +28,9 @@ class LoggingConfig:
     LogToFile = True
     MaximumLogBytes = 2000000
     LogBackupFiles = 5
-    PerformanceMonitorLoggingIntervalInSeconds = 600
+    PerformanceMonitorLoggingInterval = timedelta(minutes=10)
     LogLevel = logging.DEBUG
+    
     
 @dataclass
 class DetectionConfig:

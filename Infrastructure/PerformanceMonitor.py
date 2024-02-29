@@ -6,9 +6,8 @@ import time
 import psutil
 import asyncio
 from asyncio import Task
+from Config.Config import Config
 from Infrastructure.NetworkChecker import NetworkChecker
-
-from Infrastructure.LoggerFactory import Logging
 
 
 @dataclass
@@ -25,8 +24,8 @@ class CancellationToken:
 
 class PerformanceMonitor:
 
-    def __init__(self, logIntervalInSeconds: int, networkChecker: NetworkChecker, logger: Logger):
-        self.myLogIntervalInSeconds = logIntervalInSeconds
+    def __init__(self, config: Config, networkChecker: NetworkChecker, logger: Logger):
+        self.myConfig = config
         self.myNetworkChecker = networkChecker
         self.myLogger = logger
 
@@ -46,10 +45,10 @@ class PerformanceMonitor:
                 info = PerformanceMonitor.GetPerformanceInfo()
                 internetAvailableText = "Connected to internet" if self.myNetworkChecker.InternetAvailable() else "Disconnected to internet"
                 log = f'CPU={info.CpuUsage:3.1f}%,{info.CpuTemperature:3.1f}°C RAM={info.MemoryUsage:3.1f}% HDD={info.HddUsage:3.1f}%'
-                Logging.GetLogger().info(f'{log} {internetAvailableText}')
+                self.myLogger.info(f'{log} {internetAvailableText}')
                 if PerformanceMonitor.HardwareSituationIsCritical(info):
                     raise RuntimeError(f"Hardware situation is critical {PerformanceMonitor.GetPerformanceInfo()}")
-                time.sleep(self.myLogIntervalInSeconds)
+                time.sleep(self.myConfig.LoggingConfig.PerformanceMonitorLoggingInterval.total_seconds())
                 if self.myCancellationToken.CancellationRequested:
                     break
         except asyncio.CancelledError as e:
@@ -64,16 +63,16 @@ class PerformanceMonitor:
         return result
 
     @classmethod
+    def GetCpuLoad(cl):
+        return psutil.cpu_percent()
+    
+    @classmethod
     def GetPerformanceInfo(cl):
         CpuUsage = psutil.cpu_percent()
         MemUsage = psutil.virtual_memory().percent
         HddUsage = psutil.disk_usage('/').percent
         CpuTemp = cl.GetCpuTemperature()
         return PerformanceInfo(CpuUsage, MemUsage, HddUsage, CpuTemp)
-
-    @classmethod
-    def GetCpuLoad(cl):
-        return psutil.cpu_percent()
 
     @classmethod
     def HardwareSituationIsCritical(cl, performanceInfo: PerformanceInfo) -> bool:
