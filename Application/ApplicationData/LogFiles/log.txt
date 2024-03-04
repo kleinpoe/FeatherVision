@@ -1,0 +1,2 @@
+2024-02-29 19:23:22 INFO     main                                Hello world
+2024-02-29 19:23:46 INFO     main                                PerformanceInfo(CpuUsage=28.6, MemoryUsage=11.3, HddUsage=0.9, CpuTemperature=59.5)
