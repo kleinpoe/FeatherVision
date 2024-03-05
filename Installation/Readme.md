@@ -30,6 +30,8 @@
     `sudo apt install -y python3-picamera2 --no-install-recommends`
     2. Maybe not needed? (at some point it would not work anymore) \
     `sudo apt-get install python3-dev`
+    3. FFMPEG for conversion of h264 to MP4\
+    `sudo apt-get install ffmpeg`
 10. Create a Virtual python environment \
 `python -m venv .venv --system-site-packages`\
 and activate it \
@@ -40,4 +42,6 @@ and activate it \
     `python -m pip install netifaces`
     2. To get Hardware information\
     `python -m pip install psutil`
+    3. The Web framework\
+    `python -m pip install tornado`
 

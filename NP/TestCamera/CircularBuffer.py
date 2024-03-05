@@ -21,5 +21,3 @@ output.fileoutput = videoPath
 picam2.start_recording(encoder, output)
 time.sleep(dur)
 output.stop()
-
-output._before.
