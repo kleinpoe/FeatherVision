@@ -59,12 +59,20 @@ top: 0; left: 0; bottom: 0; right: 0;
 
 		var ws = new WebSocket("ws://$ip:$port/ws/");
 		ws.binaryType = 'arraybuffer';
-		ws.addEventListener('message',function(event){
-			if (!document.hidden){
-				jmuxer.feed({
-					video: new Uint8Array(event.data)
-				});				
+		ws.addEventListener('message',
+		function(event)
+		{
+			if (!document.hidden)
+			{
+				var isKeyframe = new Uint8Array(event.data,0,1)[0] > 0;
+				var timestampBytes = new Uint8Array(event.data,1,8);
+				var frameData = new Uint8Array(event.data,9);
+				jmuxer.feed({video: frameData});	
+				//var response = "Received isKeyFrame:" + isKeyframe + " " + timestampBytes[0] + timestampBytes[1] + timestampBytes[2] + timestampBytes[3] + timestampBytes[4] + timestampBytes[5] + timestampBytes[6] + timestampBytes[7] ;
+				ws.send( timestampBytes );
+				//console.log("Received frame with " + isKeyframe);
 			}
+			
 		});
 	}     
     </script>
