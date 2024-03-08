@@ -45,3 +45,11 @@ and activate it \
     3. The Web framework\
     `python -m pip install tornado`
 
+12. Install Wifi Dongle: The RPI5 gets pretty hot so we put it in a metal enclosure with integrated passive cooling. As this metal hunk screens the wifi signal, we use an external wifi antenna. I chose the *BrosTrend AC650*.
+    1. `sh -c 'wget linux.brostrend.com/install -O /tmp/install && sh /tmp/install'`
+    2. Turn in *predictable network names* with `sudo raspi-config` -> advanced
+    3. Reboot
+    3. Run `iwconfig` and note down the wifi name (something like `wlxa09f10bf0064`. Built in is `wlan0`)
+    3. Copy the `/etc/wpa_supplicant/wpa_supplicant.conf` to the name `/etc/wpa_supplicant/wpa_supplicant-wlxa09f10bf0064.conf` but replace with your wifi name.
+    3. Open `/boot/config.txt` and add the line `dtoverlay=disable-wifi` to disable the internal wifi
+

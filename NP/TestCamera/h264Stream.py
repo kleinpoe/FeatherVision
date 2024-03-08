@@ -102,6 +102,7 @@ class wsHandler(tornado.websocket.WebSocketHandler):
     async def broadcast(cl, payload:bytes, timestamp:int, isKeyframe:bool):
         for connection in cl.connections:
             try:
+                
                 if connection.LastFrameTimestampReceivedByClient == connection.LastSentFrameTimestamp:
                     log(f"Sending frame timestamp=<{timestamp}> {'[Keyframe]' if isKeyframe else ''}")
                     await connection.write_message(payload, True)
