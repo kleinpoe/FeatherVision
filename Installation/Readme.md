@@ -44,6 +44,12 @@ and activate it \
     `python -m pip install psutil`
     3. The Web framework\
     `python -m pip install tornado`
+    4. Numpy (may be already satisfied)\
+    `python -m pip install numpy`
+    5. OpenCV\
+    `python -m pip install opencv-python`
+    6. Tensorflow lite for object detection. Only Runtime because we do not train models\
+    `python -m pip install tflite-runtime`
 
 12. Install Wifi Dongle: The RPI5 gets pretty hot so we put it in a metal enclosure with integrated passive cooling. As this metal hunk screens the wifi signal, we use an external wifi antenna. I chose the *BrosTrend AC650*.
     1. `sh -c 'wget linux.brostrend.com/install -O /tmp/install && sh /tmp/install'`

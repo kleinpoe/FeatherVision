@@ -5,8 +5,10 @@ import io, os, socket
 from datetime import timedelta
 import time
 
+import threading
+
 from picamera2 import Picamera2
-from picamera2.encoders import H264Encoder
+from picamera2.encoders import H264Encoder, JpegEncoder, MJPEGEncoder
 from picamera2.outputs import CircularOutput
 
 from CustomOutput import CustomOutput
@@ -17,6 +19,9 @@ import logging
 from collections import deque
 from picamera2.outputs import Output
 from datetime import datetime
+from ObjectDetection import ObjectDetection
+
+import numpy as np
 
 from PerformanceMonitor import PerformanceMonitor
 
@@ -24,26 +29,30 @@ def log(message):
     timestamp = datetime.utcnow().strftime("%H:%M:%S.%f")
     print(f"[{timestamp}] {message}")
 
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
+
 # start configuration
 serverPort = 8000
 
 # setup camera
-picam2 = Picamera2()
+mainResolution = (1920,1080)
+detectionResolution = (854,480)
 fps = 30
-recordingDuration = timedelta(seconds=10)
-videoConfig = picam2.create_video_configuration(main={"size":(1920,1080)},
-                                            controls={'FrameRate':fps})
+picam2 = Picamera2()
+videoConfig = picam2.create_video_configuration(main={"size":mainResolution},
+                                                lores={"size":detectionResolution},
+                                                controls={'FrameRate':fps})
 picam2.configure(videoConfig)
-encoder = H264Encoder(framerate=fps)
-output = CustomOutput()
+mainEncoder= H264Encoder(framerate=fps)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(('8.8.8.8', 0))
 serverIp = s.getsockname()[0]
 
-abspath = os.path.abspath(__file__)
-dname = os.path.dirname(abspath)
-os.chdir(dname)
+detection = ObjectDetection("TfLiteModels/mobilenet_v2.tflite","TfLiteModels/coco_labels.txt")
 
 def getFile(filePath):
     file = open(filePath,'r')
@@ -60,21 +69,18 @@ jmuxerJs = getFile('jmuxer.min.js')
 
 class StreamOutput(Output):
 
-    def __init__(self):
+    def __init__(self, loop:tornado.ioloop.IOLoop):
         super().__init__()
+        self.loop = loop
 
     def outputframe(self, frame: bytes, isKeyframe: bool, timestamp: int):
+        #log(f'Received highres image len{len(frame)} {isKeyframe} {timestamp}')
         if self.loop is not None and wsHandler.hasConnections():
-            isKeyframeInBytes = isKeyframe.to_bytes(1,'big')
-            timestampInBytes = timestamp.to_bytes(8, 'big')
-            payload = isKeyframeInBytes + timestampInBytes + frame
-            self.loop.add_callback(callback=wsHandler.broadcast, payload=payload, timestamp=timestamp, isKeyframe=isKeyframe)
-
-    def setLoop(self, loop:tornado.ioloop.IOLoop):
-        self.loop = loop
+            self.loop.add_callback(callback=wsHandler.broadcast, frame=frame, timestamp=timestamp, isKeyframe=isKeyframe)
 
 class wsHandler(tornado.websocket.WebSocketHandler):
     connections:list['wsHandler'] = []
+    detections: list[ObjectDetection] = []
     
     LastSentFrameTimestamp = -1
     LastFrameTimestampReceivedByClient = -1
@@ -90,7 +96,7 @@ class wsHandler(tornado.websocket.WebSocketHandler):
     def on_message(self, message):
         timestamp = int.from_bytes(message,'big')
         self.LastFrameTimestampReceivedByClient = timestamp
-        log(f"Response from client. Received frame {timestamp}")
+        #log(f"Response from client. Received frame {timestamp}")
 
     @classmethod
     def hasConnections(cl):
@@ -99,12 +105,19 @@ class wsHandler(tornado.websocket.WebSocketHandler):
         return True
 
     @classmethod
-    async def broadcast(cl, payload:bytes, timestamp:int, isKeyframe:bool):
+    def updateDetections(cl, detections: list[ObjectDetection]):
+        cl.detections = detections
+
+    @classmethod
+    async def broadcast(cl, frame:bytes, timestamp:int, isKeyframe:bool):
         for connection in cl.connections:
             try:
-                
                 if connection.LastFrameTimestampReceivedByClient == connection.LastSentFrameTimestamp:
-                    log(f"Sending frame timestamp=<{timestamp}> {'[Keyframe]' if isKeyframe else ''}")
+                    #[detectionCount 4-bytes][]
+                    #log(f"Sending frame timestamp=<{timestamp}> {'[Keyframe]' if isKeyframe else ''}")
+                    isKeyframeInBytes = isKeyframe.to_bytes(1,'big')
+                    timestampInBytes = timestamp.to_bytes(8, 'big')
+                    payload = isKeyframeInBytes + timestampInBytes + frame
                     await connection.write_message(payload, True)
                     connection.LastSentFrameTimestamp = timestamp
                 else:
@@ -133,19 +146,31 @@ requestHandlers = [
     (r"/jmuxer.min.js", jmuxerHandler)
 ]
 
+class FrameAnalyzer:
+    def __init__(self, loop:tornado.ioloop.IOLoop):
+        self.loop = loop
+
+    def AnalyzeFrames(self):
+        log('Started Frame Analyses')
+        while True:
+            frame = picam2.capture_array(name='lores')
+            results = detection.Detect(frame)
+            results = [result for result in results if result.Score > 0.5]
+            self.loop.add_callback(callback=wsHandler.updateDetections, detections=results)
+            log([(result.Label,result.Score) for result in results])
+
 try:
     performanceMonitor = PerformanceMonitor(2)
     performanceMonitor.Start()
-    output = StreamOutput()
     application = tornado.web.Application(requestHandlers)
     application.listen(serverPort)
     loop = tornado.ioloop.IOLoop.current()
-    output.setLoop(loop)
-    picam2.start_recording(encoder, output)
-    output.start()
+    mainOutput = StreamOutput(loop)
+    analyzer = FrameAnalyzer(loop)
+    picam2.start_recording(mainEncoder, mainOutput)
+    threading.Thread(target=analyzer.AnalyzeFrames, daemon=True).start()
     loop.start()
 except KeyboardInterrupt:
     picam2.stop_recording()
-    output.stop()
     picam2.close()
     loop.stop()
