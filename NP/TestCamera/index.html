@@ -51,6 +51,10 @@
    <input type="checkbox" id="CheckBoxShowGrid" name="Show Grid" />
    <label for="Show Grid">Show Grid</label>
   </div>
+  <div>
+	<input type="checkbox" id="CheckBoxShowDetections" name="Show Detections" />
+	<label for="Show Detections">Show Detections</label>
+   </div>
 <body>
     <script>
 
@@ -68,15 +72,40 @@ class Grid{
         let height = this.stream.clientHeight;
         let w = width / 3;
         let h = height / 3;
-        this.canvas.width = width;
-        this.canvas.height = height;
-        this.context.fillStyle = 'red';
 
         this.context.fillRect(w - this.offset, 0, this.thickness, height);
         this.context.fillRect(w * 2 - this.offset, 0, this.thickness, height);
         this.context.fillRect(0, h - this.offset, width, this.thickness);
         this.context.fillRect(0, h * 2 - this.offset, width, this.thickness);
     }
+
+	prepareRender()
+	{
+		let width = this.stream.clientWidth;
+        let height = this.stream.clientHeight;
+        this.canvas.width = width;
+        this.canvas.height = height;
+        this.context.strokeStyle  = 'green';
+		this.context.fillStyle = 'green';
+		this.context.clearRect(0,0,width,height);
+	}
+
+	renderDetection(top, left, bottom, right, label, score){
+		
+		let width = this.stream.clientWidth;
+        let height = this.stream.clientHeight;
+
+		let boxx = left*width;
+		let boxy = top*height;
+		let boxw = (right-left)*width;
+		let boxh = (bottom-top)*height;
+		//console.log("[DEBUG] rendering box " + boxx + " " + boxy + " " + boxw + " " + boxh);
+
+		//this.context.clearRect(0,0,width,height);
+        this.context.strokeRect(boxx, boxy, boxw, boxh);
+		this.context.font = "40px Verdana";
+		this.context.fillText(label + " " + (score * 100).toFixed(0) + "%", boxx, boxy + boxh);
+	}
 
 }
 
@@ -99,19 +128,40 @@ class Grid{
 		ws.addEventListener('message',
 		function(event)
 		{
-			if (!document.hidden)
-			{
-				var isKeyframe = new Uint8Array(event.data,0,1)[0] > 0;
-				var timestampBytes = new Uint8Array(event.data,1,8);
-				var frameData = new Uint8Array(event.data,9);
+				var view = new DataView(event.data)
+				var numberOfDetections = view.getInt32(0, true);
+
+				var detectionBytes = 32;
+				var offset = detectionBytes * numberOfDetections + 4;
+				var isKeyFrame = view.getInt8(offset) > 0;
+				var timeStamp = view.getBigUint64(offset+1, true);
+				var timestampBytes = new Uint8Array(event.data,offset+1,8);
+				var frameData = new Uint8Array(event.data,offset+9);
 				jmuxer.feed({video: frameData});	
+
+
+				var showDetections = document.querySelector("#CheckBoxShowDetections").checked;
+				grid.prepareRender()
+				for (let i = 0; i < numberOfDetections; i++){
+					var boxTop = view.getFloat32(4 + i*detectionBytes,true);
+					var boxLeft = view.getFloat32(4+4+ i*detectionBytes,true);
+					var boxBottom = view.getFloat32(4+8+ i*detectionBytes,true);
+					var boxRight = view.getFloat32(4+12+ i*detectionBytes,true);
+					var score = view.getFloat32(4+16+ i*detectionBytes,true);
+					var decoder = new TextDecoder("utf-8");
+					var label = decoder.decode(new Uint8Array(event.data,4+20+ i*detectionBytes,12));
+					if(showDetections){grid.renderDetection(boxTop,boxLeft,boxBottom,boxRight, label, score)}
+					
+					//console.log("[DEBUG] Received Detection for timestamp: " + timeStamp + " " + label + " Box[" + boxTop + " " + boxLeft + " " + boxBottom + " " + boxRight + "] Score"+score)
+				}
+
+				//console.log("[DEBUG] isKeyFrame=" + isKeyFrame + " NumberOfDetections=" + numberOfDetections + " Timestamp=" + timeStamp)
 				ws.send( timestampBytes );
+				
 				var showGrid = document.querySelector("#CheckBoxShowGrid").checked;
-				
-				 grid.thickness = showGrid ? 1 : 0;
-				
-				grid.render();
-			}
+				if(showGrid){grid.render();}
+				//grid.renderDetection(0.1, 0.1, 0.9, 0.9, "???")
+			
 			
 		});
 

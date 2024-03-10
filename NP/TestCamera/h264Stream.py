@@ -1,3 +1,4 @@
+import struct
 import tornado.web, tornado.ioloop, tornado.websocket  
 from string import Template
 import io, os, socket
@@ -19,7 +20,7 @@ import logging
 from collections import deque
 from picamera2.outputs import Output
 from datetime import datetime
-from ObjectDetection import ObjectDetection
+from ObjectDetection import Detection, ObjectDetection
 
 import numpy as np
 
@@ -80,7 +81,7 @@ class StreamOutput(Output):
 
 class wsHandler(tornado.websocket.WebSocketHandler):
     connections:list['wsHandler'] = []
-    detections: list[ObjectDetection] = []
+    detections: list[Detection] = []
     
     LastSentFrameTimestamp = -1
     LastFrameTimestampReceivedByClient = -1
@@ -94,7 +95,7 @@ class wsHandler(tornado.websocket.WebSocketHandler):
         self.connections.remove(self)
 
     def on_message(self, message):
-        timestamp = int.from_bytes(message,'big')
+        timestamp = int.from_bytes(message,'little')
         self.LastFrameTimestampReceivedByClient = timestamp
         #log(f"Response from client. Received frame {timestamp}")
 
@@ -105,7 +106,7 @@ class wsHandler(tornado.websocket.WebSocketHandler):
         return True
 
     @classmethod
-    def updateDetections(cl, detections: list[ObjectDetection]):
+    def updateDetections(cl, detections: list[Detection]):
         cl.detections = detections
 
     @classmethod
@@ -113,11 +114,23 @@ class wsHandler(tornado.websocket.WebSocketHandler):
         for connection in cl.connections:
             try:
                 if connection.LastFrameTimestampReceivedByClient == connection.LastSentFrameTimestamp:
-                    #[detectionCount 4-bytes][]
-                    #log(f"Sending frame timestamp=<{timestamp}> {'[Keyframe]' if isKeyframe else ''}")
-                    isKeyframeInBytes = isKeyframe.to_bytes(1,'big')
-                    timestampInBytes = timestamp.to_bytes(8, 'big')
-                    payload = isKeyframeInBytes + timestampInBytes + frame
+                    #[detectionCount 4-bytes][Top:4bytes,Left:4bytes,Bottom:4bytes,Right:4bytes,Score:4bytes,Label:8bytes]...[isKeyFrame:1byte][timestamp:8bytes][frame:Xbytes(to end)]
+                    endianness='little'
+                    
+                    detectionsInBytes=b''.join(
+                    [struct.pack('f',d.BoundingBox.Top) 
+                     + struct.pack('f',d.BoundingBox.Left) 
+                     + struct.pack('f',d.BoundingBox.Bottom) 
+                     + struct.pack('f',d.BoundingBox.Right) 
+                     + struct.pack('f',d.Score) 
+                     + f"{d.Label[:12]:<12}".encode('utf-8')  for d in cl.detections])
+                    detectionLengthInBytes=len(cl.detections).to_bytes(4,endianness)
+    
+                    isKeyframeInBytes = isKeyframe.to_bytes(1,endianness)
+                    timestampInBytes = timestamp.to_bytes(8, endianness)
+                    
+                    payload = detectionLengthInBytes + detectionsInBytes + isKeyframeInBytes + timestampInBytes + frame
+                    #log(f"Sending frame timestamp=<{timestamp}> keyframe=<{isKeyframe}> Detections={[x for x in cl.detections]}")
                     await connection.write_message(payload, True)
                     connection.LastSentFrameTimestamp = timestamp
                 else:
@@ -155,9 +168,9 @@ class FrameAnalyzer:
         while True:
             frame = picam2.capture_array(name='lores')
             results = detection.Detect(frame)
+            #log([(result.Label,result.Score) for result in results])
             results = [result for result in results if result.Score > 0.5]
             self.loop.add_callback(callback=wsHandler.updateDetections, detections=results)
-            log([(result.Label,result.Score) for result in results])
 
 try:
     performanceMonitor = PerformanceMonitor(2)

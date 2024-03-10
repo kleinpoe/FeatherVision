@@ -15,25 +15,25 @@ class Rectangle:
     Position:tuple[float,float]
     Size:tuple[float,float]
     @property
-    def Width(self):
+    def Width(self)->float:
         return self.Size[0]
     @property
-    def Height(self):
+    def Height(self)->float:
         return self.Size[1]
     @property
-    def Top(self):
-        return self.Size[1]
+    def Top(self)->float:
+        return self.Position[0]
     @property
-    def Left(self):
-        return self.Size[1]
+    def Left(self)->float:
+        return self.Position[1]
     @property
-    def Bottom(self):
-        return self.Size[1]
+    def Bottom(self)->float:
+        return self.Position[0] + self.Size[0]
     @property
-    def Right(self):
-        return self.Size[1]
+    def Right(self)->float:
+        return self.Position[1] + self.Size[1]
     @classmethod 
-    def FromPadding(cl, topLeftBottomRight:tuple[int,int,int,int]) -> 'Rectangle':
+    def FromPadding(cl, topLeftBottomRight:tuple[float,float,float,float]) -> 'Rectangle':
         top, left, bottom, right = topLeftBottomRight
         actualLeft = min(left,right)
         actualRight = max(left,right)
@@ -67,12 +67,14 @@ class ObjectDetection:
         return {int(splitted[0]):splitted[1] for splitted in [line.split() for line in lines]  }
     
     def Detect(self, image:np.ndarray) -> list[Detection]:
-        
-        image = cv2.cvtColor(image,cv2.COLOR_GRAY2RGB)
-        resized = cv2.resize(image, self.modelDetails.InputImageSize)
+        rgb = cv2.cvtColor(image, cv2.COLOR_YUV420p2RGB)[:,:854,:]
+        resized = cv2.resize(rgb, self.modelDetails.InputImageSize)
         expanded = np.expand_dims(resized, axis=0)
         if self.modelDetails.IsFloatingPointModel:
             expanded = (np.float32(expanded) - 127.5) / 127.5 # Todo change to avg and scale with std
+        
+        #cv2.imwrite("test.png",resized)
+        #raise KeyError()
         
         self.interpreter.set_tensor(self.modelDetails.InputTensorIndex, expanded)
         self.interpreter.invoke()
