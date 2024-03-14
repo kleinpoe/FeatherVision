@@ -22,8 +22,9 @@
 		<label for="Show Detections">Show Detections</label>
    	</div>
     <script>
-	window.onload = function(){	
-		var jmuxer = new JMuxer({node: 'stream',mode: 'video',flushingTime: 0,fps: {{ fps }},debug: false});
+	window.onload = function()
+	{	
+		var jmuxer = new JMuxer({node: 'stream',mode: 'video',flushingTime: 0,fps: {{ fps }}, debug: false});
 		var ws = new WebSocket("ws://{{ ip }}:{{ port }}/ws/");
 		ws.binaryType = 'arraybuffer';
 
@@ -34,32 +35,41 @@
 		{
 				var view = new DataView(event.data)
 				var numberOfDetections = view.getInt32(0, true);
-
 				var detectionBytes = 32;
-				var offset = detectionBytes * numberOfDetections + 4;
-				var isKeyFrame = view.getInt8(offset) > 0;
-				var timeStamp = view.getBigUint64(offset+1, true);
-				var timestampBytes = new Uint8Array(event.data,offset+1,8);
-				var frameData = new Uint8Array(event.data,offset+9);
+				var detectionLengthBytes = 4;
+				var frameOffset = detectionBytes * numberOfDetections + detectionLengthBytes;
+				var isKeyFrame = view.getInt8(frameOffset) > 0;
+				var timeStamp = view.getBigUint64(frameOffset+1, true);
+				var timestampBytes = new Uint8Array(event.data,frameOffset+1,8);
+				var frameData = new Uint8Array(event.data,frameOffset+9);
 
 				if (!document.hidden)
 				{
 					jmuxer.feed({video: frameData});	
 				}
 
+				function ParseDetection(dataView, offset)
+				{
+					var boxTop = view.getFloat32(offset,true);
+					var boxLeft = view.getFloat32(offset+4,true);
+					var boxBottom = view.getFloat32(offset+8,true);
+					var boxRight = view.getFloat32(offset+12,true);
+					var score = view.getFloat32(offset+16,true);
+					var decoder = new TextDecoder("utf-8");
+					var label = decoder.decode(new Uint8Array(event.data,offset+20,12));
+					return { Box:{Top:boxTop, Left:boxLeft, Bottom:boxBottom, Right:boxRight}, Score:score, Label:label }
+				}
 
 				var showDetections = document.querySelector("#CheckBoxShowDetections").checked;
 				overlay.prepareRender()
-				for (let i = 0; i < numberOfDetections; i++){
-					var boxTop = view.getFloat32(4 + i*detectionBytes,true);
-					var boxLeft = view.getFloat32(4+4+ i*detectionBytes,true);
-					var boxBottom = view.getFloat32(4+8+ i*detectionBytes,true);
-					var boxRight = view.getFloat32(4+12+ i*detectionBytes,true);
-					var score = view.getFloat32(4+16+ i*detectionBytes,true);
-					var decoder = new TextDecoder("utf-8");
-					var label = decoder.decode(new Uint8Array(event.data,4+20+ i*detectionBytes,12));
-					if(showDetections){overlay.renderDetection(boxTop,boxLeft,boxBottom,boxRight, label, score)}
-					
+				for (let i = 0; i < numberOfDetections; i++)
+				{
+					let offset = detectionLengthBytes+i*detectionBytes;
+					let detection = ParseDetection(view, offset);
+					if(showDetections)
+					{
+						overlay.renderDetection(detection.Box.Top,detection.Box.Left,detection.Box.Bottom,detection.Box.Right, detection.Label, detection.Score);
+					}
 					//console.log("[DEBUG] Received Detection for timestamp: " + timeStamp + " " + label + " Box[" + boxTop + " " + boxLeft + " " + boxBottom + " " + boxRight + "] Score"+score)
 				}
 
@@ -71,12 +81,14 @@
 				//grid.renderDetection(0.1, 0.1, 0.9, 0.9, "???")
 		});
 
-		window.onresize = function(){
+		window.onresize = function()
+		{
 			var showGrid = document.querySelector("#CheckBoxShowGrid").checked;
 			if(showGrid){overlay.renderGrid();}
     	};
 
-    	window.onorientationchange = function(){
+    	window.onorientationchange = function()
+		{
 			var showGrid = document.querySelector("#CheckBoxShowGrid").checked;
 			if(showGrid){overlay.renderGrid();}
     	};

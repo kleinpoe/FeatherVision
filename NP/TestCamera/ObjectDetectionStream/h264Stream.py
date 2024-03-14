@@ -41,7 +41,6 @@ fps = 30
 detectionModelFile = "TfLiteModels/mobilenet_v2.tflite"
 detectionModelLabelsFile = "TfLiteModels/coco_labels.txt"
 
-
 # Setup Camera
 picam2 = Picamera2()
 videoConfig = picam2.create_video_configuration(main={"size":mainResolution},
