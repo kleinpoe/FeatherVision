@@ -10,9 +10,6 @@ import threading
 
 from picamera2 import Picamera2
 from picamera2.encoders import H264Encoder, JpegEncoder, MJPEGEncoder
-from picamera2.outputs import CircularOutput
-
-from CustomOutput import CustomOutput
 
 import subprocess
 import logging
@@ -35,13 +32,17 @@ dname = os.path.dirname(abspath)
 os.chdir(dname)
 
 
-# start configuration
+# config
 serverPort = 8000
-
-# setup camera
 mainResolution = (1920,1080)
 detectionResolution = (854,480)
 fps = 30
+
+detectionModelFile = "TfLiteModels/mobilenet_v2.tflite"
+detectionModelLabelsFile = "TfLiteModels/coco_labels.txt"
+
+
+# Setup Camera
 picam2 = Picamera2()
 videoConfig = picam2.create_video_configuration(main={"size":mainResolution},
                                                 lores={"size":detectionResolution},
@@ -52,21 +53,10 @@ mainEncoder= H264Encoder(framerate=fps)
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(('8.8.8.8', 0))
 serverIp = s.getsockname()[0]
+log(f'Connect to server \"{serverIp}:{serverPort}\"')
 
-detection = ObjectDetection("TfLiteModels/mobilenet_v2.tflite","TfLiteModels/coco_labels.txt")
+detection = ObjectDetection(detectionModelFile,detectionModelLabelsFile)
 
-def getFile(filePath):
-    file = open(filePath,'r')
-    content = file.read()
-    file.close()
-    return content
-
-def templatize(content, replacements):
-    tmpl = Template(content)
-    return tmpl.substitute(replacements)
-
-indexHtml = templatize(getFile('index.html'), {'ip':serverIp, 'port':serverPort, 'fps':fps})
-jmuxerJs = getFile('jmuxer.min.js')
 
 class StreamOutput(Output):
 
@@ -145,18 +135,15 @@ class wsHandler(tornado.websocket.WebSocketHandler):
 
 class indexHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write(indexHtml)
+        self.render('WebContent/index.html',fps=fps,ip=serverIp,port=serverPort)
 
-class jmuxerHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.set_header('Content-Type', 'text/javascript')
-        self.write(jmuxerJs)
+settings = {"static_path": os.path.join(os.path.dirname(__file__), "WebContent", "static"),}
 
 requestHandlers = [
     (r"/ws/", wsHandler),
     (r"/", indexHandler),
     (r"/index.html", indexHandler),
-    (r"/jmuxer.min.js", jmuxerHandler)
+    (r"/static/(.*)", tornado.web.StaticFileHandler, dict(path=settings['static_path']))
 ]
 
 class FrameAnalyzer:
@@ -175,7 +162,7 @@ class FrameAnalyzer:
 try:
     performanceMonitor = PerformanceMonitor(2)
     performanceMonitor.Start()
-    application = tornado.web.Application(requestHandlers)
+    application = tornado.web.Application(requestHandlers,**settings)
     application.listen(serverPort)
     loop = tornado.ioloop.IOLoop.current()
     mainOutput = StreamOutput(loop)

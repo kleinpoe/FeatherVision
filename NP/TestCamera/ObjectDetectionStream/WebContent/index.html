@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Object Detection Stream</title>
+	<link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+	<link rel="stylesheet" href="{{ static_url('style.css') }}">
+	<script src="{{ static_url('jmuxer.min.js') }}"></script>
+	<script src="{{ static_url('VideoOverlay.js') }}"></script>
+</head>
+<body>
+	<div id="streamStage">
+		<video autoplay muted id="stream"></video>
+		<canvas id="canvas"></canvas>  
+   </div>
+   <div>
+		<input type="checkbox" id="CheckBoxShowGrid" name="Show Grid" checked="true"/>
+		<label for="Show Grid">Show Grid</label>
+  	</div>
+ 	<div>
+		<input type="checkbox" id="CheckBoxShowDetections" name="Show Detections" checked="true"/>
+		<label for="Show Detections">Show Detections</label>
+   	</div>
+    <script>
+	window.onload = function(){	
+		var jmuxer = new JMuxer({node: 'stream',mode: 'video',flushingTime: 0,fps: {{ fps }},debug: false});
+		var ws = new WebSocket("ws://{{ ip }}:{{ port }}/ws/");
+		ws.binaryType = 'arraybuffer';
+
+		const overlay = new VideoOverlay();
+
+		ws.addEventListener('message',
+		function(event)
+		{
+				var view = new DataView(event.data)
+				var numberOfDetections = view.getInt32(0, true);
+
+				var detectionBytes = 32;
+				var offset = detectionBytes * numberOfDetections + 4;
+				var isKeyFrame = view.getInt8(offset) > 0;
+				var timeStamp = view.getBigUint64(offset+1, true);
+				var timestampBytes = new Uint8Array(event.data,offset+1,8);
+				var frameData = new Uint8Array(event.data,offset+9);
+
+				if (!document.hidden)
+				{
+					jmuxer.feed({video: frameData});	
+				}
+
+
+				var showDetections = document.querySelector("#CheckBoxShowDetections").checked;
+				overlay.prepareRender()
+				for (let i = 0; i < numberOfDetections; i++){
+					var boxTop = view.getFloat32(4 + i*detectionBytes,true);
+					var boxLeft = view.getFloat32(4+4+ i*detectionBytes,true);
+					var boxBottom = view.getFloat32(4+8+ i*detectionBytes,true);
+					var boxRight = view.getFloat32(4+12+ i*detectionBytes,true);
+					var score = view.getFloat32(4+16+ i*detectionBytes,true);
+					var decoder = new TextDecoder("utf-8");
+					var label = decoder.decode(new Uint8Array(event.data,4+20+ i*detectionBytes,12));
+					if(showDetections){overlay.renderDetection(boxTop,boxLeft,boxBottom,boxRight, label, score)}
+					
+					//console.log("[DEBUG] Received Detection for timestamp: " + timeStamp + " " + label + " Box[" + boxTop + " " + boxLeft + " " + boxBottom + " " + boxRight + "] Score"+score)
+				}
+
+				//console.log("[DEBUG] isKeyFrame=" + isKeyFrame + " NumberOfDetections=" + numberOfDetections + " Timestamp=" + timeStamp)
+				ws.send( timestampBytes );
+				
+				var showGrid = document.querySelector("#CheckBoxShowGrid").checked;
+				if(showGrid){overlay.renderGrid();}
+				//grid.renderDetection(0.1, 0.1, 0.9, 0.9, "???")
+		});
+
+		window.onresize = function(){
+			var showGrid = document.querySelector("#CheckBoxShowGrid").checked;
+			if(showGrid){overlay.renderGrid();}
+    	};
+
+    	window.onorientationchange = function(){
+			var showGrid = document.querySelector("#CheckBoxShowGrid").checked;
+			if(showGrid){overlay.renderGrid();}
+    	};
+	}     
+    </script>
+</body>
+</html>
