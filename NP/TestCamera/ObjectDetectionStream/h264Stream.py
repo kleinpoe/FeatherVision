@@ -12,10 +12,6 @@ import threading
 from picamera2 import Picamera2
 from picamera2.encoders import H264Encoder
 
-
-from collections import deque
-from picamera2.outputs import Output
-from datetime import datetime
 from ObjectDetection import Detection, ObjectDetector
 
 from PerformanceMonitor import PerformanceMonitor
