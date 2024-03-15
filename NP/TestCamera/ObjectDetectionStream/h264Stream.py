@@ -1,31 +1,26 @@
 import struct
 import tornado.web, tornado.ioloop, tornado.websocket  
-from string import Template
-import io, os, socket
+import os, socket
 
-from datetime import timedelta
-import time
+
+from FrameAnalyzer import FrameAnalyzer
+from StreamOutput import StreamOutput
+from log import log
 
 import threading
 
 from picamera2 import Picamera2
-from picamera2.encoders import H264Encoder, JpegEncoder, MJPEGEncoder
+from picamera2.encoders import H264Encoder
 
-import subprocess
-import logging
 
 from collections import deque
 from picamera2.outputs import Output
 from datetime import datetime
-from ObjectDetection import Detection, ObjectDetection
-
-import numpy as np
+from ObjectDetection import Detection, ObjectDetector
 
 from PerformanceMonitor import PerformanceMonitor
 
-def log(message):
-    timestamp = datetime.utcnow().strftime("%H:%M:%S.%f")
-    print(f"[{timestamp}] {message}")
+
 
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
@@ -54,19 +49,7 @@ s.connect(('8.8.8.8', 0))
 serverIp = s.getsockname()[0]
 log(f'Connect to server \"{serverIp}:{serverPort}\"')
 
-detection = ObjectDetection(detectionModelFile,detectionModelLabelsFile)
 
-
-class StreamOutput(Output):
-
-    def __init__(self, loop:tornado.ioloop.IOLoop):
-        super().__init__()
-        self.loop = loop
-
-    def outputframe(self, frame: bytes, isKeyframe: bool, timestamp: int):
-        #log(f'Received highres image len{len(frame)} {isKeyframe} {timestamp}')
-        if self.loop is not None and wsHandler.hasConnections():
-            self.loop.add_callback(callback=wsHandler.broadcast, frame=frame, timestamp=timestamp, isKeyframe=isKeyframe)
 
 class wsHandler(tornado.websocket.WebSocketHandler):
     connections:list['wsHandler'] = []
@@ -145,27 +128,17 @@ requestHandlers = [
     (r"/static/(.*)", tornado.web.StaticFileHandler, dict(path=settings['static_path']))
 ]
 
-class FrameAnalyzer:
-    def __init__(self, loop:tornado.ioloop.IOLoop):
-        self.loop = loop
 
-    def AnalyzeFrames(self):
-        log('Started Frame Analyses')
-        while True:
-            frame = picam2.capture_array(name='lores')
-            results = detection.Detect(frame)
-            #log([(result.Label,result.Score) for result in results])
-            results = [result for result in results if result.Score > 0.5]
-            self.loop.add_callback(callback=wsHandler.updateDetections, detections=results)
 
 try:
+    detector = ObjectDetector(detectionModelFile,detectionModelLabelsFile)
     performanceMonitor = PerformanceMonitor(2)
     performanceMonitor.Start()
     application = tornado.web.Application(requestHandlers,**settings)
     application.listen(serverPort)
     loop = tornado.ioloop.IOLoop.current()
-    mainOutput = StreamOutput(loop)
-    analyzer = FrameAnalyzer(loop)
+    mainOutput = StreamOutput(loop, wsHandler.hasConnections, wsHandler.broadcast)
+    analyzer = FrameAnalyzer(detector,loop,picam2, wsHandler.updateDetections)
     picam2.start_recording(mainEncoder, mainOutput)
     threading.Thread(target=analyzer.AnalyzeFrames, daemon=True).start()
     loop.start()

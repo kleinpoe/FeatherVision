@@ -50,7 +50,7 @@ class Detection:
     
 
 
-class ObjectDetection:
+class ObjectDetector:
     
     def __init__(self, modelFilePath: str, labelsFilePath: str):
         self.interpreter = tflite.Interpreter(model_path=modelFilePath, num_threads=2)
