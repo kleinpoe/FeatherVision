@@ -14,6 +14,7 @@ class FrameAnalyzer:
         self.camera = picamera
         self.loop = loop
         self.updateDetectionsCallback = updateDetectionsCallback
+        self.history:list[Detection] = []
 
     def AnalyzeFrames(self):
         log('Started Frame Analyses')
@@ -21,5 +22,6 @@ class FrameAnalyzer:
             frame = self.camera.capture_array(name='lores')
             results = self.detector.Detect(frame)
             #log([(result.Label,result.Score) for result in results])
-            results = [result for result in results if result.Score > 0.5]
+            results = [result for result in results if result.Score > 0.3]
             self.loop.add_callback(callback=self.updateDetectionsCallback, detections=results)
+            self.history.append(results)

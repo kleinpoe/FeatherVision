@@ -4,7 +4,7 @@ import os, socket
 
 
 from FrameAnalyzer import FrameAnalyzer
-from StreamOutput import StreamOutput
+from StreamOutput import CircularBufferOutput, MultiOutput, RichFrame, StreamOutput, SynchronizationOutput
 from log import log
 
 import threading
@@ -28,6 +28,7 @@ serverPort = 8000
 mainResolution = (1920,1080)
 detectionResolution = (854,480)
 fps = 30
+circularBufferSeconds = 100
 
 detectionModelFile = "TfLiteModels/mobilenet_v2.tflite"
 detectionModelLabelsFile = "TfLiteModels/coco_labels.txt"
@@ -124,7 +125,11 @@ requestHandlers = [
     (r"/static/(.*)", tornado.web.StaticFileHandler, dict(path=settings['static_path']))
 ]
 
-
+def getBroadcastFunc(loop:tornado.ioloop.IOLoop):
+    def broadcastFunc(richFrame:RichFrame):
+        if loop is not None and wsHandler.hasConnections():
+            loop.add_callback(callback=wsHandler.broadcast, frame=richFrame.Frame, timestamp=richFrame.Timestamp, isKeyframe=richFrame.IsKeyframe)
+    return broadcastFunc
 
 try:
     detector = ObjectDetector(detectionModelFile,detectionModelLabelsFile)
@@ -133,7 +138,12 @@ try:
     application = tornado.web.Application(requestHandlers,**settings)
     application.listen(serverPort)
     loop = tornado.ioloop.IOLoop.current()
-    mainOutput = StreamOutput(loop, wsHandler.hasConnections, wsHandler.broadcast)
+    
+    streamOutput = StreamOutput(getBroadcastFunc(loop))
+    circularOutput = CircularBufferOutput(numberOfFrames=circularBufferSeconds*fps)
+    synchronizationOutput = SynchronizationOutput()
+    mainOutput = MultiOutput([synchronizationOutput,circularOutput,streamOutput])
+    
     analyzer = FrameAnalyzer(detector,loop,picam2, wsHandler.updateDetections)
     picam2.start_recording(mainEncoder, mainOutput)
     threading.Thread(target=analyzer.AnalyzeFrames, daemon=True).start()
