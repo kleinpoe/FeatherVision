@@ -49,10 +49,20 @@ class Detection:
     Label:Optional[str]
     
 
-
+class ImagePreparation:
+    def Prepare(self, array:np.ndarray, modelDetails:ModelDetails) -> np.ndarray:
+        rgb = cv2.cvtColor(array, cv2.COLOR_YUV420p2RGB)[:,:854,:]
+        resized = cv2.resize(rgb, modelDetails.InputImageSize)
+        expanded = np.expand_dims(resized, axis=0)
+        if modelDetails.IsFloatingPointModel:
+            expanded = (np.float32(expanded) - 127.5) / 127.5 # Todo change to avg and scale with std
+        #cv2.imwrite("test.png",resized)
+        #raise KeyError()
+        return expanded
+    
 class ObjectDetector:
     
-    def __init__(self, modelFilePath: str, labelsFilePath: str):
+    def __init__(self, modelFilePath: str, labelsFilePath: str, imagePreparation: ImagePreparation):
         self.interpreter = tflite.Interpreter(model_path=modelFilePath, num_threads=2)
         self.interpreter.allocate_tensors()
         inputDetails = self.interpreter.get_input_details()
@@ -60,6 +70,7 @@ class ObjectDetector:
                                          InputImageSize=(inputDetails[0]['shape'][1],inputDetails[0]['shape'][2]),
                                          InputTensorIndex=inputDetails[0]['index'])
         self.Labels = self.readLabels(labelsFilePath)
+        self.imagePreparation = imagePreparation
 
     def readLabels(self, filePath:str)-> dict[int,str] :
         with open(filePath,'r') as file:
@@ -67,16 +78,10 @@ class ObjectDetector:
         return {int(splitted[0]):splitted[1] for splitted in [line.split() for line in lines]  }
     
     def Detect(self, image:np.ndarray) -> list[Detection]:
-        rgb = cv2.cvtColor(image, cv2.COLOR_YUV420p2RGB)[:,:854,:]
-        resized = cv2.resize(rgb, self.modelDetails.InputImageSize)
-        expanded = np.expand_dims(resized, axis=0)
-        if self.modelDetails.IsFloatingPointModel:
-            expanded = (np.float32(expanded) - 127.5) / 127.5 # Todo change to avg and scale with std
         
-        #cv2.imwrite("test.png",resized)
-        #raise KeyError()
+        preparedImage = self.imagePreparation.Prepare(image,self.modelDetails)
         
-        self.interpreter.set_tensor(self.modelDetails.InputTensorIndex, expanded)
+        self.interpreter.set_tensor(self.modelDetails.InputTensorIndex, preparedImage)
         self.interpreter.invoke()
         
         outputDetails = self.interpreter.get_output_details()

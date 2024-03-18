@@ -12,7 +12,7 @@ import threading
 from picamera2 import Picamera2
 from picamera2.encoders import H264Encoder
 
-from ObjectDetection import Detection, ObjectDetector
+from ObjectDetection import Detection, ImagePreparation, ObjectDetector
 
 from PerformanceMonitor import PerformanceMonitor
 
@@ -132,7 +132,7 @@ def getBroadcastFunc(loop:tornado.ioloop.IOLoop):
     return broadcastFunc
 
 try:
-    detector = ObjectDetector(detectionModelFile,detectionModelLabelsFile)
+    detector = ObjectDetector(detectionModelFile,detectionModelLabelsFile, ImagePreparation())
     performanceMonitor = PerformanceMonitor(2)
     performanceMonitor.Start()
     application = tornado.web.Application(requestHandlers,**settings)
@@ -148,7 +148,7 @@ try:
     picam2.start_recording(mainEncoder, mainOutput)
     threading.Thread(target=analyzer.AnalyzeFrames, daemon=True).start()
     loop.start()
-except KeyboardInterrupt:
+finally:
     picam2.stop_recording()
     picam2.close()
     loop.stop()
