@@ -131,6 +131,12 @@ def getBroadcastFunc(loop:tornado.ioloop.IOLoop):
             loop.add_callback(callback=wsHandler.broadcast, frame=richFrame.Frame, timestamp=richFrame.Timestamp, isKeyframe=richFrame.IsKeyframe)
     return broadcastFunc
 
+def getBroadcastDetectionsFunc(loop:tornado.ioloop.IOLoop):
+    def broadcastFunc(detections:list[Detection]):
+        if loop is not None and wsHandler.hasConnections():
+            loop.add_callback(callback=wsHandler.updateDetections, detections=detections)
+    return broadcastFunc
+
 try:
     detector = ObjectDetector(detectionModelFile,detectionModelLabelsFile, ImagePreparation())
     performanceMonitor = PerformanceMonitor(2)
@@ -144,7 +150,7 @@ try:
     synchronizationOutput = SynchronizationOutput()
     mainOutput = MultiOutput([synchronizationOutput,circularOutput,streamOutput])
     
-    analyzer = FrameAnalyzer(detector,loop,picam2, wsHandler.updateDetections)
+    analyzer = FrameAnalyzer(detector,picam2, getBroadcastDetectionsFunc(loop), synchronizationOutput.GetCurrentTimestamp)
     picam2.start_recording(mainEncoder, mainOutput)
     threading.Thread(target=analyzer.AnalyzeFrames, daemon=True).start()
     loop.start()

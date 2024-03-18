@@ -12,7 +12,6 @@ class RichFrame:
 
 class MultiOutput(Output):
     def __init__(self, outputs:list[Output]):
-        super().__init__()
         self.outputs = outputs
 
     def outputframe(self, frame: bytes, isKeyframe: bool, timestamp: int):
@@ -22,7 +21,6 @@ class MultiOutput(Output):
 
 class StreamOutput(Output):
     def __init__(self, broadcast:Callable[[RichFrame],None]):
-        super().__init__()
         self.broadcast = broadcast
 
     def outputframe(self, frame: bytes, isKeyframe: bool, timestamp: int):
@@ -30,8 +28,7 @@ class StreamOutput(Output):
         
 class SynchronizationOutput(Output):
     def __init__(self):
-        super().__init__()
-        self.currentTimestamp:int
+        self.currentTimestamp:int = 0
         self.lock = Lock()
 
     def outputframe(self, frame: bytes, isKeyframe: bool, timestamp: int):
