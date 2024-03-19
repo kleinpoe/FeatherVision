@@ -150,7 +150,7 @@ try:
     synchronizationOutput = SynchronizationOutput()
     mainOutput = MultiOutput([synchronizationOutput,circularOutput,streamOutput])
     
-    analyzer = FrameAnalyzer(detector,picam2, getBroadcastDetectionsFunc(loop), synchronizationOutput.GetCurrentTimestamp)
+    analyzer = FrameAnalyzer(detector,picam2, getBroadcastDetectionsFunc(loop), synchronizationOutput.GetCurrentTimestamp, circularOutput)
     picam2.start_recording(mainEncoder, mainOutput)
     threading.Thread(target=analyzer.AnalyzeFrames, daemon=True).start()
     loop.start()

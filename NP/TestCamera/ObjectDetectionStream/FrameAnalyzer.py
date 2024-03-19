@@ -1,10 +1,12 @@
 from collections import deque
 from dataclasses import dataclass
 from datetime import timedelta
+import subprocess
 from typing import Callable, Optional
 import numpy as np
 import tornado
 
+from StreamOutput import CircularBufferOutput, StreamOutput
 from ObjectDetection import Detection, ObjectDetector
 
 from picamera2 import Picamera2
@@ -13,12 +15,13 @@ from log import log
 
 
 class FrameAnalyzer:
-    def __init__(self, detector:ObjectDetector, picamera:Picamera2, broadcastDetections: Callable[[list[Detection]],None], getCurentTimestamp: Callable[[],int]):
+    def __init__(self, detector:ObjectDetector, picamera:Picamera2, broadcastDetections: Callable[[list[Detection]],None], getCurentTimestamp: Callable[[],int], circularBuffer: CircularBufferOutput):
         self.detector = detector
         self.camera = picamera
         self.broadcastDetections = broadcastDetections
         self.history = DetectionHistory(maxEntries=100000, labelsOfTrackedObjects=["bird"])
         self.getCurentTimestamp = getCurentTimestamp
+        self.circularBuffer = circularBuffer
 
     def AnalyzeFrames(self):
         log('Started Frame Analyses')
@@ -40,6 +43,24 @@ class FrameAnalyzer:
                 print('New Clip!')
                 print(optionalClip[0])
                 print(optionalClip[-1])
+                richFrames = self.circularBuffer.GetFrames(optionalClip[0].Timestamp, optionalClip[-1].Timestamp)
+                
+                videoPath = 'test.h264'
+                convertedPath = 'test.mp4'
+                # Write Circular Buffer to h264 file
+                with open(videoPath, "wb") as file:
+                    print(f"Writing frames to {videoPath}")
+                    size = 0
+                    length = len(richFrames)
+                    for richFrame in richFrames:
+                        file.write(richFrame.Frame)
+                        size = size + len(richFrame.Frame)
+                    print(f"Done. Length = {size/1E6}Mb. {length/1E6}s")
+
+                # Convert h264 file to mp4
+                print("Converting file to mp4")
+                command = f"ffmpeg -r {30} -i {videoPath} -y -c copy {convertedPath}"
+                subprocess.call(command.split(" "))
     
 
 @dataclass
