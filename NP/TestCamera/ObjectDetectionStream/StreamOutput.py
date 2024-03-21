@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from threading import Lock
 from typing import Callable
 from picamera2.outputs import Output
+from log import log
 
 @dataclass
 class RichFrame:
@@ -15,7 +16,7 @@ class MultiOutput(Output):
         self.outputs = outputs
 
     def outputframe(self, frame: bytes, isKeyframe: bool, timestamp: int):
-        #log(f'Received Frame data: Number of Bytes={len(frame)}, KeyFrame={isKeyframe}, TimeStamp={timestamp}µs')
+        #log(f'New HighRes-Frame: NumberOfBytes={len(frame)}, KeyFrame={isKeyframe}, TimeStamp={timestamp}µs')
         for output in self.outputs:
             output.outputframe(frame, isKeyframe, timestamp)
 
