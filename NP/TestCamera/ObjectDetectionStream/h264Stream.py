@@ -4,6 +4,7 @@ import os, socket
 
 
 from FrameAnalyzer import FrameAnalyzer
+from FrameAnnotator import FrameAnnotator
 from StreamOutput import CircularBufferOutput, MultiOutput, RichFrame, StreamOutput, SynchronizationOutput
 from log import log
 
@@ -149,8 +150,9 @@ try:
     circularOutput = CircularBufferOutput(numberOfFrames=circularBufferSeconds*fps)
     synchronizationOutput = SynchronizationOutput()
     mainOutput = MultiOutput([synchronizationOutput,circularOutput,streamOutput])
+    annotator = FrameAnnotator()
     
-    analyzer = FrameAnalyzer(detector,picam2, getBroadcastDetectionsFunc(loop), synchronizationOutput.GetCurrentTimestamp, circularOutput)
+    analyzer = FrameAnalyzer(detector,picam2, getBroadcastDetectionsFunc(loop), synchronizationOutput.GetCurrentTimestamp, circularOutput, annotator)
     picam2.start_recording(mainEncoder, mainOutput)
     threading.Thread(target=analyzer.AnalyzeFrames, daemon=True).start()
     loop.start()

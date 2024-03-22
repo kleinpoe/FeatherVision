@@ -59,6 +59,6 @@ class CircularBufferOutput(Output):
         # Consider Performance Optimizations
         keyFrames = [frame for frame in shallowCopiedBuffer if frame.IsKeyframe]
         closestKeyFrameToMin = min(keyFrames, key= lambda frame: abs(frame.Timestamp - timestampMin))
-        closestKeyFrameToMax = min(shallowCopiedBuffer, key= lambda frame: abs(frame.Timestamp - timestampMax))
-        return shallowCopiedBuffer[shallowCopiedBuffer.index(closestKeyFrameToMin):shallowCopiedBuffer.index(closestKeyFrameToMax)]
+        closestFrameToMax = min(shallowCopiedBuffer, key= lambda frame: abs(frame.Timestamp - timestampMax))
+        return shallowCopiedBuffer[shallowCopiedBuffer.index(closestKeyFrameToMin):shallowCopiedBuffer.index(closestFrameToMax)]
         
