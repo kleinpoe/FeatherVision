@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# Videos
+*.mp4
+*.h264
+
 # Distribution / packaging
 .Python
 build/
@@ -162,3 +166,5 @@ ApplicationData/LogFiles/
 ApplicationData/Recordings/
 ApplicationData/RecordingThumbnails/
 ApplicationData/RecordingArchive/
+
+
