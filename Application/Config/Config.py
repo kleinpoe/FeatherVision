@@ -66,9 +66,7 @@ class Config:
             self.ApplicationDataDirectory = os.path.join(runtimeConfig.ApplicationDirectory, 'ApplicationData')
             self.LogFileDirectory = os.path.join(self.ApplicationDataDirectory, 'LogFiles')
             self.LogFilePath = os.path.join(self.LogFileDirectory, 'log.txt')
-            self.OutputDirectory = os.path.join(self.ApplicationDataDirectory, 'Recordings')
-            self.ThumbnailDirectory = os.path.join(self.ApplicationDataDirectory, 'RecordingThumbnails')
-            self.ArchiveDirectory = os.path.join(self.ApplicationDataDirectory, 'RecordingArchive')
+            self.ClipsDirectory = os.path.join(self.ApplicationDataDirectory, 'Clips')
             self.ArchiveDuration = timedelta(days=7)
             self.MaximumStorageOccupationForSaving = 95  # 0-100%
 

@@ -1,10 +1,12 @@
 from dataclasses import dataclass
+from logging import Logger
 from statistics import mean
 import subprocess
 from typing import Callable, Optional
 import cv2
 import numpy as np
 
+from ObjectDetection.DetectionHistoryEntry import DetectionHistoryEntry
 from Config.Config import Config
 from Camera.Camera import Camera
 from FrameAnnotator import FrameAnnotator
@@ -14,36 +16,41 @@ from ObjectDetection import Detection, ObjectDetector
 
 from picamera2 import Picamera2
 
-from log import log
-
 
 class FrameAnalyzer:
-    def __init__(self, detector:ObjectDetector, camera:Camera, broadcastDetections: Callable[[list[Detection]],None], getCurentTimestamp: Callable[[],int], circularBuffer: CircularBufferOutput, frameAnnotator: FrameAnnotator, detectionHistory: DetectionHistory, config: Config):
+    def __init__(self, 
+                 detector:ObjectDetector, 
+                 camera:Camera, 
+                 broadcastDetections: Callable[[list[Detection]],None],
+                 circularBuffer: CircularBufferOutput, 
+                 frameAnnotator: FrameAnnotator, 
+                 detectionHistory: DetectionHistory, 
+                 config: Config,
+                 logger: Logger):
         self.config = config
         self.detector = detector
         self.camera = camera
         self.broadcastDetections = broadcastDetections
         self.history = detectionHistory
-        self.getCurentTimestamp = getCurentTimestamp
         self.circularBuffer = circularBuffer
         self.frameAnnotator = frameAnnotator
+        self.logger = logger
 
     def AnalyzeFrames(self):
-        log('Started Frame Analyses')
+        self.logger.info('Started Frame Analyses')
         while True:
             
             objectDetectionFrame = self.camera.CaptureObjectDetectionFrame()
-            
             results = self.detector.Detect(objectDetectionFrame.Frame)
-            #log([(result.Label,result.Score) for result in results])
+            
             resultsOverThresholdScore = [result for result in results if result.Score > self.config.ClipGeneration.MinimumScore]
             self.broadcastDetections(resultsOverThresholdScore)
-            optionalClip = self.history.CheckClip(objectDetectionFrame.Frame, objectDetectionFrame.Timestamp, resultsOverThresholdScore)
+            
+            optionalClip = self.history.CheckClip( DetectionHistoryEntry(resultsOverThresholdScore,objectDetectionFrame.Timestamp,objectDetectionFrame.Frame) )
+            
             if optionalClip is not None:
                 
-                print('New Clip!')
-                print(optionalClip[0])
-                print(optionalClip[-1])
+                print('Detected save-worthy clip!')
                 
                 annotatedFrames = [self.frameAnnotator.AnnotateDetectedObjects(x.Frame,x.Detections) for x in optionalClip]
                 height,width,_ = annotatedFrames[0].shape

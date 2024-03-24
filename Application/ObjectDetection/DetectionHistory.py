@@ -1,9 +1,7 @@
 from typing import Optional
 from Config.Config import Config
 from ObjectDetection.DetectionHistoryEntry import DetectionHistoryEntry
-from ObjectDetection import Detection
 
-import numpy as np
 
 from collections import deque
 from logging import Logger
@@ -14,7 +12,6 @@ class DetectionHistory:
         
         self.config = config.ClipGeneration
         self.logger = logger
-        
         if self.config.PaddingStart > self.config.AllowedTrackedObjectGapsDuration or self.config.PaddingEnd > self.config.AllowedTrackedObjectGapsDuration:
             raise ValueError(f"The clip paddings (begin:{self.config.PaddingStart},end:{self.config.PaddingEnd}) must be smaller than the maximum gap duration without tracked object {self.config.AllowedTrackedObjectGapsDuration}")
 
@@ -22,12 +19,11 @@ class DetectionHistory:
         self.EntryWhereTrackedObjectWasDetectedFirst:Optional[DetectionHistoryEntry] = None
         self.EntryWhereTrackedObjectWasDetectedLast:Optional[DetectionHistoryEntry] = None
 
-    def CheckClip(self, frame: np.ndarray, timestamp: int, detections: list[Detection]) -> Optional[list[DetectionHistoryEntry]]:
+    def CheckClip(self, entry:DetectionHistoryEntry) -> Optional[list[DetectionHistoryEntry]]:
 
-        entry = DetectionHistoryEntry(detections, timestamp, frame)
         self.history.append(entry)
 
-        hasTrackedObject = any(detection.Label in self.config.TrackedObjectsLabels for detection in detections)
+        hasTrackedObject = any(detection.Label in self.config.TrackedObjectsLabels for detection in entry.Detections)
         thereIsATrackedObjectInHistory = self.EntryWhereTrackedObjectWasDetectedLast is not None
         timeSinceLastTrackedObjectIsAboveLimit = (entry.Timestamp - self.EntryWhereTrackedObjectWasDetectedLast.Timestamp) > self.config.AllowedTrackedObjectGapsDuration if thereIsATrackedObjectInHistory and not hasTrackedObject else False
         clipExceedsMaxDuration = (entry.Timestamp - self.EntryWhereTrackedObjectWasDetectedFirst.Timestamp) + self.config.PaddingStart > self.config.MaximumClipLength if thereIsATrackedObjectInHistory else False
