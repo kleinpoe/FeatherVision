@@ -6,7 +6,7 @@ from typing import Callable
 import cv2
 
 from Application.Infrastructure.Clock import Clock
-from Application.Video.AnnotatedClipSaver import AnnotatedClipSaver
+from Video.Saving.AnnotatedClipSaver import AnnotatedClipSaver
 from ObjectDetection.Detection import Detection
 from Surveillance.History.DetectionHistoryEntry import DetectionHistoryEntry
 from Config.Config import Config

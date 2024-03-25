@@ -4,7 +4,7 @@ from logging import Logger
 from statistics import mean
 import cv2
 
-from Application.Video.Saving.FilePathProvider import FilePathProvider
+from Video.FilePathProvider import FilePathProvider
 from Config.Config import Config
 from Video.FrameAnnotator import FrameAnnotator
 from Surveillance.History.DetectionHistoryEntry import DetectionHistoryEntry
