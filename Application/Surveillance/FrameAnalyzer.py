@@ -2,17 +2,19 @@ from dataclasses import dataclass
 from logging import Logger
 from statistics import mean
 import subprocess
-from typing import Callable, Optional
+from typing import Callable
 import cv2
-import numpy as np
 
-from ObjectDetection.DetectionHistoryEntry import DetectionHistoryEntry
+from Application.Infrastructure.Clock import Clock
+from Application.Video.AnnotatedClipSaver import AnnotatedClipSaver
+from ObjectDetection.Detection import Detection
+from Surveillance.History.DetectionHistoryEntry import DetectionHistoryEntry
 from Config.Config import Config
 from Camera.Camera import Camera
-from FrameAnnotator import FrameAnnotator
-from DetectionHistory import DetectionHistory
+from Application.Video.FrameAnnotator import FrameAnnotator
+from Application.Surveillance.History.DetectionHistory import DetectionHistory
 from Camera.Outputs import CircularBufferOutput
-from ObjectDetection import Detection, ObjectDetector
+from Application.Surveillance.ObjectDetection.ObjectDetection import ObjectDetector
 
 from picamera2 import Picamera2
 
@@ -25,19 +27,24 @@ class FrameAnalyzer:
                  circularBuffer: CircularBufferOutput, 
                  frameAnnotator: FrameAnnotator, 
                  detectionHistory: DetectionHistory, 
+                 annotatedClipSaver: AnnotatedClipSaver,
                  config: Config,
-                 logger: Logger):
+                 logger: Logger,
+                 clock: Clock):
         self.config = config
         self.detector = detector
         self.camera = camera
         self.broadcastDetections = broadcastDetections
         self.history = detectionHistory
+        self.annotatedClipSaver = annotatedClipSaver
         self.circularBuffer = circularBuffer
         self.frameAnnotator = frameAnnotator
         self.logger = logger
+        self.clock = clock
 
     def AnalyzeFrames(self):
         self.logger.info('Started Frame Analyses')
+        
         while True:
             
             objectDetectionFrame = self.camera.CaptureObjectDetectionFrame()
@@ -50,18 +57,12 @@ class FrameAnalyzer:
             
             if optionalClip is not None:
                 
+                
                 print('Detected save-worthy clip!')
                 
-                annotatedFrames = [self.frameAnnotator.AnnotateDetectedObjects(x.Frame,x.Detections) for x in optionalClip]
-                height,width,_ = annotatedFrames[0].shape
-                clipFps = 1/(mean([f2.Timestamp - f1.Timestamp for f1, f2 in zip(optionalClip, optionalClip[1:])]) / 1E6)
-
-                print(f'Writing annotated Clip: W{width}xH{height} FPS{clipFps} Frames{len(annotatedFrames)} Duration{(optionalClip[-1].Timestamp-optionalClip[0].Timestamp)/1E6:.2f}s')
-                codec = cv2.VideoWriter.fourcc(*'mp4v')
-                videoWriter = cv2.VideoWriter('testAnnotate.mp4',codec,clipFps,(width,height))
-                for frame in annotatedFrames:
-                    videoWriter.write(frame)
-                videoWriter.release()
+                timestamp = self.clock.Now()
+                self.annotatedClipSaver.Save(timestamp, optionalClip)
+                
                 
                 richFrames = self.circularBuffer.GetFrames(optionalClip[0].Timestamp, optionalClip[-1].Timestamp)
                 

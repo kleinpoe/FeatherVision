@@ -4,7 +4,7 @@ from picamera2.encoders import H264Encoder
 from picamera2.outputs import Output
 
 from Camera.Frames.ObjectDetectionFrame import ObjectDetectionFrame
-from Camera.FrameConverter import PreviewFrameToRgbConverter
+from Application.Camera.PreviewFrameToRgbConverter import PreviewFrameToRgbConverter
 from Camera.Outputs.SynchronizationOutput import SynchronizationOutput
 from Camera.Outputs.MultiOutput import MultiOutput
 from Config.Config import Config

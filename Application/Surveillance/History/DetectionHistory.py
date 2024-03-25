@@ -1,6 +1,6 @@
 from typing import Optional
 from Config.Config import Config
-from ObjectDetection.DetectionHistoryEntry import DetectionHistoryEntry
+from Surveillance.History.DetectionHistoryEntry import DetectionHistoryEntry
 
 
 from collections import deque

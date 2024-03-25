@@ -2,7 +2,7 @@ from dataclasses import dataclass
 import numpy as np
 from typing import List
 import cv2
-from ObjectDetection import Detection
+from Surveillance.ObjectDetection.Detection import Detection
 
 
 @dataclass

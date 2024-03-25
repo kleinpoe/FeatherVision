@@ -1,5 +1,5 @@
 from datetime import datetime
-from Application.ObjectDetection.ObjectDetection import Detection
+from Surveillance.ObjectDetection.Detection import Detection
 
 import numpy as np
 
