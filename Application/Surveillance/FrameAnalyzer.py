@@ -1,90 +1,53 @@
-from dataclasses import dataclass
 from logging import Logger
-from statistics import mean
-import subprocess
-from typing import Callable
-import cv2
+import threading
 
-from Application.Infrastructure.Clock import Clock
-from Video.Saving.AnnotatedClipSaver import AnnotatedClipSaver
-from ObjectDetection.Detection import Detection
+from Surveillance.DetectionBroadcaster import DetectionBroadcaster
+from Video.ClipSaver import ClipSaver
 from Surveillance.History.DetectionHistoryEntry import DetectionHistoryEntry
 from Config.Config import Config
 from Camera.Camera import Camera
-from Application.Video.FrameAnnotator import FrameAnnotator
 from Application.Surveillance.History.DetectionHistory import DetectionHistory
-from Camera.Outputs import CircularBufferOutput
-from Application.Surveillance.ObjectDetection.ObjectDetection import ObjectDetector
-
-from picamera2 import Picamera2
+from Surveillance.ObjectDetection.ObjectDetection import ObjectDetector
 
 
 class FrameAnalyzer:
     def __init__(self, 
                  detector:ObjectDetector, 
                  camera:Camera, 
-                 broadcastDetections: Callable[[list[Detection]],None],
-                 circularBuffer: CircularBufferOutput, 
-                 frameAnnotator: FrameAnnotator, 
+                 detectionBroadcaster: DetectionBroadcaster,
                  detectionHistory: DetectionHistory, 
-                 annotatedClipSaver: AnnotatedClipSaver,
+                 clipSaver: ClipSaver,
                  config: Config,
-                 logger: Logger,
-                 clock: Clock):
-        self.config = config
+                 logger: Logger):
         self.detector = detector
         self.camera = camera
-        self.broadcastDetections = broadcastDetections
+        self.detectionBroadcaster = detectionBroadcaster
         self.history = detectionHistory
-        self.annotatedClipSaver = annotatedClipSaver
-        self.circularBuffer = circularBuffer
-        self.frameAnnotator = frameAnnotator
+        self.clipSaver = clipSaver
+        self.config = config
         self.logger = logger
-        self.clock = clock
+        self.stopRequested = False
 
-    def AnalyzeFrames(self):
+    def Start(self) -> None:
+        self.thread = threading.Thread(target=self.analyzeFrames, daemon=True)
+        self.thread.start()
+        self.stopRequested = False
+        
+    def Stop(self) -> None:
+        self.stopRequested = True
+
+    def analyzeFrames(self) -> None:
         self.logger.info('Started Frame Analyses')
         
-        while True:
-            
+        while True and not self.stopRequested:
             objectDetectionFrame = self.camera.CaptureObjectDetectionFrame()
-            results = self.detector.Detect(objectDetectionFrame.Frame)
-            
-            resultsOverThresholdScore = [result for result in results if result.Score > self.config.ClipGeneration.MinimumScore]
-            self.broadcastDetections(resultsOverThresholdScore)
-            
-            optionalClip = self.history.CheckClip( DetectionHistoryEntry(resultsOverThresholdScore,objectDetectionFrame.Timestamp,objectDetectionFrame.Frame) )
-            
+            detections = self.detector.Detect(objectDetectionFrame.Frame)
+            self.detectionBroadcaster.Broadcast(detections)
+            optionalClip = self.history.CheckClip( DetectionHistoryEntry(detections,objectDetectionFrame.Timestamp,objectDetectionFrame.Frame) )
             if optionalClip is not None:
+                self.clipSaver.Save(optionalClip)
                 
-                
-                print('Detected save-worthy clip!')
-                
-                timestamp = self.clock.Now()
-                self.annotatedClipSaver.Save(timestamp, optionalClip)
-                
-                
-                richFrames = self.circularBuffer.GetFrames(optionalClip[0].Timestamp, optionalClip[-1].Timestamp)
-                
-                videoPath = 'test.h264'
-                convertedPath = 'test.mp4'
-                print(f"Writing frames to {videoPath}")
-                # Write Circular Buffer to h264 file
-                with open(videoPath, "wb") as file:
-                    size = 0
-                    length = len(richFrames)
-                    for richFrame in richFrames:
-                        file.write(richFrame.Frame)
-                        size = size + len(richFrame.Frame)
-                print(f"Done. Length = {size/1E6}Mb. {length/1E6}s")
-
-                # Convert h264 file to mp4
-                print("Converting file to mp4")
-                command = f"ffmpeg -loglevel error -r {30} -i {videoPath} -movflags +faststart -y -c copy {convertedPath}"
-                returnCode = subprocess.call(command.split(" "))
-                print(f"Conversion done {returnCode}")
-                #command = ['ffmpeg', '-y', '-loglevel', 'error', '-i', videoPath, '-movflags', '+faststart', '-c:v', 'copy', convertedPath]
-                #subprocess.call(command)
+        
     
 
             

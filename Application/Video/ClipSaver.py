@@ -1,6 +1,7 @@
+from dataclasses import dataclass
+from datetime import datetime, timedelta
 from logging import Logger
 
-from Camera.Outputs.CircularBufferOutput import CircularBufferOutput
 from Surveillance.History.DetectionHistoryEntry import DetectionHistoryEntry
 from Config.Config import Config
 from Infrastructure.Clock import Clock
@@ -30,10 +31,12 @@ class ClipSaver:
         ThumbnailFilePath:str
         HighResClipFilePath:str
         AnnotatedClipFilePath:str
+        ClipDuration: timedelta
+        DateTime: datetime
         
-    def Save(self, detectionHistoryEntries:list[DetectionHistoryEntry], highResBuffer: CircularBufferOutput) -> Result:
+    def Save(self, detectionHistoryEntries:list[DetectionHistoryEntry]) -> Result:
         timestamp = self.clock.Now()
         annotatedPath = self.annotatedClipSaver.Save(timestamp, detectionHistoryEntries)
-        highResPath = self.highResClipSaver.Save(timestamp,highResBuffer, detectionHistoryEntries[0].Timestamp, detectionHistoryEntries[-1].Timestamp )
-        thumbnailPath = self.thumbnailSaver.Save(timestamp, highResPath)
-        return ClipSaver.Result()
+        highResResult = self.highResClipSaver.Save(timestamp,detectionHistoryEntries[0].Timestamp, detectionHistoryEntries[-1].Timestamp )
+        thumbnailPath = self.thumbnailSaver.Save(timestamp, highResResult.FilePath)
+        return ClipSaver.Result(thumbnailPath, highResResult.FilePath, annotatedPath, highResResult.Duration)

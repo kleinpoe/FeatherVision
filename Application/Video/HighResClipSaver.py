@@ -1,27 +1,37 @@
+from dataclasses import dataclass
+from pathlib import Path
 from Application.Camera.Outputs.CircularBufferOutput import CircularBufferOutput
 from Application.Config.Config import Config
-from Application.Video.Saving.FilePathProvider import FilePathProvider
+from Video.FilePathProvider import FilePathProvider
 
 
 import os
 import subprocess
-from datetime import datetime
+from datetime import datetime, timedelta
 from logging import Logger
 
 
 class HighResClipSaver:
-    def __init__(self, filePathProvider: FilePathProvider, config: Config, logger: Logger ):
+    def __init__(self, highResBuffer: CircularBufferOutput, filePathProvider: FilePathProvider, config: Config, logger: Logger ):
         self.filePathProvider = filePathProvider
+        self.highResBuffer = highResBuffer
         self.config = config
         self.logger = logger
+        
+    @dataclass
+    class Result:
+        FilePath:str
+        Duration:timedelta
 
-    def Save(self, timestamp: datetime, buffer: CircularBufferOutput, clipBegin: datetime, clipEnd: datetime ):
+    def Save(self, timestamp: datetime, clipBegin: datetime, clipEnd: datetime ) -> Result:
 
         temporaryFilePath = self.filePathProvider.GetTemporaryClipPath(timestamp, 'h264')
         highResFilePath = self.filePathProvider.GetHighResClipPath(timestamp,'mp4')
+        
+        Path(highResFilePath).parent.mkdir(parents=True, exist_ok=True)
 
         fps = self.config.Camera.Fps
-        richFrames = buffer.GetFrames(clipBegin, clipEnd)
+        richFrames = self.highResBuffer.GetFrames(clipBegin, clipEnd)
         lengthInSeconds = len(richFrames) / fps
         sizeInMb = sum([len(x.Frame) for x in richFrames]) / 1E6
 
@@ -42,4 +52,4 @@ class HighResClipSaver:
         # Delete temporary file
         os.remove(temporaryFilePath)
 
-        return highResFilePath
+        return HighResClipSaver.Result(highResFilePath, timedelta(seconds=lengthInSeconds))

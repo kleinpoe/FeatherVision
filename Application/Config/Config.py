@@ -8,20 +8,21 @@ from Config.RuntimeConfig import RuntimeConfig
 
 class Config:
     def __init__(self, runtimeConfig: RuntimeConfig):
-        self.WebInterface = Config.WebInterfaceConfig(runtimeConfig)
+        
         self.Logging = Config.LoggingConfig()
-        self.Detection = Config.DetectionConfig(runtimeConfig)
         self.ClipGeneration = Config.ClipGenerationConfig()
         self.Location = Config.LocationConfig()
         self.Storage = Config.StorageConfig(runtimeConfig)
         self.Camera = Config.CameraConfig()
+        self.Detection = Config.DetectionConfig(self.Storage)
+        self.WebInterface = Config.WebInterfaceConfig(self.Storage,runtimeConfig)
         
     class WebInterfaceConfig:
-        def __init__(self, runtimeConfig: RuntimeConfig):
-            self.HtmlDirectory: str = os.path.join(runtimeConfig.ApplicationDirectory, 'WebInterfaceContent') # The directory containing all the html files of the web interface
-            self.Ip: str = runtimeConfig.Ip
-            self.FaviconFilePath:str = os.path.join(runtimeConfig.ApplicationDirectory, 'favicon.ico') # The filepath of the favicon icon of the web interface
+        def __init__(self, storageConfig: 'Config.StorageConfig', runtimeConfig: RuntimeConfig):
+            self.HtmlDirectory: str = os.path.join(storageConfig.ApplicationDataDirectory, 'WebInterfaceData') # The directory containing all the html files of the web interface
+            self.HtmlStaticDirectory: str = os.path.join(self.HtmlDirectory, 'static')
             self.DefaultThumbnail = os.path.join(runtimeConfig.ApplicationDirectory, 'Assets', 'DefaultThumbnail.jpg')
+            self.Ip: str = runtimeConfig.Ip
             self.Port:int = 8000 # The port for the web interface
         
     class LoggingConfig:
@@ -38,11 +39,6 @@ class Config:
             self.ObjectDetectionResolution = (854,480) # Resolution with which object detection is performed
             self.Fps = 30 # The FramesRate (Frames per second) with which the main camera stream operates
     
-    class DetectionConfig:
-        def __init__(self, runtimeConfig: RuntimeConfig):
-            self.DetectionQuality = 1  # 0:worst/fastest - 3:best/slowest
-            self.TensorFlowTrainingData = os.path.join(runtimeConfig.ApplicationDirectory, 'TensorflowModels', f'efficientdet_lite{self.DetectionQuality}.tflite')
-            
     class ClipGenerationConfig:
         def __init__(self):
             self.TrackedObjectsLabels = ['bird', 'squirrel', 'cat', 'dog', 'horse', 'bear'] # These must align with the given object detections labels file
@@ -67,7 +63,14 @@ class Config:
             self.LogFileDirectory = os.path.join(self.ApplicationDataDirectory, 'LogFiles')
             self.LogFilePath = os.path.join(self.LogFileDirectory, 'log.txt')
             self.ClipsDirectory = os.path.join(self.ApplicationDataDirectory, 'Clips')
+            self.TensorFlowModelDirectory = os.path.join(self.ApplicationDataDirectory, 'TensorflowModels')
             self.ArchiveDuration = timedelta(days=7)
             self.MaximumStorageOccupationForSaving = 95  # 0-100%
+            
+    class DetectionConfig:
+        def __init__(self, storageConfig: 'Config.StorageConfig'):
+            self.TensorFlowModelFilePath = os.path.join(storageConfig.TensorFlowModelDirectory, 'mobilenet_v2.tflite')
+            self.LabelsFilePath = os.path.join(storageConfig.TensorFlowModelDirectory, 'coco_labels.txt')
+            
 
     

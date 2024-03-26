@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 from logging import Logger
+from pathlib import Path
 from statistics import mean
 import cv2
 
@@ -19,6 +20,8 @@ class AnnotatedClipSaver:
     def Save(self, timestamp:datetime, entries: list[DetectionHistoryEntry]):
         
         filePath = self.filePathProvider.GetAnnotatedClipPath(timestamp, 'mp4')
+        
+        Path(filePath).parent.mkdir(parents=True, exist_ok=True)
         
         annotatedFrames = [self.frameAnnotator.AnnotateDetectedObjects(x.Frame,x.Detections) for x in entries]
         height,width,_ = annotatedFrames[0].shape

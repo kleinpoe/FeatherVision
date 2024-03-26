@@ -1,5 +1,6 @@
+from pathlib import Path
 from Application.Config.Config import Config
-from Application.Video.Saving.FilePathProvider import FilePathProvider
+from Video.FilePathProvider import FilePathProvider
 
 
 import subprocess
@@ -17,6 +18,9 @@ class ThumbnailSaver:
     def Save(self, timestamp: datetime, highResVideoFilePath: str):
         # ffmpeg -ss 2 -i "20220220-145106_Birdbuddy.mp4" -frames 4 -vf "select=not(mod(n\,30)),scale=320:180,tile=2x2" -vsync vfr -q:v 10 20220220-145106_Birdbuddy.jpg
         filePath = self.filePathProvider.GetHighResClipPath(timestamp, 'jpg')
+        
+        Path(filePath).parent.mkdir(parents=True, exist_ok=True)
+        
         secondsPaddingStart = self.config.ClipGeneration.PaddingStart.total_seconds()
         frames = self.numberOfFramesOfHighResVideoFile
         self.logger.info(f'Creating Thumbnail at "{filePath}" for video "{highResVideoFilePath}"')
