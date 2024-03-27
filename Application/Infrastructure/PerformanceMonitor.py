@@ -43,12 +43,10 @@ class PerformanceMonitor:
         try:
             while True:
                 info = PerformanceMonitor.GetPerformanceInfo()
-                internetAvailableText = "Connected to internet" if self.myNetworkChecker.InternetAvailable() else "Disconnected to internet"
+                internetAvailableText = "Connected to internet" if self.myNetworkChecker.InternetAvailable() else "Disconnected from internet"
                 log = f'CPU={info.CpuUsage:3.1f}%,{info.CpuTemperature:3.1f}°C RAM={info.MemoryUsage:3.1f}% HDD={info.HddUsage:3.1f}%'
                 self.myLogger.info(f'{log} {internetAvailableText}')
-                if PerformanceMonitor.HardwareSituationIsCritical(info):
-                    raise RuntimeError(f"Hardware situation is critical {PerformanceMonitor.GetPerformanceInfo()}")
-                time.sleep(self.myConfig.LoggingConfig.PerformanceMonitorLoggingInterval.total_seconds())
+                time.sleep(self.myConfig.Logging.PerformanceMonitorLoggingInterval.total_seconds())
                 if self.myCancellationToken.CancellationRequested:
                     break
         except asyncio.CancelledError as e:
