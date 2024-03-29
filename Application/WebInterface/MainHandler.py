@@ -1,12 +1,8 @@
 from logging import Logger
-from Application.Config.Config import Config
-
+from Config.Config import Config
 
 import tornado.web
-
-
 import os
-
 
 class MainHandler(tornado.web.RequestHandler):
 
@@ -18,5 +14,5 @@ class MainHandler(tornado.web.RequestHandler):
 
     def get(self):
         config = self.getConfig()
-        path = os.path.join(config.WebInterface.HtmlDirectory,'index.html')
+        path = os.path.join(config.WebInterface.Content.IndexHtml)
         self.render(path,fps=config.Camera.Fps,ip=config.WebInterface.Ip,port=config.WebInterface.Port)

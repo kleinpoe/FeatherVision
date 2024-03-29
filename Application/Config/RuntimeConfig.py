@@ -1,12 +1,14 @@
-import netifaces
+import socket
 import os
 
 class Environment:
     
     @classmethod
     def GetIp(cls) -> str:
-        gw = netifaces.gateways()
-        return gw['default'][netifaces.AF_INET][0]
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('8.8.8.8', 0))
+        ServerIp = s.getsockname()[0]
+        return ServerIp
     
     @classmethod
     def GetApplicationDirectory(cls) -> str:

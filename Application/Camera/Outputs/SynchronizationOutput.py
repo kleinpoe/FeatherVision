@@ -7,7 +7,7 @@ from threading import Lock
 class SynchronizationOutput(Output):
     def __init__(self, referenceTimestamp:datetime):
         self.referenceTimestamp = referenceTimestamp
-        self.currentTimestamp:datetime = datetime(0,0,0)
+        self.currentTimestamp:datetime = referenceTimestamp
         self.lock = Lock()
 
     def outputframe(self, frame: bytes, isKeyframe: bool, timestamp: int):

@@ -6,3 +6,4 @@ class HighResolutionFrame:
     Frame:bytes
     IsKeyframe:bool
     Timestamp:datetime
+    RawTimestamp:int

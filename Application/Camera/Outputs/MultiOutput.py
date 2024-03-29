@@ -6,6 +6,6 @@ class MultiOutput(Output):
         self.outputs = outputs
 
     def outputframe(self, frame: bytes, isKeyframe: bool, timestamp: int):
-        #log(f'New HighRes-Frame: NumberOfBytes={len(frame)}, KeyFrame={isKeyframe}, TimeStamp={timestamp}µs')
+        #print(f'New HighRes-Frame: NumberOfBytes={len(frame)}, KeyFrame={isKeyframe}, TimeStamp={timestamp}µs')
         for output in self.outputs:
             output.outputframe(frame, isKeyframe, timestamp)

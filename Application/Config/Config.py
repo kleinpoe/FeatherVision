@@ -17,14 +17,19 @@ class Config:
         self.Detection = Config.DetectionConfig(self.Storage)
         self.WebInterface = Config.WebInterfaceConfig(self.Storage,runtimeConfig)
         
+    class WebContentConfig:
+        def __init__(self, storageConfig: 'Config.StorageConfig'):
+            self.Directory: str = os.path.join(storageConfig.ApplicationDataDirectory, 'WebInterfaceData') # The directory containing all the html files of the web interface
+            self.StaticDirectory: str = os.path.join(self.Directory, 'static')
+            self.DefaultThumbnail = os.path.join(self.Directory, 'DefaultThumbnail.jpg')    
+            self.IndexHtml = os.path.join(self.Directory, 'index.html')    
+    
     class WebInterfaceConfig:
         def __init__(self, storageConfig: 'Config.StorageConfig', runtimeConfig: RuntimeConfig):
-            self.HtmlDirectory: str = os.path.join(storageConfig.ApplicationDataDirectory, 'WebInterfaceData') # The directory containing all the html files of the web interface
-            self.HtmlStaticDirectory: str = os.path.join(self.HtmlDirectory, 'static')
-            self.DefaultThumbnail = os.path.join(runtimeConfig.ApplicationDirectory, 'Assets', 'DefaultThumbnail.jpg')
+            self.Content: Config.WebContentConfig = Config.WebContentConfig(storageConfig)
             self.Ip: str = runtimeConfig.Ip
             self.Port:int = 8000 # The port for the web interface
-        
+            
     class LoggingConfig:
         def __init__(self):
             self.LogToFile = True
@@ -49,7 +54,8 @@ class Config:
             self.MaximumClipLength = timedelta(seconds=60)  # Maximum video length (if detection is still present after save will make another one)
             self.MinimumClipLengthWithoutPadding = timedelta(seconds=3)  # If a potential clip has a consecutive duration of tracked objects (including allowed gaps) below this limit, it will not be saved 
             self.AllowedTrackedObjectGapsDuration = timedelta(seconds=5)  # When a tracked objects leaves the video, we keep on recording for this duration and wait that maybe detection comes back
-            self.DetectionHistoryMaxEntries = 5000 # The number of frames the object detection history will hold. It must be shorter than what the high-resolution frame buffer can hold but longer than the max video length. Raspi 5 can handle ~5 fps object detection
+            self.DetectionHistoryMaxEntries = 5000 # The number of frames the object detection history will hold. It must be shorter than what the high-resolution frame buffer can hold but longer than the max video length. Raspi 5 can handle ~5 fps object detection (might vary between object detection models)
+            self.HighResolutionFrameBufferDuration = timedelta(minutes=5) # The duration of the high-resolution frame buffer. Must be longer than max clip duration.
 
     class LocationConfig:
         def __init__(self):
