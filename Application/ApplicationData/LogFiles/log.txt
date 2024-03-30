@@ -564,3 +564,13 @@ TypeError: WebServer.GetCallback.<locals>.callback() takes 0 positional argument
 2024-03-30 21:34:15 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:244, Duration:8.133333333333333s, Size:7.857631MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-34-14_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-34-14_HighResolution.mp4"
 2024-03-30 21:34:16 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-34-14_Thumbnail.jpg"
 2024-03-30 21:36:52 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:46:38 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:46:47 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=6.5 Frames=48 Duration=0:00:07.197350
+2024-03-30 21:46:48 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:205, Duration:6.833333333333333s, Size:6.281495MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-46-47_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-46-47_HighResolution.mp4"
+2024-03-30 21:46:49 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-46-47_Thumbnail.jpg"
+2024-03-30 21:47:40 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:48:52 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 21:48:52 INFO     main                                Shutting down threads.
+2024-03-30 21:48:52 INFO     Camera                              Shutting down Camera.
+2024-03-30 21:48:53 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 21:48:53 INFO     main                                Shutdown successful, exiting application.
