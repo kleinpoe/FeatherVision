@@ -6,9 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
-# Videos
+# Media
 *.mp4
 *.h264
+*.jpg
+*.jpeg
 
 # Distribution / packaging
 .Python
@@ -163,8 +165,7 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 ApplicationData/LogFiles/
-ApplicationData/Recordings/
-ApplicationData/RecordingThumbnails/
-ApplicationData/RecordingArchive/
+ApplicationData/Clips/
+ApplicationData/TensorflowLiteModels/
 
 

@@ -563,3 +563,4 @@ TypeError: WebServer.GetCallback.<locals>.callback() takes 0 positional argument
 2024-03-30 21:34:15 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=39 Duration=0:00:08.296933
 2024-03-30 21:34:15 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:244, Duration:8.133333333333333s, Size:7.857631MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-34-14_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-34-14_HighResolution.mp4"
 2024-03-30 21:34:16 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-34-14_Thumbnail.jpg"
+2024-03-30 21:36:52 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
