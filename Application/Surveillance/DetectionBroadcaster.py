@@ -1,5 +1,5 @@
-from Application.Config.Config import Config
-from Application.Surveillance.ObjectDetection.Detection import Detection
+from Config.Config import Config
+from Surveillance.ObjectDetection.Detection import Detection
 
 
 from typing import Callable
@@ -13,4 +13,4 @@ class DetectionBroadcaster:
     def Broadcast(self, detections: list[Detection]):
         # filter more?
         resultsOverThresholdScore = [result for result in detections if result.Score > self.config.ClipGeneration.MinimumScore]
-        self.broadcastDetections(resultsOverThresholdScore)
+        self.broadcastDetections(detections=resultsOverThresholdScore)

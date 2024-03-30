@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
-from Application.Camera.Outputs.CircularBufferOutput import CircularBufferOutput
-from Application.Config.Config import Config
+from Camera.Outputs.CircularBufferOutput import CircularBufferOutput
+from Config.Config import Config
 from Video.FilePathProvider import FilePathProvider
 
 
@@ -22,6 +22,7 @@ class HighResClipSaver:
     class Result:
         FilePath:str
         Duration:timedelta
+        NumberOfFrames:int
 
     def Save(self, timestamp: datetime, clipBegin: datetime, clipEnd: datetime ) -> Result:
 
@@ -52,4 +53,4 @@ class HighResClipSaver:
         # Delete temporary file
         os.remove(temporaryFilePath)
 
-        return HighResClipSaver.Result(highResFilePath, timedelta(seconds=lengthInSeconds))
+        return HighResClipSaver.Result(highResFilePath, timedelta(seconds=lengthInSeconds), len(richFrames))

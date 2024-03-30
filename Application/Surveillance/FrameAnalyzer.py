@@ -6,7 +6,7 @@ from Video.ClipSaver import ClipSaver
 from Surveillance.History.DetectionHistoryEntry import DetectionHistoryEntry
 from Config.Config import Config
 from Camera.Camera import Camera
-from Application.Surveillance.History.DetectionHistory import DetectionHistory
+from Surveillance.History.DetectionHistory import DetectionHistory
 from Surveillance.ObjectDetection.ObjectDetection import ObjectDetector
 
 

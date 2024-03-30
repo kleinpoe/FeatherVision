@@ -1,5 +1,4 @@
-from Application.Config.Config import Config
-
+from Config.Config import Config
 
 import os
 from datetime import datetime

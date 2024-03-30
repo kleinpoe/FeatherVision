@@ -38,5 +38,5 @@ class ClipSaver:
         timestamp = self.clock.Now()
         annotatedPath = self.annotatedClipSaver.Save(timestamp, detectionHistoryEntries)
         highResResult = self.highResClipSaver.Save(timestamp,detectionHistoryEntries[0].Timestamp, detectionHistoryEntries[-1].Timestamp )
-        thumbnailPath = self.thumbnailSaver.Save(timestamp, highResResult.FilePath)
-        return ClipSaver.Result(thumbnailPath, highResResult.FilePath, annotatedPath, highResResult.Duration)
+        thumbnailPath = self.thumbnailSaver.Save(timestamp, detectionHistoryEntries)
+        return ClipSaver.Result(thumbnailPath, highResResult.FilePath, annotatedPath, highResResult.Duration, timestamp)

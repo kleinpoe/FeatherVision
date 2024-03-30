@@ -1,4 +1,6 @@
+import asyncio
 from logging import Logger
+from typing import Callable
 import tornado.web, tornado.ioloop, tornado.websocket
 
 from WebInterface.StreamingHandlerManager import StreamingHandlerManager
@@ -13,6 +15,11 @@ class WebServer:
         self.config = config
         self.logger = logger
         self.loop = tornado.ioloop.IOLoop.current()
+        
+    def GetCallback(self, function: Callable) -> Callable:
+        def callback(**kwargs):
+            self.loop.add_callback(callback=function, **kwargs)
+        return callback
         
         
     def Start(self):

@@ -1,6 +1,7 @@
 import tflite_runtime.interpreter as tflite
 import numpy as np
 
+from Config.Config import Config
 from Surveillance.ObjectDetection.Detection import Detection
 from Surveillance.ObjectDetection.ImagePreparation import ImagePreparation
 from Surveillance.ObjectDetection.ModelDetails import ModelDetails
@@ -8,14 +9,15 @@ from Surveillance.ObjectDetection.Rectangle import Rectangle
 
 class ObjectDetector:
     
-    def __init__(self, modelFilePath: str, labelsFilePath: str, imagePreparation: ImagePreparation):
-        self.interpreter = tflite.Interpreter(model_path=modelFilePath, num_threads=2)
+    def __init__(self, imagePreparation: ImagePreparation, config:Config):
+        self.config = config
+        self.interpreter = tflite.Interpreter(model_path=config.Detection.TensorFlowModelFilePath, num_threads=2)
         self.interpreter.allocate_tensors()
         inputDetails = self.interpreter.get_input_details()
         self.modelDetails = ModelDetails(IsFloatingPointModel=inputDetails[0]['dtype'] == np.float32,
                                          InputImageSize=(inputDetails[0]['shape'][1],inputDetails[0]['shape'][2]),
                                          InputTensorIndex=inputDetails[0]['index'])
-        self.Labels = self.readLabels(labelsFilePath)
+        self.Labels = self.readLabels(config.Detection.LabelsFilePath)
         self.imagePreparation = imagePreparation
 
     def readLabels(self, filePath:str)-> dict[int,str] :

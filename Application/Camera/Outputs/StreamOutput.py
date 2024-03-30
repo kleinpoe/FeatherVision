@@ -10,6 +10,6 @@ class StreamOutput(Output):
 
     def outputframe(self, frame: bytes, isKeyframe: bool, timestamp: int) -> None:
         timestampAsDatetime = self.referenceTimestamp + timedelta( microseconds= timestamp)
-        self.broadcast(HighResolutionFrame(frame,isKeyframe,timestampAsDatetime,timestamp))
+        self.broadcast(frame=HighResolutionFrame(frame,isKeyframe,timestampAsDatetime,timestamp))
         
         

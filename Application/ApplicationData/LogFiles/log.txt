@@ -283,3 +283,283 @@ RuntimeError: There is no current event loop in thread 'Thread-2 (thread_func)'.
 2024-03-29 20:50:12 INFO     Camera                              Shutting down Camera.
 2024-03-29 20:50:13 INFO     WebServer                           Shutting down Web Server.
 2024-03-29 20:50:13 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 18:58:20 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 18:58:20 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 18:58:20 INFO     main                                Shutting down threads.
+2024-03-30 18:58:20 INFO     Camera                              Shutting down Camera.
+2024-03-30 18:58:20 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 18:58:20 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 18:58:51 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 18:58:51 WARNING  warnings                            /home/pi/FeatherVision/Application/main.py:39: RuntimeWarning: coroutine 'WebServer.Start' was never awaited
+  webServer.Start()
+
+2024-03-30 18:58:51 INFO     main                                Shutting down threads.
+2024-03-30 18:58:51 INFO     Camera                              Shutting down Camera.
+2024-03-30 18:58:52 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 18:58:52 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 18:59:07 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 18:59:08 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 18:59:08 ERROR    null_preview                        Exception during process_requests()
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/picamera2/previews/null_preview.py", line 85, in handle_request
+    picam2.process_requests(self)
+  File "/usr/lib/python3/dist-packages/picamera2/picamera2.py", line 1265, in process_requests
+    encoder.encode(encoder.name, req)
+  File "/usr/lib/python3/dist-packages/picamera2/encoders/encoder.py", line 210, in encode
+    self._encode(stream, request)
+  File "/usr/lib/python3/dist-packages/picamera2/encoders/libav_h264_encoder.py", line 107, in _encode
+    self.outputframe(bytes(packet), packet.is_keyframe, timestamp=packet.pts)
+  File "/usr/lib/python3/dist-packages/picamera2/encoders/encoder.py", line 253, in outputframe
+    out.outputframe(frame, keyframe, timestamp)
+  File "/home/pi/FeatherVision/Application/Camera/Outputs/MultiOutput.py", line 11, in outputframe
+    output.outputframe(frame, isKeyframe, timestamp)
+  File "/home/pi/FeatherVision/Application/Camera/Outputs/MultiOutput.py", line 11, in outputframe
+    output.outputframe(frame, isKeyframe, timestamp)
+  File "/home/pi/FeatherVision/Application/Camera/Outputs/StreamOutput.py", line 13, in outputframe
+    self.broadcast(HighResolutionFrame(frame,isKeyframe,timestampAsDatetime,timestamp))
+TypeError: WebServer.GetCallback.<locals>.callback() takes 0 positional arguments but 1 was given
+2024-03-30 18:59:09 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 18:59:09 INFO     main                                Shutting down threads.
+2024-03-30 18:59:09 INFO     Camera                              Shutting down Camera.
+2024-03-30 18:59:54 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 18:59:55 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 19:00:02 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-30 19:00:34 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 19:00:34 INFO     main                                Shutting down threads.
+2024-03-30 19:00:34 INFO     Camera                              Shutting down Camera.
+2024-03-30 19:00:35 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 19:00:35 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 19:20:26 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 19:20:26 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 19:20:26 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 19:20:33 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-30 19:20:33 WARNING  StreamingHandlerManager             Skipping frame timestamp=<6031167> due to bad connection. Total skip = 6031.168ms
+2024-03-30 19:21:44 WARNING  StreamingHandlerManager             Skipping frame timestamp=<76905524> due to bad connection. Total skip = 66.615ms
+2024-03-30 19:22:23 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 19:22:39 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 19:22:39 INFO     main                                Shutting down threads.
+2024-03-30 19:22:39 INFO     Camera                              Shutting down Camera.
+2024-03-30 19:22:39 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 19:22:39 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 19:23:25 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 19:23:26 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 19:23:26 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 19:23:30 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-30 19:23:33 WARNING  StreamingHandlerManager             Skipping frame timestamp=<6264399> due to bad connection. Total skip = 66.609ms
+2024-03-30 19:23:34 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 19:23:43 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS4.5 Frames38 Duration0:00:08.197013
+2024-03-30 19:23:44 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:221, Duration:7.366666666666666s, Size:7.253331MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_19-23-43_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_19-23-43_HighResolution.mp4"
+2024-03-30 19:23:45 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_19-23-43_HighResolution.jpg" for video "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_19-23-43_HighResolution.mp4"
+2024-03-30 19:23:49 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 19:23:49 INFO     main                                Shutting down threads.
+2024-03-30 19:23:49 INFO     Camera                              Shutting down Camera.
+2024-03-30 19:23:50 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 19:23:50 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 19:24:28 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 19:24:28 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 19:24:28 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 19:24:38 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-30 19:24:41 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 19:24:52 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS4.5 Frames43 Duration0:00:09.396588
+2024-03-30 19:24:53 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:271, Duration:9.033333333333333s, Size:8.709616MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_19-24-52_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_19-24-52_HighResolution.mp4"
+2024-03-30 19:24:54 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_19-24-52_HighResolution.jpg" for video "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_19-24-52_HighResolution.mp4"
+2024-03-30 19:25:06 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 19:25:06 INFO     main                                Shutting down threads.
+2024-03-30 19:25:06 INFO     Camera                              Shutting down Camera.
+2024-03-30 19:25:06 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 19:25:06 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 20:25:50 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 20:25:51 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 20:25:51 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 20:25:55 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-30 20:25:59 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 20:26:09 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.2 Frames=36 Duration=0:00:08.263714
+2024-03-30 20:26:10 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:231, Duration:7.7s, Size:7.110263MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-26-09_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-26-09_HighResolution.mp4"
+2024-03-30 20:26:14 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 20:26:14 INFO     main                                Shutting down threads.
+2024-03-30 20:26:14 INFO     Camera                              Shutting down Camera.
+2024-03-30 20:26:14 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 20:26:14 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 20:26:35 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 20:26:35 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 20:26:35 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 20:26:38 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-30 20:26:41 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 20:26:54 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=53 Duration=0:00:11.395909
+2024-03-30 20:26:54 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:341, Duration:11.366666666666667s, Size:10.591635MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-26-54_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-26-54_HighResolution.mp4"
+2024-03-30 20:26:55 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-26-54_Thumbnail.jpg"
+2024-03-30 20:26:59 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 20:26:59 INFO     main                                Shutting down threads.
+2024-03-30 20:26:59 INFO     Camera                              Shutting down Camera.
+2024-03-30 20:26:59 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 20:26:59 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 20:28:34 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 20:28:34 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 20:28:34 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 20:28:37 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 20:28:43 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-30 20:28:46 WARNING  StreamingHandlerManager             Skipping frame timestamp=<10462195> due to bad connection. Total skip = 66.652ms
+2024-03-30 20:28:47 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.8 Frames=41 Duration=0:00:08.396399
+2024-03-30 20:28:48 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:241, Duration:8.033333333333333s, Size:7.583569MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-28-47_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-28-47_HighResolution.mp4"
+2024-03-30 20:28:48 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-28-47_Thumbnail.jpg"
+2024-03-30 20:28:51 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 20:28:51 INFO     main                                Shutting down threads.
+2024-03-30 20:28:51 INFO     Camera                              Shutting down Camera.
+2024-03-30 20:28:51 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 20:28:51 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 20:29:03 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 20:29:04 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 20:29:04 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 20:29:06 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 20:29:16 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=5.1 Frames=43 Duration=0:00:08.229851
+2024-03-30 20:29:17 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:238, Duration:7.933333333333334s, Size:7.325413MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-29-16_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-29-16_HighResolution.mp4"
+2024-03-30 20:29:18 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-29-16_Thumbnail.jpg"
+2024-03-30 20:29:43 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 20:29:43 INFO     main                                Shutting down threads.
+2024-03-30 20:29:43 INFO     Camera                              Shutting down Camera.
+2024-03-30 20:29:43 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 20:29:43 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 20:32:27 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 20:32:28 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 20:32:28 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 20:32:33 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 20:32:43 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=5.0 Frames=47 Duration=0:00:09.229665
+2024-03-30 20:32:44 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:265, Duration:8.833333333333334s, Size:8.298241MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-32-43_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-32-43_HighResolution.mp4"
+2024-03-30 20:32:45 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-32-43_Thumbnail.jpg"
+2024-03-30 20:32:50 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 20:32:50 INFO     main                                Shutting down threads.
+2024-03-30 20:32:50 INFO     Camera                              Shutting down Camera.
+2024-03-30 20:32:50 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 20:32:50 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 20:35:37 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 20:35:38 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 20:35:38 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 20:35:42 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 20:35:55 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.8 Frames=55 Duration=0:00:11.262359
+2024-03-30 20:35:56 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:324, Duration:10.8s, Size:9.882551MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-35-55_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-35-55_HighResolution.mp4"
+2024-03-30 20:35:57 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-35-55_Thumbnail.jpg"
+2024-03-30 20:35:59 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 20:35:59 INFO     main                                Shutting down threads.
+2024-03-30 20:35:59 INFO     Camera                              Shutting down Camera.
+2024-03-30 20:36:00 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 20:36:00 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 20:40:52 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 20:40:53 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 20:40:53 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 20:40:56 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 20:41:08 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.4 Frames=48 Duration=0:00:10.729282
+2024-03-30 20:41:09 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:317, Duration:10.566666666666666s, Size:9.899777MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-41-08_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-41-08_HighResolution.mp4"
+2024-03-30 20:41:10 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_20-41-08_Thumbnail.jpg"
+2024-03-30 20:41:11 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 20:41:11 INFO     main                                Shutting down threads.
+2024-03-30 20:41:11 INFO     Camera                              Shutting down Camera.
+2024-03-30 20:41:12 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 20:41:12 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 21:00:52 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 21:00:52 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 21:00:52 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 21:00:56 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:01:10 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=55 Duration=0:00:11.662344
+2024-03-30 21:01:10 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:350, Duration:11.666666666666666s, Size:10.891861MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-01-09_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-01-09_HighResolution.mp4"
+2024-03-30 21:01:11 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-01-09_Thumbnail.jpg"
+2024-03-30 21:01:17 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 21:01:17 INFO     main                                Shutting down threads.
+2024-03-30 21:01:17 INFO     Camera                              Shutting down Camera.
+2024-03-30 21:01:17 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 21:01:17 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 21:04:45 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 21:04:46 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 21:04:46 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 21:04:48 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:04:57 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=35 Duration=0:00:07.463948
+2024-03-30 21:04:58 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:215, Duration:7.166666666666667s, Size:6.916158MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-04-57_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-04-57_HighResolution.mp4"
+2024-03-30 21:04:59 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-04-57_Thumbnail.jpg"
+2024-03-30 21:07:03 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 21:07:03 INFO     main                                Shutting down threads.
+2024-03-30 21:07:03 INFO     Camera                              Shutting down Camera.
+2024-03-30 21:07:04 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 21:07:04 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 21:09:12 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 21:09:12 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 21:09:12 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 21:09:16 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:09:31 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=63 Duration=0:00:13.428365
+2024-03-30 21:09:32 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:377, Duration:12.566666666666666s, Size:11.603494MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-09-30_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-09-30_HighResolution.mp4"
+2024-03-30 21:09:33 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-09-30_Thumbnail.jpg"
+2024-03-30 21:11:35 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 21:11:35 INFO     main                                Shutting down threads.
+2024-03-30 21:11:35 INFO     Camera                              Shutting down Camera.
+2024-03-30 21:11:36 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 21:11:36 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 21:11:37 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 21:11:37 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 21:11:37 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 21:11:41 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:12:04 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=96 Duration=0:00:20.658989
+2024-03-30 21:12:05 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:605, Duration:20.166666666666668s, Size:18.482391MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-12-03_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-12-03_HighResolution.mp4"
+2024-03-30 21:12:06 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-12-03_Thumbnail.jpg"
+2024-03-30 21:12:17 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:12:27 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.7 Frames=38 Duration=0:00:07.797105
+2024-03-30 21:12:27 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:227, Duration:7.566666666666666s, Size:6.853685MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-12-26_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-12-26_HighResolution.mp4"
+2024-03-30 21:12:28 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-12-26_Thumbnail.jpg"
+2024-03-30 21:12:36 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 21:12:36 INFO     main                                Shutting down threads.
+2024-03-30 21:12:36 INFO     Camera                              Shutting down Camera.
+2024-03-30 21:12:36 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 21:12:36 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 21:13:35 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 21:13:35 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 21:13:35 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 21:13:43 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:13:52 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.7 Frames=37 Duration=0:00:07.697157
+2024-03-30 21:13:53 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:213, Duration:7.1s, Size:6.771132MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-13-52_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-13-52_HighResolution.mp4"
+2024-03-30 21:13:53 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-13-52_Thumbnail.jpg"
+2024-03-30 21:14:23 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:14:39 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 21:14:39 INFO     main                                Shutting down threads.
+2024-03-30 21:14:39 INFO     Camera                              Shutting down Camera.
+2024-03-30 21:14:39 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 21:14:39 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 21:17:56 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 21:17:56 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 21:17:56 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 21:18:01 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:18:12 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=44 Duration=0:00:09.396527
+2024-03-30 21:18:12 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:267, Duration:8.9s, Size:8.27179MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-18-11_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-18-11_HighResolution.mp4"
+2024-03-30 21:18:13 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-18-11_Thumbnail.jpg"
+2024-03-30 21:18:14 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 21:18:14 INFO     main                                Shutting down threads.
+2024-03-30 21:18:14 INFO     Camera                              Shutting down Camera.
+2024-03-30 21:18:14 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 21:18:14 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 21:27:48 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 21:27:49 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 21:27:49 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 21:27:51 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:28:00 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.7 Frames=35 Duration=0:00:07.197420
+2024-03-30 21:28:01 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:207, Duration:6.9s, Size:6.382724MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-28-00_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-28-00_HighResolution.mp4"
+2024-03-30 21:28:02 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-28-00_Thumbnail.jpg"
+2024-03-30 21:28:06 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 21:28:06 INFO     main                                Shutting down threads.
+2024-03-30 21:28:06 INFO     Camera                              Shutting down Camera.
+2024-03-30 21:28:07 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 21:28:07 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 21:32:49 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 21:32:50 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 21:32:50 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 21:32:52 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:33:01 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=5.0 Frames=38 Duration=0:00:07.363995
+2024-03-30 21:33:02 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:211, Duration:7.033333333333333s, Size:6.749489MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-33-01_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-33-01_HighResolution.mp4"
+2024-03-30 21:33:03 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-33-01_Thumbnail.jpg"
+2024-03-30 21:33:46 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-30 21:33:46 INFO     main                                Shutting down threads.
+2024-03-30 21:33:46 INFO     Camera                              Shutting down Camera.
+2024-03-30 21:33:47 INFO     WebServer                           Shutting down Web Server.
+2024-03-30 21:33:47 INFO     main                                Shutdown successful, exiting application.
+2024-03-30 21:33:59 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-30 21:34:00 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-30 21:34:00 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-30 21:34:05 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-30 21:34:15 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=39 Duration=0:00:08.296933
+2024-03-30 21:34:15 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:244, Duration:8.133333333333333s, Size:7.857631MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-34-14_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-34-14_HighResolution.mp4"
+2024-03-30 21:34:16 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/30/Clip_2024-03-30_21-34-14_Thumbnail.jpg"

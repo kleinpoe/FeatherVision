@@ -47,7 +47,7 @@ class Config:
     class ClipGenerationConfig:
         def __init__(self):
             self.TrackedObjectsLabels = ['bird', 'squirrel', 'cat', 'dog', 'horse', 'bear'] # These must align with the given object detections labels file
-            self.MinimumScore = 0.2  # Threshold when score for a detected tracked object will be enough to consider them for clip 0 - 1
+            self.MinimumScore = 0.4  # Threshold when score for a detected tracked object will be enough to consider them for clip 0 - 1
             # It is possible to configure this so it will not work. Clip Padding must be smaller than max duration without tracked objects. Also history must have enough entries to hold more than max clip duration
             self.PaddingStart = timedelta(seconds=2)  # Prepend this duration to video before first detection
             self.PaddingEnd = timedelta(seconds=2)  # Append this duration to video after last detection
@@ -56,6 +56,9 @@ class Config:
             self.AllowedTrackedObjectGapsDuration = timedelta(seconds=5)  # When a tracked objects leaves the video, we keep on recording for this duration and wait that maybe detection comes back
             self.DetectionHistoryMaxEntries = 5000 # The number of frames the object detection history will hold. It must be shorter than what the high-resolution frame buffer can hold but longer than the max video length. Raspi 5 can handle ~5 fps object detection (might vary between object detection models)
             self.HighResolutionFrameBufferDuration = timedelta(minutes=5) # The duration of the high-resolution frame buffer. Must be longer than max clip duration.
+            # AnnotatedClipSettings
+            self.MinimumScoreForAnnotatedClip = 0.4
+            self.ShowAlsoUntrackedObjectsInAnnotatedClip = True
 
     class LocationConfig:
         def __init__(self):
@@ -69,7 +72,7 @@ class Config:
             self.LogFileDirectory = os.path.join(self.ApplicationDataDirectory, 'LogFiles')
             self.LogFilePath = os.path.join(self.LogFileDirectory, 'log.txt')
             self.ClipsDirectory = os.path.join(self.ApplicationDataDirectory, 'Clips')
-            self.TensorFlowModelDirectory = os.path.join(self.ApplicationDataDirectory, 'TensorflowModels')
+            self.TensorFlowModelDirectory = os.path.join(self.ApplicationDataDirectory, 'TensorflowLiteModels')
             self.ArchiveDuration = timedelta(days=7)
             self.MaximumStorageOccupationForSaving = 95  # 0-100%
             

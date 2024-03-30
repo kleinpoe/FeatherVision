@@ -27,7 +27,7 @@ class AnnotatedClipSaver:
         height,width,_ = annotatedFrames[0].shape
         estimatedFps = 1 / mean([(f2.Timestamp - f1.Timestamp).total_seconds() for f1, f2 in zip(entries, entries[1:])])
 
-        self.logger.info(f'Writing annotated Clip: W{width}xH{height} FPS{estimatedFps:.1f} Frames{len(annotatedFrames)} Duration{(entries[-1].Timestamp-entries[0].Timestamp)}')
+        self.logger.info(f'Writing annotated Clip: W{width}xH{height} FPS={estimatedFps:.1f} Frames={len(annotatedFrames)} Duration={(entries[-1].Timestamp-entries[0].Timestamp)}')
         
         codec = cv2.VideoWriter.fourcc(*'mp4v')
         videoWriter = cv2.VideoWriter(filePath,codec,estimatedFps,(width,height))
