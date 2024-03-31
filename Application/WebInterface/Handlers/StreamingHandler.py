@@ -8,6 +8,7 @@ class StreamingHandler(tornado.websocket.WebSocketHandler):
 
     LastSentFrameTimestamp = -1
     LastFrameTimestampReceivedByClient = -1
+    CanSendSkippedFramesWarning = True
 
     @property
     def Config(self) -> Config:

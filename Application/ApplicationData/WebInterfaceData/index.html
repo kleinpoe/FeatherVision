@@ -12,13 +12,13 @@
 	<div id="streamStage">
 		<video autoplay muted id="stream"></video>
 		<canvas id="canvas"></canvas>  
-   </div>
-   <div>
-		<input type="checkbox" id="CheckBoxShowGrid" name="Show Grid" checked="false"/>
+   	</div>
+   	<div>
+		<input type="checkbox" id="CheckBoxShowGrid" name="Show Grid" />
 		<label for="Show Grid">Show Grid</label>
   	</div>
  	<div>
-		<input type="checkbox" id="CheckBoxShowDetections" name="Show Detections" checked="true"/>
+		<input type="checkbox" id="CheckBoxShowDetections" name="Show Detections"/>
 		<label for="Show Detections">Show Detections</label>
    	</div>
     <script>
@@ -28,7 +28,11 @@
 		var ws = new WebSocket("ws://{{ ip }}:{{ port }}/ws/");
 		ws.binaryType = 'arraybuffer';
 
+		document.querySelector("#CheckBoxShowDetections").checked = true;
+		document.querySelector("#CheckBoxShowGrid").checked = false;
+
 		const overlay = new VideoOverlay();
+		var detections = []
 
 		ws.addEventListener('message',
 		function(event)
@@ -50,47 +54,45 @@
 
 				function ParseDetection(dataView, offset)
 				{
-					var boxTop = view.getFloat32(offset,true);
-					var boxLeft = view.getFloat32(offset+4,true);
-					var boxBottom = view.getFloat32(offset+8,true);
-					var boxRight = view.getFloat32(offset+12,true);
-					var score = view.getFloat32(offset+16,true);
-					var decoder = new TextDecoder("utf-8");
-					var label = decoder.decode(new Uint8Array(event.data,offset+20,12));
-					return { Box:{Top:boxTop, Left:boxLeft, Bottom:boxBottom, Right:boxRight}, Score:score, Label:label }
+					let boxTop = dataView.getFloat32(offset,true);
+					let boxLeft = dataView.getFloat32(offset+4,true);
+					let boxBottom = dataView.getFloat32(offset+8,true);
+					let boxRight = dataView.getFloat32(offset+12,true);
+					let score = dataView.getFloat32(offset+16,true);
+					let decoder = new TextDecoder("utf-8");
+					let label = decoder.decode(new Uint8Array(event.data,offset+20,12));
+					let detection = new Detection( new Box(boxTop,boxLeft,boxBottom,boxRight), score, label );
+					return detection ;
 				}
 
-				var showDetections = document.querySelector("#CheckBoxShowDetections").checked;
-				overlay.prepareRender()
+				detections = []
 				for (let i = 0; i < numberOfDetections; i++)
 				{
 					let offset = detectionLengthBytes+i*detectionBytes;
 					let detection = ParseDetection(view, offset);
-					if(showDetections)
-					{
-						overlay.renderDetection(detection.Box.Top,detection.Box.Left,detection.Box.Bottom,detection.Box.Right, detection.Label, detection.Score);
-					}
-					//console.log("[DEBUG] Received Detection for timestamp: " + timeStamp + " " + label + " Box[" + boxTop + " " + boxLeft + " " + boxBottom + " " + boxRight + "] Score"+score)
+					detections.push(detection)
 				}
 
 				//console.log("[DEBUG] isKeyFrame=" + isKeyFrame + " NumberOfDetections=" + numberOfDetections + " Timestamp=" + timeStamp)
 				ws.send( timestampBytes );
 				
+				var showDetections = document.querySelector("#CheckBoxShowDetections").checked;
 				var showGrid = document.querySelector("#CheckBoxShowGrid").checked;
-				if(showGrid){overlay.renderGrid();}
-				//grid.renderDetection(0.1, 0.1, 0.9, 0.9, "???")
+				overlay.render(showGrid, showDetections, detections)
 		});
 
 		window.onresize = function()
 		{
+			var showDetections = document.querySelector("#CheckBoxShowDetections").checked;
 			var showGrid = document.querySelector("#CheckBoxShowGrid").checked;
-			if(showGrid){overlay.renderGrid();}
+			overlay.render(showGrid, showDetections, detections)
     	};
 
     	window.onorientationchange = function()
 		{
+			var showDetections = document.querySelector("#CheckBoxShowDetections").checked;
 			var showGrid = document.querySelector("#CheckBoxShowGrid").checked;
-			if(showGrid){overlay.renderGrid();}
+			overlay.render(showGrid, showDetections, detections)
     	};
 	}     
     </script>

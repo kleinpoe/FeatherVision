@@ -23,7 +23,7 @@ class DetectionHistory:
 
         self.history.append(entry)
 
-        hasTrackedObject = any(detection.Label in self.config.TrackedObjectsLabels for detection in entry.Detections)
+        hasTrackedObject = any(detection.Label in self.config.TrackedObjectsLabels and detection.Score >= self.config.MinimumScore for detection in entry.Detections)
         thereIsATrackedObjectInHistory = self.EntryWhereTrackedObjectWasDetectedLast is not None
         timeSinceLastTrackedObjectIsAboveLimit = (entry.Timestamp - self.EntryWhereTrackedObjectWasDetectedLast.Timestamp) > self.config.AllowedTrackedObjectGapsDuration if thereIsATrackedObjectInHistory and not hasTrackedObject else False
         clipExceedsMaxDuration = (entry.Timestamp - self.EntryWhereTrackedObjectWasDetectedFirst.Timestamp) + self.config.PaddingStart > self.config.MaximumClipLength if thereIsATrackedObjectInHistory else False

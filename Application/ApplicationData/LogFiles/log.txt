@@ -828,3 +828,314 @@ UnboundLocalError: cannot access local variable 'requestedDateTime' where it is 
 2024-03-31 14:55:51 INFO     Camera                              Shutting down Camera.
 2024-03-31 14:55:52 INFO     WebServer                           Shutting down Web Server.
 2024-03-31 14:55:52 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:13:21 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:13:22 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:13:22 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:13:25 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:13:59 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:14:14 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:14:14 INFO     main                                Shutting down threads.
+2024-03-31 19:14:14 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:14:14 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:14:14 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:16:18 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:16:19 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:16:19 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:16:19 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:16:25 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:16:29 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:16:29 INFO     main                                Shutting down threads.
+2024-03-31 19:16:29 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:16:29 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:16:29 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:18:18 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:18:19 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:18:19 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:18:19 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:18:20 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:18:23 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:18:23 INFO     main                                Shutting down threads.
+2024-03-31 19:18:23 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:18:24 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:18:24 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:20:11 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:20:11 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:20:11 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:20:12 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:20:13 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:20:13 WARNING  StreamingHandlerManager             Skipping frame timestamp=<966336> due to bad connection. Total skip = 966.337ms
+2024-03-31 19:20:13 WARNING  StreamingHandlerManager             Skipping frame timestamp=<999648> due to bad connection. Total skip = 999.649ms
+2024-03-31 19:20:13 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1032982> due to bad connection. Total skip = 1032.983ms
+2024-03-31 19:20:13 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1066319> due to bad connection. Total skip = 1066.32ms
+2024-03-31 19:20:13 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1099642> due to bad connection. Total skip = 1099.643ms
+2024-03-31 19:20:13 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1132940> due to bad connection. Total skip = 1132.941ms
+2024-03-31 19:20:13 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1166283> due to bad connection. Total skip = 1166.284ms
+2024-03-31 19:20:13 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1199606> due to bad connection. Total skip = 1199.607ms
+2024-03-31 19:20:13 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1232923> due to bad connection. Total skip = 1232.924ms
+2024-03-31 19:20:13 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1266221> due to bad connection. Total skip = 1266.222ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1299541> due to bad connection. Total skip = 1299.542ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1366213> due to bad connection. Total skip = 1366.214ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1399507> due to bad connection. Total skip = 1399.508ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1432834> due to bad connection. Total skip = 1432.835ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1466175> due to bad connection. Total skip = 1466.176ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1499498> due to bad connection. Total skip = 1499.499ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1532813> due to bad connection. Total skip = 1532.814ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1566134> due to bad connection. Total skip = 1566.135ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1599471> due to bad connection. Total skip = 1599.472ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1632768> due to bad connection. Total skip = 1632.769ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1666112> due to bad connection. Total skip = 1666.113ms
+2024-03-31 19:20:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<1699431> due to bad connection. Total skip = 1699.432ms
+2024-03-31 19:20:14 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:20:14 INFO     main                                Shutting down threads.
+2024-03-31 19:20:14 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:20:14 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:20:14 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:21:19 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:21:20 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:21:20 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:21:20 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:21:21 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:21:23 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:21:23 INFO     main                                Shutting down threads.
+2024-03-31 19:21:23 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:21:23 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:21:23 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:24:53 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:24:54 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:24:54 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:24:54 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:24:56 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:24:57 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:24:57 INFO     main                                Shutting down threads.
+2024-03-31 19:24:57 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:24:57 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:24:57 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:25:38 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:25:39 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:25:39 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:25:39 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:25:40 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:25:41 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:25:41 INFO     main                                Shutting down threads.
+2024-03-31 19:25:41 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:25:41 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:25:41 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:26:10 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:26:11 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:26:11 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:26:11 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:26:12 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:26:13 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:26:13 INFO     main                                Shutting down threads.
+2024-03-31 19:26:13 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:26:14 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:26:14 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:27:41 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:27:42 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:27:42 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:27:42 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:27:43 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:27:46 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:27:46 INFO     main                                Shutting down threads.
+2024-03-31 19:27:46 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:27:46 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:27:46 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:29:45 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:29:46 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:29:46 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:29:46 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:29:48 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:29:50 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:29:50 INFO     main                                Shutting down threads.
+2024-03-31 19:29:50 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:29:51 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:29:51 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:30:11 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:30:11 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:30:11 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:30:12 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:30:15 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:30:25 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:30:25 INFO     main                                Shutting down threads.
+2024-03-31 19:30:25 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:30:25 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:30:25 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:32:43 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:32:44 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:32:44 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:32:44 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:32:45 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:33:01 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.2" was closed.
+2024-03-31 19:33:03 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:33:03 INFO     main                                Shutting down threads.
+2024-03-31 19:33:03 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:33:03 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:33:03 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:35:16 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:35:16 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:35:16 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:35:16 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:35:18 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:35:30 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:35:30 INFO     main                                Shutting down threads.
+2024-03-31 19:35:30 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:35:30 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:35:30 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:39:31 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:39:32 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:39:32 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:39:35 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2365838> due to bad connection. Total skip = 2365.839ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2399169> due to bad connection. Total skip = 2399.17ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2432457> due to bad connection. Total skip = 2432.458ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2465801> due to bad connection. Total skip = 2465.802ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2499099> due to bad connection. Total skip = 2499.1ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2532425> due to bad connection. Total skip = 2532.426ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2565751> due to bad connection. Total skip = 2565.752ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2599087> due to bad connection. Total skip = 2599.088ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2632414> due to bad connection. Total skip = 2632.415ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2665745> due to bad connection. Total skip = 2665.746ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2699055> due to bad connection. Total skip = 2699.056ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2732351> due to bad connection. Total skip = 2732.352ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2765668> due to bad connection. Total skip = 2765.669ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2832321> due to bad connection. Total skip = 2832.322ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2865631> due to bad connection. Total skip = 2865.632ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2932279> due to bad connection. Total skip = 2932.28ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2965620> due to bad connection. Total skip = 2965.621ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<2998937> due to bad connection. Total skip = 2998.938ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3032250> due to bad connection. Total skip = 3032.251ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3065611> due to bad connection. Total skip = 3065.612ms
+2024-03-31 19:39:35 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3098908> due to bad connection. Total skip = 3098.909ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3132220> due to bad connection. Total skip = 3132.221ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3165533> due to bad connection. Total skip = 3165.534ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3198851> due to bad connection. Total skip = 3198.852ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3232209> due to bad connection. Total skip = 3232.21ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3265525> due to bad connection. Total skip = 3265.526ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3298809> due to bad connection. Total skip = 3298.81ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3332142> due to bad connection. Total skip = 3332.143ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3365482> due to bad connection. Total skip = 3365.483ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3398781> due to bad connection. Total skip = 3398.782ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3432129> due to bad connection. Total skip = 3432.13ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3465441> due to bad connection. Total skip = 3465.442ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3498788> due to bad connection. Total skip = 3498.789ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3532064> due to bad connection. Total skip = 3532.065ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3565386> due to bad connection. Total skip = 3565.387ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3598735> due to bad connection. Total skip = 3598.736ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3632088> due to bad connection. Total skip = 3632.089ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3731985> due to bad connection. Total skip = 3731.986ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3765338> due to bad connection. Total skip = 3765.339ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3798644> due to bad connection. Total skip = 3798.645ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3831956> due to bad connection. Total skip = 3831.957ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3865290> due to bad connection. Total skip = 3865.291ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3898603> due to bad connection. Total skip = 3898.604ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3931917> due to bad connection. Total skip = 3931.918ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3965250> due to bad connection. Total skip = 3965.251ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3998558> due to bad connection. Total skip = 3998.559ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4031875> due to bad connection. Total skip = 4031.876ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4065241> due to bad connection. Total skip = 4065.242ms
+2024-03-31 19:39:36 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4098544> due to bad connection. Total skip = 4098.545ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4131851> due to bad connection. Total skip = 4131.852ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4165179> due to bad connection. Total skip = 4165.18ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4198518> due to bad connection. Total skip = 4198.519ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4231818> due to bad connection. Total skip = 4231.819ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4265125> due to bad connection. Total skip = 4265.126ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4298481> due to bad connection. Total skip = 4298.482ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4331796> due to bad connection. Total skip = 4331.797ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4365106> due to bad connection. Total skip = 4365.107ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4398426> due to bad connection. Total skip = 4398.427ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4431757> due to bad connection. Total skip = 4431.758ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4531721> due to bad connection. Total skip = 4531.722ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4565048> due to bad connection. Total skip = 4565.049ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4598339> due to bad connection. Total skip = 4598.34ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4631698> due to bad connection. Total skip = 4631.699ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4665016> due to bad connection. Total skip = 4665.017ms
+2024-03-31 19:39:37 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4698345> due to bad connection. Total skip = 4698.346ms
+2024-03-31 19:39:37 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:39:37 INFO     main                                Shutting down threads.
+2024-03-31 19:39:37 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:39:38 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:39:38 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:44:48 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:44:49 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:44:49 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:44:52 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:45:24 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:45:34 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=44 Duration=0:00:09.363309
+2024-03-31 19:45:35 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:280, Duration:9.333333333333334s, Size:8.633119MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_19-45-20_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_19-45-20_HighResolution.mp4"
+2024-03-31 19:45:36 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_19-45-20_Thumbnail.jpg"
+2024-03-31 19:45:36 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:45:39 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:45:39 INFO     main                                Shutting down threads.
+2024-03-31 19:45:39 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:45:40 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:45:40 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:47:04 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:47:05 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:47:05 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:47:17 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:47:32 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:47:39 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:47:45 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:48:38 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.9 Frames=294 Duration=0:00:59.944907
+2024-03-31 19:48:43 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:1767, Duration:58.9s, Size:53.229713MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_19-47-36_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_19-47-36_HighResolution.mp4"
+2024-03-31 19:48:44 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_19-47-36_Thumbnail.jpg"
+2024-03-31 19:48:49 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:48:49 INFO     main                                Shutting down threads.
+2024-03-31 19:48:49 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:48:50 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:48:50 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:53:08 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:53:09 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:53:09 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:53:11 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:53:14 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:53:15 WARNING  StreamingHandlerManager             Skipping frame timestamp=<5331430> due to bad connection. Total skip = 66.644ms
+2024-03-31 19:53:25 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:53:25 INFO     main                                Shutting down threads.
+2024-03-31 19:53:25 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:53:26 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:53:26 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:53:51 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:53:52 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:53:52 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:53:52 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:53:59 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:54:02 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 19:54:16 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.4 Frames=58 Duration=0:00:12.961941
+2024-03-31 19:54:17 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:376, Duration:12.533333333333333s, Size:11.802252MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_19-53-59_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_19-53-59_HighResolution.mp4"
+2024-03-31 19:54:18 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_19-53-59_Thumbnail.jpg"
+2024-03-31 19:54:21 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 19:54:21 INFO     main                                Shutting down threads.
+2024-03-31 19:54:21 INFO     Camera                              Shutting down Camera.
+2024-03-31 19:54:21 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 19:54:21 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 19:56:51 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 19:56:51 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 19:56:51 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 19:56:56 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 19:57:20 WARNING  StreamingHandlerManager             Skipping frame timestamp=<27856058> due to bad connection. Total skip = 66.622ms
+2024-03-31 19:59:30 WARNING  StreamingHandlerManager             Skipping frame timestamp=<158573185> due to bad connection. Total skip = 66.65ms
+2024-03-31 20:00:30 WARNING  StreamingHandlerManager             Skipping frame timestamp=<218283983> due to bad connection. Total skip = 99.951ms
+2024-03-31 20:00:52 WARNING  StreamingHandlerManager             Skipping frame timestamp=<240242411> due to bad connection. Total skip = 66.65ms
+2024-03-31 20:05:03 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 20:05:03 INFO     main                                Shutting down threads.
+2024-03-31 20:05:03 INFO     Camera                              Shutting down Camera.
+2024-03-31 20:05:04 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 20:05:04 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 20:05:10 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 20:05:11 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 20:05:11 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 20:05:12 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 20:05:18 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-03-31 20:05:29 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-03-31 20:05:29 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-03-31 20:05:52 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" unstable. Skipped Frames for 1032.947ms
+2024-03-31 20:05:55 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" recovered. Skipped Frames for 3931.88ms
+2024-03-31 20:06:33 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-03-31 20:06:33 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-03-31 20:08:15 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-03-31 20:09:09 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 20:09:09 INFO     main                                Shutting down threads.
+2024-03-31 20:09:09 INFO     Camera                              Shutting down Camera.
+2024-03-31 20:09:09 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 20:09:09 INFO     main                                Shutdown successful, exiting application.
