@@ -8,7 +8,6 @@ from Config.RuntimeConfig import RuntimeConfig
 
 class Config:
     def __init__(self, runtimeConfig: RuntimeConfig):
-        
         self.Logging = Config.LoggingConfig()
         self.ClipGeneration = Config.ClipGenerationConfig()
         self.Location = Config.LocationConfig()
@@ -16,6 +15,7 @@ class Config:
         self.Camera = Config.CameraConfig()
         self.Detection = Config.DetectionConfig(self.Storage)
         self.WebInterface = Config.WebInterfaceConfig(self.Storage,runtimeConfig)
+        self.Database = Config.DatabaseConfig(self.Storage)
         
     class WebContentConfig:
         def __init__(self, storageConfig: 'Config.StorageConfig'):
@@ -73,6 +73,7 @@ class Config:
             self.LogFilePath = os.path.join(self.LogFileDirectory, 'log.txt')
             self.ClipsDirectory = os.path.join(self.ApplicationDataDirectory, 'Clips')
             self.TensorFlowModelDirectory = os.path.join(self.ApplicationDataDirectory, 'TensorflowLiteModels')
+            self.DatabaseDirectory = os.path.join(self.ApplicationDataDirectory, 'Database')
             self.ArchiveDuration = timedelta(days=7)
             self.MaximumStorageOccupationForSaving = 95  # 0-100%
             
@@ -81,5 +82,8 @@ class Config:
             self.TensorFlowModelFilePath = os.path.join(storageConfig.TensorFlowModelDirectory, 'mobilenet_v2.tflite')
             self.LabelsFilePath = os.path.join(storageConfig.TensorFlowModelDirectory, 'coco_labels.txt')
             
+    class DatabaseConfig:
+        def __init__(self, storageConfig: 'Config.StorageConfig'):
+            self.ClipDatabaseFilePath = os.path.join(storageConfig.DatabaseDirectory, 'Clips.json')
 
     

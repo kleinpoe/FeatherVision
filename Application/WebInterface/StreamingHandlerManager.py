@@ -2,7 +2,7 @@ from threading import Lock
 from Camera.Frames.HighResolutionFrame import HighResolutionFrame
 from Config.Config import Config
 from Surveillance.ObjectDetection.Detection import Detection
-from WebInterface.StreamingHandler import StreamingHandler
+from WebInterface.Handlers.StreamingHandler import StreamingHandler
 
 
 import tornado
@@ -62,7 +62,6 @@ class StreamingHandlerManager:
 
                     payload = detectionLengthInBytes + detectionsInBytes + isKeyframeInBytes + timestampInBytes + frame.Frame
                     #log(f"Sending frame timestamp=<{timestamp}> keyframe=<{isKeyframe}> Detections={[x for x in cl.detections]}")
-                    # await!!!!
                     await connection.write_message(payload, True)
                     connection.LastSentFrameTimestamp = frame.RawTimestamp
                 else:

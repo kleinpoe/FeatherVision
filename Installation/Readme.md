@@ -50,6 +50,9 @@ and activate it \
     `python -m pip install opencv-python`
     6. Tensorflow lite for object detection. Only Runtime because we do not train models\
     `python -m pip install tflite-runtime`
+    7. The clips are stored in a database but very basic\
+    `python -m pip install tinydb`\
+    `python -m pip install tinydb-serialization`
 
 12. Install Wifi Dongle: The RPI5 gets pretty hot so we put it in a metal enclosure with integrated passive cooling. As this metal hunk screens the wifi signal, we use an external wifi antenna. I chose the *BrosTrend AC650*.
     1. `sh -c 'wget linux.brostrend.com/install -O /tmp/install && sh /tmp/install'`

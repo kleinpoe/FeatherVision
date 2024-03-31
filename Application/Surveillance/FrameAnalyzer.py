@@ -1,6 +1,7 @@
 from logging import Logger
 import threading
 
+from ClipDatabase.ClipDatabase import ClipDatabase
 from Surveillance.DetectionBroadcaster import DetectionBroadcaster
 from Video.ClipSaver import ClipSaver
 from Surveillance.History.DetectionHistoryEntry import DetectionHistoryEntry
@@ -17,6 +18,7 @@ class FrameAnalyzer:
                  detectionBroadcaster: DetectionBroadcaster,
                  detectionHistory: DetectionHistory, 
                  clipSaver: ClipSaver,
+                 clipDatabase: ClipDatabase,
                  config: Config,
                  logger: Logger):
         self.detector = detector
@@ -24,6 +26,7 @@ class FrameAnalyzer:
         self.detectionBroadcaster = detectionBroadcaster
         self.history = detectionHistory
         self.clipSaver = clipSaver
+        self.clipDatabase = clipDatabase
         self.config = config
         self.logger = logger
         self.stopRequested = False
@@ -45,7 +48,8 @@ class FrameAnalyzer:
             self.detectionBroadcaster.Broadcast(detections)
             optionalClip = self.history.CheckClip( DetectionHistoryEntry(detections,objectDetectionFrame.Timestamp,objectDetectionFrame.Frame) )
             if optionalClip is not None:
-                self.clipSaver.Save(optionalClip)
+                result = self.clipSaver.Save(optionalClip)
+                self.clipDatabase.Add(result)
                 
         
     

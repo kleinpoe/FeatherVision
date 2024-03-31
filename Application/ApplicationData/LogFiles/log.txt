@@ -574,3 +574,257 @@ TypeError: WebServer.GetCallback.<locals>.callback() takes 0 positional argument
 2024-03-30 21:48:52 INFO     Camera                              Shutting down Camera.
 2024-03-30 21:48:53 INFO     WebServer                           Shutting down Web Server.
 2024-03-30 21:48:53 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 11:17:26 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 11:17:26 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 11:17:26 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 11:17:30 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 11:17:39 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.8 Frames=38 Duration=0:00:07.697150
+2024-03-31 11:17:40 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:234, Duration:7.8s, Size:7.467248MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-17-27_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-17-27_HighResolution.mp4"
+2024-03-31 11:17:41 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-17-27_Thumbnail.jpg"
+2024-03-31 11:17:43 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 11:17:43 INFO     main                                Shutting down threads.
+2024-03-31 11:17:43 INFO     Camera                              Shutting down Camera.
+2024-03-31 11:17:44 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 11:17:44 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 11:24:13 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 11:24:14 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 11:24:14 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 11:24:17 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 11:24:27 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.8 Frames=39 Duration=0:00:07.863756
+2024-03-31 11:24:27 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:214, Duration:7.133333333333334s, Size:7.00604MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-24-14_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-24-14_HighResolution.mp4"
+2024-03-31 11:24:28 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-24-14_Thumbnail.jpg"
+2024-03-31 11:24:32 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 11:24:32 INFO     main                                Shutting down threads.
+2024-03-31 11:24:32 INFO     Camera                              Shutting down Camera.
+2024-03-31 11:24:33 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 11:24:33 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 11:35:23 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 11:35:24 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 11:35:24 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 11:35:26 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 11:35:43 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 11:35:54 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.5 Frames=39 Duration=0:00:08.430237
+2024-03-31 11:35:54 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:261, Duration:8.7s, Size:8.691101MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-35-40_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-35-40_HighResolution.mp4"
+2024-03-31 11:35:55 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-35-40_Thumbnail.jpg"
+2024-03-31 11:36:05 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 11:36:05 INFO     main                                Shutting down threads.
+2024-03-31 11:36:05 INFO     Camera                              Shutting down Camera.
+2024-03-31 11:36:05 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 11:36:05 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 11:36:42 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 11:36:42 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 11:36:42 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 11:36:46 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 11:36:55 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=5.0 Frames=39 Duration=0:00:07.663863
+2024-03-31 11:36:56 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:214, Duration:7.133333333333334s, Size:7.22986MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-36-43_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-36-43_HighResolution.mp4"
+2024-03-31 11:36:56 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-36-43_Thumbnail.jpg"
+2024-03-31 11:37:02 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 11:37:02 INFO     main                                Shutting down threads.
+2024-03-31 11:37:02 INFO     Camera                              Shutting down Camera.
+2024-03-31 11:37:02 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 11:37:02 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 11:37:11 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 11:37:11 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 11:37:11 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 11:37:15 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 11:37:26 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.7 Frames=46 Duration=0:00:09.629802
+2024-03-31 11:37:27 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:278, Duration:9.266666666666667s, Size:9.230313MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-37-12_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-37-12_HighResolution.mp4"
+2024-03-31 11:37:28 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_11-37-12_Thumbnail.jpg"
+2024-03-31 11:37:38 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 11:37:38 INFO     main                                Shutting down threads.
+2024-03-31 11:37:38 INFO     Camera                              Shutting down Camera.
+2024-03-31 11:37:38 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 11:37:38 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 12:18:47 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 12:18:48 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 12:18:48 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 12:19:03 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 12:19:12 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.7 Frames=38 Duration=0:00:07.830437
+2024-03-31 12:19:13 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:218, Duration:7.266666666666667s, Size:7.950813MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_12-18-59_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_12-18-59_HighResolution.mp4"
+2024-03-31 12:19:14 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_12-18-59_Thumbnail.jpg"
+2024-03-31 12:19:20 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 12:19:20 INFO     main                                Shutting down threads.
+2024-03-31 12:19:20 INFO     Camera                              Shutting down Camera.
+2024-03-31 12:19:20 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 12:19:20 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 12:19:29 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 12:19:30 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 12:19:30 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 12:19:33 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 12:19:42 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=5.4 Frames=45 Duration=0:00:08.163678
+2024-03-31 12:19:43 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:237, Duration:7.9s, Size:7.742054MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_12-19-29_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_12-19-29_HighResolution.mp4"
+2024-03-31 12:19:44 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_12-19-29_Thumbnail.jpg"
+2024-03-31 12:19:53 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 12:19:53 INFO     main                                Shutting down threads.
+2024-03-31 12:19:53 INFO     Camera                              Shutting down Camera.
+2024-03-31 12:19:53 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 12:19:53 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 13:43:31 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 13:43:32 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 13:43:32 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 13:43:32 INFO     main                                Shutting down threads.
+2024-03-31 13:43:32 INFO     Camera                              Shutting down Camera.
+2024-03-31 13:43:32 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 13:43:32 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 13:43:32 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 13:43:45 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 13:43:45 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 13:43:45 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 13:43:52 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 13:43:52 WARNING  StreamingHandlerManager             Skipping frame timestamp=<6197753> due to bad connection. Total skip = 66.668ms
+2024-03-31 13:43:55 WARNING  StreamingHandlerManager             Skipping frame timestamp=<9296620> due to bad connection. Total skip = 66.639ms
+2024-03-31 13:44:02 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 13:44:13 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=45 Duration=0:00:09.596498
+2024-03-31 13:44:14 WARNING  StreamingHandlerManager             Skipping frame timestamp=<27823165> due to bad connection. Total skip = 66.64ms
+2024-03-31 13:44:14 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:269, Duration:8.966666666666667s, Size:8.322557MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_13-43-59_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_13-43-59_HighResolution.mp4"
+2024-03-31 13:44:15 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_13-43-59_Thumbnail.jpg"
+2024-03-31 13:44:19 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 13:44:19 INFO     main                                Shutting down threads.
+2024-03-31 13:44:19 INFO     Camera                              Shutting down Camera.
+2024-03-31 13:44:19 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 13:44:19 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 13:44:40 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 13:44:40 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 13:44:40 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 13:44:42 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 13:44:44 WARNING  StreamingHandlerManager             Skipping frame timestamp=<3165523> due to bad connection. Total skip = 99.968ms
+2024-03-31 13:44:45 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4198479> due to bad connection. Total skip = 66.636ms
+2024-03-31 13:44:45 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 13:44:49 WARNING  StreamingHandlerManager             Skipping frame timestamp=<8363611> due to bad connection. Total skip = 66.615ms
+2024-03-31 13:44:56 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.7 Frames=42 Duration=0:00:08.796776
+2024-03-31 13:44:57 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:263, Duration:8.766666666666667s, Size:8.745238MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_13-44-42_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_13-44-42_HighResolution.mp4"
+2024-03-31 13:44:57 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_13-44-42_Thumbnail.jpg"
+2024-03-31 13:45:10 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 13:45:28 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.8 Frames=82 Duration=0:00:17.027088
+2024-03-31 13:45:29 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:513, Duration:17.1s, Size:16.683963MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_13-45-06_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_13-45-06_HighResolution.mp4"
+2024-03-31 13:45:30 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/3/31/Clip_2024-03-31_13-45-06_Thumbnail.jpg"
+2024-03-31 13:45:46 ERROR    web                                 Uncaught exception GET /watch/d26de199-7a5a-4c2e-b46a-6a0d2f43e89a (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43)
+HTTPServerRequest(protocol='http', host='raspberrypoecam2:8000', method='GET', uri='/watch/d26de199-7a5a-4c2e-b46a-6a0d2f43e89a', version='HTTP/1.1', remote_ip='2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43')
+Traceback (most recent call last):
+  File "/home/pi/FeatherVision/.venv/lib/python3.11/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/FeatherVision/Application/WebInterface/Handlers/MainHandler.py", line 20, in get
+    nextNewerEntry = database.GetNextNewer(entry)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/FeatherVision/Application/ClipDatabase/ClipDatabase.py", line 73, in GetNextNewer
+    entry = min(self.memoryStorage.values(), key=lambda x: timedelta(weeks=99999999) if entry.DateOfRecording-x.DateOfRecording <= 0 else entry.DateOfRecording-x.DateOfRecording, default=None)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/FeatherVision/Application/ClipDatabase/ClipDatabase.py", line 73, in <lambda>
+    entry = min(self.memoryStorage.values(), key=lambda x: timedelta(weeks=99999999) if entry.DateOfRecording-x.DateOfRecording <= 0 else entry.DateOfRecording-x.DateOfRecording, default=None)
+                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<=' not supported between instances of 'datetime.timedelta' and 'int'
+2024-03-31 13:45:46 ERROR    web                                 500 GET /watch/d26de199-7a5a-4c2e-b46a-6a0d2f43e89a (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43) 5.19ms
+2024-03-31 13:45:46 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.2" was closed.
+2024-03-31 13:45:46 WARNING  web                                 404 GET /favicon.ico (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43) 1.17ms
+2024-03-31 13:46:27 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 13:46:35 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 13:46:35 INFO     main                                Shutting down threads.
+2024-03-31 13:46:35 INFO     Camera                              Shutting down Camera.
+2024-03-31 13:46:35 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 13:46:35 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 13:49:15 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 13:49:16 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 13:49:16 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 13:49:18 INFO     MainHandler                         Request from IP="2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43" to watch video with ID="d26de199-7a5a-4c2e-b46a-6a0d2f43e89a".
+2024-03-31 13:54:15 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 13:59:31 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 13:59:35 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 13:59:35 INFO     main                                Shutting down threads.
+2024-03-31 13:59:35 INFO     Camera                              Shutting down Camera.
+2024-03-31 13:59:35 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 13:59:35 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 14:11:27 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 14:11:27 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 14:11:27 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 14:11:39 INFO     MainHandler                         Request from IP="2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43" to watch video with ID="d26de199-7a5a-4c2e-b46a-6a0d2f43e89a".
+2024-03-31 14:11:39 ERROR    web                                 Uncaught exception GET /watch/d26de199-7a5a-4c2e-b46a-6a0d2f43e89a (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43)
+HTTPServerRequest(protocol='http', host='raspberrypoecam2:8000', method='GET', uri='/watch/d26de199-7a5a-4c2e-b46a-6a0d2f43e89a', version='HTTP/1.1', remote_ip='2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43')
+Traceback (most recent call last):
+  File "/home/pi/FeatherVision/.venv/lib/python3.11/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/FeatherVision/Application/WebInterface/Handlers/MainHandler.py", line 21, in get
+    nextNewerEntry = database.GetNextNewer(entry)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/FeatherVision/Application/ClipDatabase/ClipDatabase.py", line 75, in GetNextNewer
+    previous, next, key = self.memoryStorage._OrderedDict__map[entry.Id]
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'collections.OrderedDict' object has no attribute '_OrderedDict__map'
+2024-03-31 14:11:39 ERROR    web                                 500 GET /watch/d26de199-7a5a-4c2e-b46a-6a0d2f43e89a (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43) 15.58ms
+2024-03-31 14:11:42 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 14:11:42 INFO     main                                Shutting down threads.
+2024-03-31 14:11:42 INFO     Camera                              Shutting down Camera.
+2024-03-31 14:11:43 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 14:11:43 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 14:34:37 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 14:34:37 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 14:34:37 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 14:34:43 INFO     MainHandler                         Request from IP="2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43" to watch video with ID="d26de199-7a5a-4c2e-b46a-6a0d2f43e89a".
+2024-03-31 14:34:45 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 14:34:45 INFO     main                                Shutting down threads.
+2024-03-31 14:34:45 INFO     Camera                              Shutting down Camera.
+2024-03-31 14:34:46 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 14:34:46 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 14:45:27 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 14:45:27 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 14:45:27 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 14:45:33 WARNING  web                                 404 GET /browse/ (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43) 1.88ms
+2024-03-31 14:45:38 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 14:45:45 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 14:45:45 INFO     main                                Shutting down threads.
+2024-03-31 14:45:45 INFO     Camera                              Shutting down Camera.
+2024-03-31 14:45:46 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 14:45:46 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 14:46:04 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 14:46:04 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 14:46:04 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 14:46:08 ERROR    web                                 Uncaught exception GET /browse/ (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43)
+HTTPServerRequest(protocol='http', host='raspberrypoecam2:8000', method='GET', uri='/browse/', version='HTTP/1.1', remote_ip='2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43')
+Traceback (most recent call last):
+  File "/home/pi/FeatherVision/.venv/lib/python3.11/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: BrowseVideoHandler.get() missing 1 required positional argument: 'date'
+2024-03-31 14:46:08 ERROR    web                                 500 GET /browse/ (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43) 9.53ms
+2024-03-31 14:46:11 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 14:46:11 INFO     main                                Shutting down threads.
+2024-03-31 14:46:11 INFO     Camera                              Shutting down Camera.
+2024-03-31 14:46:11 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 14:46:11 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 14:50:55 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 14:50:55 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 14:50:55 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 14:51:02 INFO     MainHandler                         Request from IP="2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43" to browse video with request parameter="today".
+2024-03-31 14:51:02 WARNING  web                                 404 GET /browse/today (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43) 11.03ms
+2024-03-31 14:51:30 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-03-31 14:52:06 INFO     MainHandler                         Request from IP="2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43" to browse video with request parameter="24-03-31".
+2024-03-31 14:52:14 INFO     MainHandler                         Request from IP="2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43" to browse video with request parameter="yesterday".
+2024-03-31 14:52:23 INFO     MainHandler                         Request from IP="2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43" to browse video with request parameter="25-01-01".
+2024-03-31 14:52:37 INFO     MainHandler                         Request from IP="2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43" to browse video with request parameter="blabla".
+2024-03-31 14:52:37 WARNING  web                                 404 GET /browse/blabla (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43) 2.68ms
+2024-03-31 14:52:37 ERROR    web                                 Uncaught exception GET /browse/blabla (2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43)
+HTTPServerRequest(protocol='http', host='raspberrypoecam2:8000', method='GET', uri='/browse/blabla', version='HTTP/1.1', remote_ip='2003:cf:bf3c:2b00:cc5d:73df:c13b:6a43')
+Traceback (most recent call last):
+  File "/home/pi/FeatherVision/.venv/lib/python3.11/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/FeatherVision/Application/WebInterface/Handlers/MainHandler.py", line 42, in get
+    entries = database.GetEntriesOfDate(requestedDateTime)
+                                        ^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'requestedDateTime' where it is not associated with a value
+2024-03-31 14:55:36 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 14:55:36 INFO     main                                Shutting down threads.
+2024-03-31 14:55:36 INFO     Camera                              Shutting down Camera.
+2024-03-31 14:55:36 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 14:55:36 INFO     main                                Shutdown successful, exiting application.
+2024-03-31 14:55:43 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-03-31 14:55:44 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-03-31 14:55:44 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-03-31 14:55:46 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-03-31 14:55:49 WARNING  StreamingHandlerManager             Skipping frame timestamp=<4165100> due to bad connection. Total skip = 66.648ms
+2024-03-31 14:55:51 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-03-31 14:55:51 INFO     main                                Shutting down threads.
+2024-03-31 14:55:51 INFO     Camera                              Shutting down Camera.
+2024-03-31 14:55:52 INFO     WebServer                           Shutting down Web Server.
+2024-03-31 14:55:52 INFO     main                                Shutdown successful, exiting application.

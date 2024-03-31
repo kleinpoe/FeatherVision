@@ -1,3 +1,4 @@
+from ClipDatabase.ClipDatabase import ClipDatabase
 from Surveillance.DetectionBroadcaster import DetectionBroadcaster
 from Surveillance.History.DetectionHistory import DetectionHistory
 from Surveillance.ObjectDetection.ImagePreparation import ImagePreparation
@@ -32,9 +33,12 @@ networkChecker = NetworkChecker(logger)
 performanceMonitor = PerformanceMonitor(config, networkChecker, logger)
 clock = Clock()
 
+#database
+database = ClipDatabase(config,logger)
+
 # web interface
 streamingHandlerManager = StreamingHandlerManager(config, logger)
-webServer = WebServer(streamingHandlerManager, config, logger)
+webServer = WebServer(streamingHandlerManager, database, clock, config, logger)
 
 # camera
 referenceTimestamp = clock.Now()
@@ -55,7 +59,10 @@ frameAnnotator = FrameAnnotator(config)
 annotatedClipSaver = AnnotatedClipSaver(filePathProvider,frameAnnotator,logger,config)
 thumbnailSaver = ThumbnailSaver(filePathProvider, config, logger)
 clipSaver = ClipSaver(highResClipSaver,annotatedClipSaver,thumbnailSaver,clock,logger,config)
-frameAnalyzer = FrameAnalyzer(detector,camera, detectionBroadcaster,detectionHistory,clipSaver,config,logger)
+frameAnalyzer = FrameAnalyzer(detector,camera, detectionBroadcaster,detectionHistory,clipSaver,database,config,logger)
+
+
+
 
 try:
     camera.Start()

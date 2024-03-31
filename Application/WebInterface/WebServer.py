@@ -3,17 +3,21 @@ from logging import Logger
 from typing import Callable
 import tornado.web, tornado.ioloop, tornado.websocket
 
+from Infrastructure.Clock import Clock
+from ClipDatabase.ClipDatabase import ClipDatabase
 from WebInterface.StreamingHandlerManager import StreamingHandlerManager
-from WebInterface.MainHandler import MainHandler
-from WebInterface.StreamingHandler import StreamingHandler
+from WebInterface.Handlers.MainHandler import BrowseVideoHandler, MainHandler, WatchVideoHandler
+from WebInterface.Handlers.StreamingHandler import StreamingHandler
 from Config.Config import Config  
 
 class WebServer:
     
-    def __init__(self, streamingHandlerManager: StreamingHandlerManager, config: Config, logger: Logger):
+    def __init__(self, streamingHandlerManager: StreamingHandlerManager, clipDatabase:ClipDatabase, clock:Clock, config: Config, logger: Logger):
         self.streamingHandlerManager = streamingHandlerManager
+        self.clipDatabase = clipDatabase
         self.config = config
         self.logger = logger
+        self.clock = clock
         self.loop = tornado.ioloop.IOLoop.current()
         
     def GetCallback(self, function: Callable) -> Callable:
@@ -29,13 +33,16 @@ class WebServer:
                     "config": self.config,
                     "logger": self.logger,
                     "registerFunc": self.streamingHandlerManager.Register,
-                    "unregisterFunc": self.streamingHandlerManager.Unregister}
+                    "unregisterFunc": self.streamingHandlerManager.Unregister,
+                    "clipDatabase": self.clipDatabase,
+                    "clock": self.clock}
 
         requestHandlers = [(r"/ws/", StreamingHandler),
             (r"/", MainHandler),
             (r"/index.html", MainHandler),
-            (r"/static/(.*)", tornado.web.StaticFileHandler, 
-             dict(path=settings['static_path']))]
+            (r"/watch/(.+)", WatchVideoHandler),
+            (r"/browse/(.+)", BrowseVideoHandler),
+            (r"/static/(.*)", tornado.web.StaticFileHandler, dict(path=settings['static_path']))]
         
         self.application = tornado.web.Application(requestHandlers,**settings)
         self.application.listen(self.config.WebInterface.Port)

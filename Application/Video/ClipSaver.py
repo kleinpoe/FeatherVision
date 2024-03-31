@@ -37,7 +37,7 @@ class ClipSaver:
         HighResClipFilePath:str
         AnnotatedClipFilePath:str
         ClipDuration: timedelta
-        Datetime: datetime
+        DateOfRecording: datetime
         Detections: list[DetectionsInClip]
     
         

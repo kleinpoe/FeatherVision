@@ -9,10 +9,12 @@ class StreamingHandler(tornado.websocket.WebSocketHandler):
     LastSentFrameTimestamp = -1
     LastFrameTimestampReceivedByClient = -1
 
-    def getConfig(self) -> Config:
+    @property
+    def Config(self) -> Config:
         return self.application.settings.get('config')
     
-    def getLogger(self) -> Logger:
+    @property
+    def Logger(self) -> Logger:
         return self.application.settings.get('logger')
 
     def open(self):
