@@ -1,0 +1,79 @@
+.videoListEntryTextContainer
+{
+	font-size: 2rem;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	padding-left:2rem;
+}
+
+.videoListEntry
+{
+	border-radius: 1rem;
+	position:relative;
+	background: #232D3F;
+	color: white;
+	margin: 0.5rem;
+}
+
+.thumbnail
+{
+	border-radius: 1rem;
+	object-fit: cover;
+	height: 100%;
+	max-width: 100%;
+}
+
+.videoListEntrySelection
+{
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	
+	width: 5rem;
+	height: 5rem;
+}
+
+@media (orientation: landscape ) 
+{
+	.videoListEntry
+	{
+		height: 30vh;
+	}
+
+	.videoListEntryTextContainer
+	{
+		height:100%;
+	}
+
+	.thumbnailContainer
+	{
+		max-width: 50%;
+		height: 100%;
+		float: left;
+	}
+}
+
+@media (orientation: portrait) 
+{
+	.videoListEntry
+	{
+		
+	}
+
+	.videoListEntryTextContainer
+	{
+		position:absolute;
+		bottom: 0.5rem;
+		right: 0.5rem;
+		height: 2.5rem;
+		border-radius: 0.5rem;
+		padding: 0.3rem;
+		background:rgba(0,0,0,.85);
+	}
+
+	.thumbnailContainer
+	{
+		max-width: 100%;
+	}
+}

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css" /> 
 	<link rel="stylesheet" href="checkboxStyle.css" /> 
+	<link rel="stylesheet" href="videoBrowserStyle.css" /> 
 	<script src="jquery-3.7.1.min.js"></script>
 </head>
 <body>
@@ -14,17 +15,41 @@
 	  </div>
 	  <div class="contentContainer" style="overflow-y:auto;">
 			<div class="videoListEntry" id="entry1">
-				<a href="video.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
-				<input type="checkbox" class="videoListEntrySelection"/>
+				<div class="thumbnailContainer">
+					<a href="video.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
+				</div>
+				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry1"/>
 				<div class="videoListEntryTextContainer">
-					<div>14:00 </br> 3.0s</div>
+					<p>14:00 3.0s</p>
 				</div>
 			</div>
-			<div class="videoListEntry" id="entry2">Entry</div>
-			<div class="videoListEntry" id="entry3">Entry</div>
-			<div class="videoListEntry" id="entry4">Entry</div>
-			<div class="videoListEntry" id="entry5">Entry</div>
-			<div class="videoListEntry" id="entry6">Entry</div>
+			<div class="videoListEntry" id="entry2">
+				<div class="thumbnailContainer">
+					<a href="video.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
+				</div>
+				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry2"/>
+				<div class="videoListEntryTextContainer">
+					<p>14:00 3.0s</p>
+				</div>
+			</div>
+			<div class="videoListEntry" id="entry3">
+				<div class="thumbnailContainer">
+					<a href="video.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
+				</div>
+				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry3"/>
+				<div class="videoListEntryTextContainer">
+					<p>14:00 3.0s</p>
+				</div>
+			</div>
+			<div class="videoListEntry" id="entry4">
+				<div class="thumbnailContainer">
+					<a href="video.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
+				</div>
+				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry4"/>
+				<div class="videoListEntryTextContainer">
+					<p>14:00 3.0s</p>
+				</div>
+			</div>
 	  </div>
 	  <div class="footer">
 		<div class="footerItem clickable" id="footerLeft">⬅️</div>
@@ -56,13 +81,38 @@
 		{
 			selectionIsActive = false;
 			selectedEntries.forEach( element => 
-			{element.css('background', '');} );
+			{element.prop('checked',false);} );
 			selectedEntries = [];
 			leftButton.show();
 			rightButton.show();
 			endSelectionButton.hide();
 			trashButton.hide();
 		}
+		var checkBoxes = videoEntries.children('input:checkbox');
+		checkBoxes.on('change', event =>
+		{
+			let checkBox = $(event.target);
+			let isChecked = checkBox.prop('checked');
+			if(isChecked)
+			{
+				if(selectedEntries.length == 0)
+				{
+					startSelection();
+				}
+				selectedEntries.push(checkBox);
+			}
+			else
+			{
+				selectedEntries = selectedEntries.filter( cb => cb.attr('id') != checkBox.attr('id') )
+				if(selectedEntries.length == 0)
+				{
+					endSelection();
+				}
+			}
+		});
+		endSelectionButton.on('click', () => endSelection() );
+		trashButton.on('click', x => alert('Do you want to delete ' + selectedEntries.length + ' clips?'));
+		
 	}
 	</script>
 </body>
