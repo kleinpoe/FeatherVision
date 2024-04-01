@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" /> 
+	<script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+	  <div class="header">
+		<div class="headerItem clickable" onclick="location.href='Test.html';">📷</div>
+		<div class="headerItem clickable" onclick="location.href='TestBrowse.html';">📂</div>
+	  </div>
+	  <div class="contentContainer">
+			<video class="contentMaxScaling videoHiddenControls" id="video" muted autoplay="autoplay">
+				<source src="video.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+			<canvas class="contentMaxScaling"></canvas>
+	  </div>
+	  <div class="footer">
+		<div class="footerItem clickable" id="footerGrid">#️⃣</div>
+		<div class="footerItem clickable" id="footerDetections">🕶️</div>
+		<div class="footerItem clickable" id="footerFullscreen">⛶</div>
+	  </div>
+	</div>
+	<script>
+	window.onload = function()
+	{
+		var showGrid = false;
+		$("#footerGrid").on( 'click', event => 
+		{
+			showGrid = !showGrid; 
+			$(event.target).html(showGrid ? '🟦': '#️⃣' ); 
+		} );
+		
+		var showDetections = true;
+		$("#footerDetections").on( 'click', event => 
+		{
+			showDetections = !showDetections; 
+			$(event.target).html(showDetections ? '🕶️' : '👓' );
+		} );
+		
+		$("#footerFullscreen").on( 'click', event => 
+		{
+			$('video')[0].webkitRequestFullscreen();
+		} );
+	}
+	</script>
+</body>
+</html>

@@ -24,16 +24,15 @@
     <script>
 	window.onload = function()
 	{	
-		var jmuxer = new JMuxer({node: 'stream',mode: 'video',flushingTime: 0,fps: {{ fps }}, debug: false});
-		var ws = new WebSocket("ws://{{ ip }}:{{ port }}/ws/");
-		ws.binaryType = 'arraybuffer';
-
 		document.querySelector("#CheckBoxShowDetections").checked = true;
 		document.querySelector("#CheckBoxShowGrid").checked = false;
 
 		const overlay = new VideoOverlay();
 		var detections = []
 
+		var jmuxer = new JMuxer({node: 'stream',mode: 'video',flushingTime: 0,fps: {{ fps }}, debug: false});
+		var ws = new WebSocket("ws://{{ ip }}:{{ port }}/ws/");
+		ws.binaryType = 'arraybuffer';
 		ws.addEventListener('message',
 		function(event)
 		{

@@ -1139,3 +1139,13 @@ UnboundLocalError: cannot access local variable 'requestedDateTime' where it is 
 2024-03-31 20:09:09 INFO     Camera                              Shutting down Camera.
 2024-03-31 20:09:09 INFO     WebServer                           Shutting down Web Server.
 2024-03-31 20:09:09 INFO     main                                Shutdown successful, exiting application.
+2024-04-01 12:27:42 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-01 12:27:43 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-01 12:27:43 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-01 12:27:45 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-04-01 12:32:06 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.2" was closed.
+2024-04-01 12:32:09 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-01 12:32:09 INFO     main                                Shutting down threads.
+2024-04-01 12:32:09 INFO     Camera                              Shutting down Camera.
+2024-04-01 12:32:10 INFO     WebServer                           Shutting down Web Server.
+2024-04-01 12:32:10 INFO     main                                Shutdown successful, exiting application.

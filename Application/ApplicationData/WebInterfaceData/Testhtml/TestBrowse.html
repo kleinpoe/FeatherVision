@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" /> 
+	<link rel="stylesheet" href="checkboxStyle.css" /> 
+	<script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+	  <div class="header">
+		<div class="headerItem clickable" onclick="location.href='Test.html';">📷</div>
+		<div class="headerItem clickable" onclick="location.href='TestBrowse.html';">📂</div>
+	  </div>
+	  <div class="contentContainer" style="overflow-y:auto;">
+			<div class="videoListEntry" id="entry1">
+				<a href="video.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
+				<input type="checkbox" class="videoListEntrySelection"/>
+				<div class="videoListEntryTextContainer">
+					<div>14:00 </br> 3.0s</div>
+				</div>
+			</div>
+			<div class="videoListEntry" id="entry2">Entry</div>
+			<div class="videoListEntry" id="entry3">Entry</div>
+			<div class="videoListEntry" id="entry4">Entry</div>
+			<div class="videoListEntry" id="entry5">Entry</div>
+			<div class="videoListEntry" id="entry6">Entry</div>
+	  </div>
+	  <div class="footer">
+		<div class="footerItem clickable" id="footerLeft">⬅️</div>
+		<div class="footerItem clickable" id="footerTrash" style="display:none;">🗑️</div>
+		<div class="footerItem rotatingItem" id="footerDate">23.3.2024</div>
+		<div class="footerItem clickable" id="footerEndSelection" style="display:none;">↩️</div>
+		<div class="footerItem clickable" id="footerRight">➡️</div>
+	  </div>
+	</div>
+	<script>
+	window.onload = function()
+	{
+		var selectionIsActive = false;
+		var selectedEntries = [];
+		var videoEntries = $(".videoListEntry");
+		var leftButton = $("#footerLeft");
+		var rightButton = $("#footerRight");
+		var endSelectionButton = $("#footerEndSelection");
+		var trashButton = $("#footerTrash");
+		var startSelection = () =>
+		{
+			selectionIsActive = true;
+			leftButton.hide();
+			rightButton.hide();
+			endSelectionButton.show();
+			trashButton.show();
+		}
+		var endSelection = () =>
+		{
+			selectionIsActive = false;
+			selectedEntries.forEach( element => 
+			{element.css('background', '');} );
+			selectedEntries = [];
+			leftButton.show();
+			rightButton.show();
+			endSelectionButton.hide();
+			trashButton.hide();
+		}
+	}
+	</script>
+</body>
+</html>
