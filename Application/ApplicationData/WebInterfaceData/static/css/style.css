@@ -35,10 +35,13 @@ html, body
 	font-size: 1.5rem;
 }
 
-.clickable:hover 
+@media(hover: hover) and (pointer: fine) 
 {
-  background-color: #005B41;
-  cursor: pointer;
+	.clickable:hover 
+	{
+	background-color: #005B41;
+	cursor: pointer;
+	}
 }
 
 .contentContainer 
