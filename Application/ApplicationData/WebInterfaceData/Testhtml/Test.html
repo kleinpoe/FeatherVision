@@ -2,21 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css" /> 
-	<script src="jquery-3.7.1.min.js"></script>
+	<title>Live Video</title>
+    <link rel="stylesheet" href="css/style.css" /> 
+	<link rel="stylesheet" href="css/videoStyle.css" /> 
+	<script src="js/jquery-3.7.1.min.js"></script>
+	<script src="js/videoOverlay.js"></script>
 </head>
 <body>
 	<div class="wrapper">
 	  <div class="header">
-		<div class="headerItem clickable" onclick="location.href='Test.html';">📷</div>
-		<div class="headerItem clickable" onclick="location.href='TestBrowse.html';">📂</div>
+		<div class="headerItem clickable" id="headerCamera">📷</div>
+		<div class="headerItem clickable" id="headerBrowser">📂</div>
 	  </div>
 	  <div class="contentContainer">
-			<video class="contentMaxScaling videoHiddenControls" id="video" muted autoplay="autoplay">
-				<source src="video.mp4" type="video/mp4">
-				Your browser does not support the video tag.
+			<video class="contentMaxScaling videoHiddenControls" id="videoLive" muted autoplay>
+				<source type="video/mp4" id="videoSource">
 			</video>
-			<canvas class="contentMaxScaling"></canvas>
+			<canvas class="videoOverlay" id="videoOverlayCanvas"></canvas>
 	  </div>
 	  <div class="footer">
 		<div class="footerItem clickable" id="footerGrid">#️⃣</div>
@@ -27,24 +29,55 @@
 	<script>
 	window.onload = function()
 	{
+		// Injection Parameters
+		var videoLink = 'video.mp4';
+
+		// Links
+		var linkHeaderCamera = 'Test.html';
+		var linkHeaderBrowser = 'TestBrowse.html';
+		// Do not forget css and js links
+		
+		// Html Elements
+		var headerCamera = $('#headerCamera');
+		var headerBrowser = $('#headerBrowser');
+		var videoSource = $('#videoSource');
+		var footerGrid = $("#footerGrid");
+		var footerDetections = $("#footerDetections");
+		var footerFullscreen = $("#footerFullscreen");
+		var video = $('#videoLive');
+		var videoOverlayCanvas = $('#videoOverlayCanvas');
+
+		// Variables
 		var showGrid = false;
-		$("#footerGrid").on( 'click', event => 
+		var showDetections = true;
+		var detections = [new Detection(new Box(0.25,0.25,0.75,0.78),0.6,'bird')]
+		const overlay = new VideoOverlay(video[0],videoOverlayCanvas[0]);
+		var refreshOverlay = () => overlay.render(showGrid, showDetections, detections);
+
+		headerCamera.on('click', () => {window.location = linkHeaderCamera;})
+		headerBrowser.on('click', () => {window.location = linkHeaderBrowser;})
+		footerGrid.on( 'click', event => 
 		{
 			showGrid = !showGrid; 
 			$(event.target).html(showGrid ? '🟦': '#️⃣' ); 
+			refreshOverlay();
 		} );
-		
-		var showDetections = true;
-		$("#footerDetections").on( 'click', event => 
+		footerDetections.on( 'click', event => 
 		{
 			showDetections = !showDetections; 
 			$(event.target).html(showDetections ? '🕶️' : '👓' );
+			refreshOverlay();
 		} );
-		
-		$("#footerFullscreen").on( 'click', event => 
+		footerFullscreen.on( 'click', event => 
 		{
-			$('video')[0].webkitRequestFullscreen();
+			$("#videoLive")[0].webkitRequestFullscreen();
 		} );
+		window.onresize = refreshOverlay
+    	window.onorientationchange = refreshOverlay
+
+		videoSource.attr('src',videoLink)
+		video[0].load();
+		refreshOverlay();
 	}
 	</script>
 </body>

@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css" /> 
-	<link rel="stylesheet" href="checkboxStyle.css" /> 
-	<link rel="stylesheet" href="videoBrowserStyle.css" /> 
-	<script src="jquery-3.7.1.min.js"></script>
+	<title>Video Browser</title>
+    <link rel="stylesheet" href="css/style.css" /> 
+	<link rel="stylesheet" href="css/checkboxStyle.css" /> 
+	<link rel="stylesheet" href="css/videoBrowserStyle.css" /> 
+	<script src="js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 	<div class="wrapper">
 	  <div class="header">
-		<div class="headerItem clickable" onclick="location.href='Test.html';">📷</div>
-		<div class="headerItem clickable" onclick="location.href='TestBrowse.html';">📂</div>
+		<div class="headerItem clickable" id="headerCamera">📷</div>
+		<div class="headerItem clickable" id="headerBrowser">📂</div>
 	  </div>
 	  <div class="contentContainer" style="overflow-y:auto;">
 			<div class="videoListEntry" id="entry1">
 				<div class="thumbnailContainer">
-					<a href="video.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
+					<a href="TestWatch.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
 				</div>
 				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry1"/>
 				<div class="videoListEntryTextContainer">
@@ -25,7 +26,7 @@
 			</div>
 			<div class="videoListEntry" id="entry2">
 				<div class="thumbnailContainer">
-					<a href="video.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
+					<a href="TestWatch.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
 				</div>
 				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry2"/>
 				<div class="videoListEntryTextContainer">
@@ -34,7 +35,7 @@
 			</div>
 			<div class="videoListEntry" id="entry3">
 				<div class="thumbnailContainer">
-					<a href="video.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
+					<a href="TestWatch.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
 				</div>
 				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry3"/>
 				<div class="videoListEntryTextContainer">
@@ -43,7 +44,7 @@
 			</div>
 			<div class="videoListEntry" id="entry4">
 				<div class="thumbnailContainer">
-					<a href="video.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
+					<a href="TestWatch.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
 				</div>
 				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry4"/>
 				<div class="videoListEntryTextContainer">
@@ -53,29 +54,60 @@
 	  </div>
 	  <div class="footer">
 		<div class="footerItem clickable" id="footerLeft">⬅️</div>
-		<div class="footerItem clickable" id="footerTrash" style="display:none;">🗑️</div>
-		<div class="footerItem rotatingItem" id="footerDate">23.3.2024</div>
-		<div class="footerItem clickable" id="footerEndSelection" style="display:none;">↩️</div>
+		<div class="footerItem clickable" id="footerTrash">🗑️</div>
+		<div class="footerItem rotatingItem" id="footerDate"></div>
+		<div class="footerItem clickable" id="footerEndSelection">↩️</div>
 		<div class="footerItem clickable" id="footerRight">➡️</div>
 	  </div>
 	</div>
 	<script>
 	window.onload = function()
 	{
+		// Injection Parameters
+		var date = '23.3.2024'
+		var linkRight = 'TestBrowse.html';
+		var linkLeft = 'xxx';
+		// Do not forget to inject video list items
+		
+		// Links
+		var linkHeaderCamera = 'Test.html';
+		var linkHeaderBrowser = 'TestBrowse.html';
+		// Do not forget css and js links
+
+		// Html Elements
+		var videoEntries = $(".videoListEntry");
+		var footerLeft = $('#footerLeft');
+		var footerRight = $('#footerRight');
+		var footerTrash = $('#footerTrash');
+		var footerEndSelection = $('#footerEndSelection');
+		var footerDate = $('#footerDate');
+		var headerCamera = $('#headerCamera');
+		var headerBrowser = $('#headerBrowser');
+
+		// Variables
 		var selectionIsActive = false;
 		var selectedEntries = [];
-		var videoEntries = $(".videoListEntry");
-		var leftButton = $("#footerLeft");
-		var rightButton = $("#footerRight");
-		var endSelectionButton = $("#footerEndSelection");
-		var trashButton = $("#footerTrash");
+		var checkBoxes = videoEntries.children('input:checkbox');
+
+		footerDate.html(date);
+		headerCamera.on('click', () => {window.location = linkHeaderCamera;})
+		headerBrowser.on('click', () => {window.location = linkHeaderBrowser;})
+
+		if(linkLeft.length == 0){footerLeft.hide();}
+		footerLeft.on('click', () => {window.location = linkLeft;})
+
+		if(linkRight.length == 0){footerRight.hide();}
+		footerRight.on('click', () => {window.location = linkRight;})
+
+		footerEndSelection.hide();
+		footerTrash.hide();
 		var startSelection = () =>
 		{
 			selectionIsActive = true;
-			leftButton.hide();
+			footerLeft.hide();
 			rightButton.hide();
-			endSelectionButton.show();
-			trashButton.show();
+			footerEndSelection.show();
+			footerTrash.show();
 		}
 		var endSelection = () =>
 		{
@@ -83,12 +115,12 @@
 			selectedEntries.forEach( element => 
 			{element.prop('checked',false);} );
 			selectedEntries = [];
-			leftButton.show();
-			rightButton.show();
-			endSelectionButton.hide();
-			trashButton.hide();
+			footerLeft.show();
+			footerRight.show();
+			footerEndSelection.hide();
+			footerTrash.hide();
 		}
-		var checkBoxes = videoEntries.children('input:checkbox');
+		
 		checkBoxes.on('change', event =>
 		{
 			let checkBox = $(event.target);
@@ -110,8 +142,17 @@
 				}
 			}
 		});
-		endSelectionButton.on('click', () => endSelection() );
-		trashButton.on('click', x => alert('Do you want to delete ' + selectedEntries.length + ' clips?'));
+		footerEndSelection.on('click', () => endSelection() );
+		footerTrash.on('click', x => {
+			let isOk = confirm('Do you want to delete the ' + selectedEntries.length + ' selected clips?')
+			if (isOk)
+			{
+				// To Do send post
+				selectedEntries.forEach( x => x.parent().remove() );
+				selectedEntries = [];
+				endSelection();
+			}
+		} );
 		
 	}
 	</script>
