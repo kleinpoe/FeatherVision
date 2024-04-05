@@ -12,10 +12,12 @@ from Infrastructure.NetworkChecker import NetworkChecker
 
 @dataclass
 class PerformanceInfo:
-    CpuUsage: float
+    CpuUsage: list[float]
     MemoryUsage: float
     HddUsage: float
     CpuTemperature: float
+    MegaBytesReceived: float
+    MegaBytesSent: float
 
 
 class CancellationToken:
@@ -44,7 +46,7 @@ class PerformanceMonitor:
             while True:
                 info = PerformanceMonitor.GetPerformanceInfo()
                 internetAvailableText = "Connected to internet" if self.myNetworkChecker.InternetAvailable() else "Disconnected from internet"
-                log = f'CPU={info.CpuUsage:3.1f}%,{info.CpuTemperature:3.1f}°C RAM={info.MemoryUsage:3.1f}% HDD={info.HddUsage:3.1f}%'
+                log = f'CPU={info.CpuUsage}%,{info.CpuTemperature:3.1f}°C RAM={info.MemoryUsage:3.1f}% HDD={info.HddUsage:3.1f}% Network=[sent:{info.MegaBytesSent:.1f}MB,received={info.MegaBytesReceived:.1f}MB]'
                 self.myLogger.info(f'{log} {internetAvailableText}')
                 time.sleep(self.myConfig.Logging.PerformanceMonitorLoggingInterval.total_seconds())
                 if self.myCancellationToken.CancellationRequested:
@@ -66,11 +68,13 @@ class PerformanceMonitor:
     
     @classmethod
     def GetPerformanceInfo(cl):
-        CpuUsage = psutil.cpu_percent()
+        CpuUsage = psutil.cpu_percent(percpu=True)
         MemUsage = psutil.virtual_memory().percent
         HddUsage = psutil.disk_usage('/').percent
         CpuTemp = cl.GetCpuTemperature()
-        return PerformanceInfo(CpuUsage, MemUsage, HddUsage, CpuTemp)
+        MegaBytesReceived = psutil.net_io_counters().bytes_recv / 1E6
+        MegaBytesSent = psutil.net_io_counters().bytes_sent / 1E6
+        return PerformanceInfo(CpuUsage, MemUsage, HddUsage, CpuTemp, MegaBytesReceived, MegaBytesSent)
 
     @classmethod
     def HardwareSituationIsCritical(cl, performanceInfo: PerformanceInfo) -> bool:

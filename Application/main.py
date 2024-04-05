@@ -65,6 +65,7 @@ frameAnalyzer = FrameAnalyzer(detector,camera, detectionBroadcaster,detectionHis
 
 
 try:
+    performanceMonitor.Start()
     camera.Start()
     frameAnalyzer.Start()
     webServer.Start()
@@ -75,4 +76,5 @@ finally:
     frameAnalyzer.Stop()
     camera.Stop()
     webServer.Stop()
+    performanceMonitor.Stop()
     logger.info("Shutdown successful, exiting application.")

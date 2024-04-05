@@ -22,7 +22,9 @@ class Config:
             self.Directory: str = os.path.join(storageConfig.ApplicationDataDirectory, 'WebInterfaceData') # The directory containing all the html files of the web interface
             self.StaticDirectory: str = os.path.join(self.Directory, 'static')
             self.DefaultThumbnail = os.path.join(self.Directory, 'DefaultThumbnail.jpg')    
-            self.IndexHtml = os.path.join(self.Directory, 'index.html')    
+            self.IndexHtml = os.path.join(self.Directory, 'stream.html')    
+            self.WatchClipHtml = os.path.join(self.Directory, 'watch.html')    
+            self.BrowseClipsHtml = os.path.join(self.Directory, 'browse.html')    
     
     class WebInterfaceConfig:
         def __init__(self, storageConfig: 'Config.StorageConfig', runtimeConfig: RuntimeConfig):
@@ -35,7 +37,7 @@ class Config:
             self.LogToFile = True
             self.MaximumLogBytes = 2000000
             self.LogBackupFiles = 5
-            self.PerformanceMonitorLoggingInterval = timedelta(minutes=10)
+            self.PerformanceMonitorLoggingInterval = timedelta(seconds=10)
             self.LogLevel = logging.DEBUG
             
     class CameraConfig:

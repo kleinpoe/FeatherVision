@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Live Video</title>
+    <link rel="stylesheet" href="{{ static_url('css/style.css') }}" /> 
+	<link rel="stylesheet" href="{{ static_url('css/videoStyle.css') }}" /> 
+	<script src="{{ static_url('js/jquery-3.7.1.min.js') }}"></script>
+	<script src="{{ static_url('js/videoOverlay.js') }}"></script>
+	<script src="{{ static_url('js/jmuxer.min.js') }}"></script>
+</head>
+<body>
+	<div class="wrapper">
+	  <div class="header">
+		<div class="headerItem clickable" id="headerCamera">📷</div>
+		<div class="headerItem clickable" id="headerBrowser">📂</div>
+	  </div>
+	  <div class="contentContainer">
+			<canvas class="contentMaxScaling videoOverlay" id="videoOverlayCanvas"></canvas>
+			<video class="contentMaxScaling videoHiddenControls" id="videoLive" muted autoplay></video>
+	  </div>
+	  <div class="footer">
+		<div class="footerItem clickable" id="footerGrid">#️⃣</div>
+		<div class="footerItem clickable" id="footerDetections">🕶️</div>
+		<div class="footerItem clickable" id="footerFullscreen">⛶</div>
+	  </div>
+	</div>
+	<script>
+	window.onload = function()
+	{
+		// Injection Parameters
+		var ip = "{{ ip }}";;
+		var port = "{{ port }}";
+		var fps = {{fps}};
+
+		// Links
+		var linkHeaderCamera = 'stream.html';
+		var linkHeaderBrowser = 'browse.html';
+		// Do not forget css and js links
+		
+		// Html Elements
+		var headerCamera = $('#headerCamera');
+		var headerBrowser = $('#headerBrowser');
+		var videoSource = $('#videoSource');
+		var footerGrid = $("#footerGrid");
+		var footerDetections = $("#footerDetections");
+		var footerFullscreen = $("#footerFullscreen");
+		var video = $('#videoLive');
+		var videoOverlayCanvas = $('#videoOverlayCanvas');
+
+		// Variables
+		var showGrid = false;
+		var showDetections = true;
+		var jmuxer = new JMuxer({node: 'videoLive',mode: 'video',flushingTime: 0,fps: fps, debug: false});
+		var webSocket = new WebSocket(`ws://${ip}:${port}/ws/`);
+		webSocket.binaryType = 'arraybuffer';
+		var detections = [];
+		const overlay = new VideoOverlay(video[0],videoOverlayCanvas[0]);
+		var refreshOverlay = () => overlay.render(showGrid, showDetections, detections);
+
+		headerCamera.on('click', () => {window.location = linkHeaderCamera;})
+		headerBrowser.on('click', () => {window.location = linkHeaderBrowser;})
+		footerGrid.on( 'click', event => 
+		{
+			showGrid = !showGrid; 
+			$(event.target).html(showGrid ? '🟦': '#️⃣' ); 
+			refreshOverlay();
+		} );
+		footerDetections.on( 'click', event => 
+		{
+			showDetections = !showDetections; 
+			$(event.target).html(showDetections ? '🕶️' : '👓' );
+			refreshOverlay();
+		} );
+		footerFullscreen.on( 'click', event => video[0].webkitRequestFullscreen());
+		window.onresize = refreshOverlay
+    	window.onorientationchange = refreshOverlay
+
+		webSocket.addEventListener('message',
+		function(event)
+		{
+			var view = new DataView(event.data)
+			var numberOfDetections = view.getInt32(0, true);
+			var detectionBytes = 32;
+			var detectionLengthBytes = 4;
+			var frameOffset = detectionBytes * numberOfDetections + detectionLengthBytes;
+			var isKeyFrame = view.getInt8(frameOffset) > 0;
+			var timeStamp = view.getBigUint64(frameOffset+1, true);
+			var timestampBytes = new Uint8Array(event.data,frameOffset+1,8);
+			var frameData = new Uint8Array(event.data,frameOffset+9);
+
+			if (!document.hidden)
+			{
+				jmuxer.feed({video: frameData});	
+			}
+
+			function ParseDetection(dataView, offset)
+			{
+				let boxTop = dataView.getFloat32(offset,true);
+				let boxLeft = dataView.getFloat32(offset+4,true);
+				let boxBottom = dataView.getFloat32(offset+8,true);
+				let boxRight = dataView.getFloat32(offset+12,true);
+				let score = dataView.getFloat32(offset+16,true);
+				let decoder = new TextDecoder("utf-8");
+				let label = decoder.decode(new Uint8Array(event.data,offset+20,12));
+				let detection = new Detection( new Box(boxTop,boxLeft,boxBottom,boxRight), score, label );
+				return detection;
+			}
+
+			detections = []
+			for (let i = 0; i < numberOfDetections; i++)
+			{
+				let offset = detectionLengthBytes+i*detectionBytes;
+				let detection = ParseDetection(view, offset);
+				detections.push(detection)
+			}
+
+			//console.log("[DEBUG] isKeyFrame=" + isKeyFrame + " NumberOfDetections=" + numberOfDetections + " Timestamp=" + timeStamp)
+			webSocket.send( timestampBytes );
+			
+			refreshOverlay();
+		});
+
+		refreshOverlay();
+	}
+	</script>
+</body>
+</html>
