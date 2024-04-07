@@ -47,4 +47,9 @@ class ClipSaver:
         highResResult = self.highResClipSaver.Save(timestamp,detectionHistoryEntries[0].Timestamp, detectionHistoryEntries[-1].Timestamp )
         thumbnailPath = self.thumbnailSaver.Save(timestamp, detectionHistoryEntries)
         detections = [DetectionsInClip(x.Timestamp-detectionHistoryEntries[0].Timestamp,x.Detections) for x in detectionHistoryEntries]
-        return ClipSaver.Result(thumbnailPath, highResResult.FilePath, annotatedPath, highResResult.Duration, timestamp,detections)
+        return ClipSaver.Result(ThumbnailFilePath=thumbnailPath, 
+                                HighResClipFilePath=highResResult.FilePath, 
+                                AnnotatedClipFilePath=annotatedPath, 
+                                ClipDuration=highResResult.Duration, 
+                                DateOfRecording=timestamp,
+                                Detections=detections)

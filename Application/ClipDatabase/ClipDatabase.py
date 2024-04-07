@@ -76,6 +76,14 @@ class ClipDatabase:
         with self.lock:
             entries = [x for x in self.memoryStorage.values() if x.DateOfRecording.date() == date.date()]
         return entries
+    
+    def GetPreviousAndNextDate(self, datetime: datetime)->tuple[Optional[datetime],Optional[datetime]]:
+        date =  datetime.date()
+        # Todo optimize
+        with self.lock:
+            dateInFuture = next((x for x in self.memoryStorage.values() if x.DateOfRecording.date() > date), None)
+            dateInPast = next((x for x in reversed(self.memoryStorage.values()) if x.DateOfRecording.date() < date), None)
+        return dateInPast.DateOfRecording.date() if dateInPast is not None else None,dateInFuture.DateOfRecording.date() if dateInFuture is not None else None
 
     @dataclass
     class Entry:

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
 	<title>Video Browser</title>
-    <link rel="stylesheet" href="css/style.css" /> 
-	<link rel="stylesheet" href="css/checkboxStyle.css" /> 
-	<link rel="stylesheet" href="css/videoBrowserStyle.css" /> 
-	<script src="js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="{{ static_url('css/style.css') }}" /> 
+	<link rel="stylesheet" href="{{ static_url('css/checkboxStyle.css') }}" /> 
+	<link rel="stylesheet" href="{{ static_url('css/videoBrowserStyle.css') }}" /> 
+	<script src="{{ static_url('js/jquery-3.7.1.min.js') }}"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -15,42 +15,19 @@
 		<div class="headerItem clickable" id="headerBrowser">📂</div>
 	  </div>
 	  <div class="contentContainer" style="overflow-y:auto;">
-			<div class="videoListEntry" id="entry1">
+
+		{% for entry in payload.videoEntries %}
+			<div class="videoListEntry" id="entry_{{entry.id}}">
 				<div class="thumbnailContainer">
-					<a href="TestWatch.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
+					<a href="{{entry.videoLink}}"><img class="thumbnail" src="{{entry.thumbnailLink}}"/></a>
 				</div>
-				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry1"/>
+				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry_{{entry.id}}"/>
 				<div class="videoListEntryTextContainer">
-					<p>14:00 3.0s</p>
+					<p>{{entry.time}} {{entry.duration}}s</p>
 				</div>
 			</div>
-			<div class="videoListEntry" id="entry2">
-				<div class="thumbnailContainer">
-					<a href="TestWatch.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
-				</div>
-				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry2"/>
-				<div class="videoListEntryTextContainer">
-					<p>14:00 3.0s</p>
-				</div>
-			</div>
-			<div class="videoListEntry" id="entry3">
-				<div class="thumbnailContainer">
-					<a href="TestWatch.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
-				</div>
-				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry3"/>
-				<div class="videoListEntryTextContainer">
-					<p>14:00 3.0s</p>
-				</div>
-			</div>
-			<div class="videoListEntry" id="entry4">
-				<div class="thumbnailContainer">
-					<a href="TestWatch.html"><img class="thumbnail" src="thumbnail.jpg"/></a>
-				</div>
-				<input type="checkbox" class="videoListEntrySelection" id="checkboxEntry4"/>
-				<div class="videoListEntryTextContainer">
-					<p>14:00 3.0s</p>
-				</div>
-			</div>
+		{% end %}
+
 	  </div>
 	  <div class="footer">
 		<div class="footerItem clickable" id="footerLeft">⬅️</div>
@@ -64,14 +41,14 @@
 	window.onload = function()
 	{
 		// Injection Parameters
-		var date = '23.3.2024'
-		var linkRight = 'TestBrowse.html';
-		var linkLeft = 'xxx';
+		var date = '{{ payload.date }}'
+		var linkRight = '{{ payload.linkRight }}';
+		var linkLeft = '{{ payload.linkLeft }}';
 		// Do not forget to inject video list items
 		
 		// Links
-		var linkHeaderCamera = 'Test.html';
-		var linkHeaderBrowser = 'TestBrowse.html';
+		var linkHeaderCamera = 'stream.html';
+		var linkHeaderBrowser = 'browse/today';
 		// Do not forget css and js links
 
 		// Html Elements
