@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
 	<title>Live Video</title>
+	<meta name="viewport" content="width=device-width, maximum-scale=5.0, initial-scale=1.0, user-scalable=yes">
     <link rel="stylesheet" href="{{ static_url('css/style.css') }}" /> 
 	<link rel="stylesheet" href="{{ static_url('css/videoStyle.css') }}" /> 
 	<script src="{{ static_url('js/jquery-3.7.1.min.js') }}"></script>
@@ -15,7 +16,7 @@
 		<div class="headerItem clickable" id="headerCamera">📷</div>
 		<div class="headerItem clickable" id="headerBrowser">📂</div>
 	  </div>
-	  <div class="contentContainer">
+	  <div class="videoContentContainer contentContainer">
 			<canvas class="contentMaxScaling videoOverlay" id="videoOverlayCanvas"></canvas>
 			<video class="contentMaxScaling videoHiddenControls" id="videoLive" muted autoplay></video>
 	  </div>
@@ -34,8 +35,8 @@
 		var fps = {{fps}};
 
 		// Links
-		var linkHeaderCamera = 'stream.html';
-		var linkHeaderBrowser = 'browse/today';
+		var linkHeaderCamera = '/stream';
+		var linkHeaderBrowser = '/browse/today';
 		// Do not forget css and js links
 		
 		// Html Elements
@@ -102,7 +103,7 @@
 				let boxRight = dataView.getFloat32(offset+12,true);
 				let score = dataView.getFloat32(offset+16,true);
 				let decoder = new TextDecoder("utf-8");
-				let label = decoder.decode(new Uint8Array(event.data,offset+20,12));
+				let label = decoder.decode(new Uint8Array(event.data,offset+20,12)).trim();
 				let detection = new Detection( new Box(boxTop,boxLeft,boxBottom,boxRight), score, label );
 				return detection;
 			}

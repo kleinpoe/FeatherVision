@@ -4,6 +4,8 @@ html, body
   margin: 0;
   overflow: hidden;
   font-family: Arial, sans-serif;
+
+  max-height: 999999px;
 }
 .wrapper 
 {
@@ -25,14 +27,24 @@ html, body
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 2.5em;
+	font-size: 1.5rem;
 	color:white;
 	text-align: center;
 }
 
-.footerSmallText
+.footerText
 {
 	font-size: 1.5rem;
+}
+
+.footerSmallText
+{
+	font-size: 1rem;
+}
+
+.hidden
+{
+	visibility:hidden;
 }
 
 @media(hover: hover) and (pointer: fine) 
@@ -48,6 +60,10 @@ html, body
 {
 	background: #0F0F0F;
 	overflow:hidden;
+}
+
+.videoContentContainer
+{
 	display: grid;
 }
 

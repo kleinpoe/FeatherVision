@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 	<title>Video Browser</title>
     <link rel="stylesheet" href="{{ static_url('css/style.css') }}" /> 
 	<link rel="stylesheet" href="{{ static_url('css/checkboxStyle.css') }}" /> 
@@ -30,11 +31,11 @@
 
 	  </div>
 	  <div class="footer">
-		<div class="footerItem clickable" id="footerLeft">⬅️</div>
-		<div class="footerItem clickable" id="footerTrash">🗑️</div>
-		<div class="footerItem rotatingItem" id="footerDate"></div>
-		<div class="footerItem clickable" id="footerEndSelection">↩️</div>
-		<div class="footerItem clickable" id="footerRight">➡️</div>
+		<div class="footerItem clickable hidden" id="footerLeft">⬅️</div>
+		<div class="footerItem clickable hidden" id="footerTrash">🗑️</div>
+		<div class="footerItem rotatingItem footerText" id="footerDate"></div>
+		<div class="footerItem clickable hidden" id="footerEndSelection">↩️</div>
+		<div class="footerItem clickable hidden" id="footerRight">➡️</div>
 	  </div>
 	</div>
 	<script>
@@ -47,8 +48,8 @@
 		// Do not forget to inject video list items
 		
 		// Links
-		var linkHeaderCamera = 'stream.html';
-		var linkHeaderBrowser = 'browse/today';
+		var linkHeaderCamera = '/stream';
+		var linkHeaderBrowser = '/browse/today';
 		// Do not forget css and js links
 
 		// Html Elements
@@ -70,21 +71,17 @@
 		headerCamera.on('click', () => {window.location = linkHeaderCamera;})
 		headerBrowser.on('click', () => {window.location = linkHeaderBrowser;})
 
-		if(linkLeft.length == 0){footerLeft.hide();}
+		if(linkLeft.length > 0){footerLeft.css('visibility','visible')}
 		footerLeft.on('click', () => {window.location = linkLeft;})
 
-		if(linkRight.length == 0){footerRight.hide();}
+		if(linkRight.length > 0){footerRight.css('visibility','visible');}
 		footerRight.on('click', () => {window.location = linkRight;})
 
-		footerEndSelection.hide();
-		footerTrash.hide();
 		var startSelection = () =>
 		{
 			selectionIsActive = true;
-			footerLeft.hide();
-			rightButton.hide();
-			footerEndSelection.show();
-			footerTrash.show();
+			footerEndSelection.css('visibility','visible');
+			footerTrash.css('visibility','visible');
 		}
 		var endSelection = () =>
 		{
@@ -92,10 +89,8 @@
 			selectedEntries.forEach( element => 
 			{element.prop('checked',false);} );
 			selectedEntries = [];
-			footerLeft.show();
-			footerRight.show();
-			footerEndSelection.hide();
-			footerTrash.hide();
+			footerEndSelection.css('visibility','hidden');
+			footerTrash.css('visibility','hidden');
 		}
 		
 		checkBoxes.on('change', event =>
@@ -125,6 +120,22 @@
 			if (isOk)
 			{
 				// To Do send post
+				clipIds = selectedEntries.map(x => x.attr('id').split('_')[1]);
+				let data = { "videosIdsToDelete": clipIds };
+				fetch("/deleteclips", {
+					method: "POST",
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(data)
+				}).then(res =>
+				{
+					console.log("Request complete! response:", res);
+					if (res['status'] == 200)
+					{
+						//location.reload();
+					}
+					else { alert("Could not delete video Error:" + res['status']); }
+				});
+
 				selectedEntries.forEach( x => x.parent().remove() );
 				selectedEntries = [];
 				endSelection();

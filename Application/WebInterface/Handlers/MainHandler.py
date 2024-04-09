@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 import io
+import json
 import tornado.web
 import os
 
@@ -25,6 +26,15 @@ class WatchVideoHandler(RequestHandlerBase):
         print(f'Requested {entry} | < {next} | > {prev}')
         
         
+class DeleteClipsHandler(RequestHandlerBase):
+    def post(self):
+        data = json.loads(self.request.body)
+        videoIdsToDelete = data['videosIdsToDelete']
+        self.logger.info(f'Request from IP="{self.request.remote_ip}" to delte videos with ID={videoIdsToDelete}".')
+        database = self.clipDatabase
+        for id in videoIdsToDelete:
+            database.Remove(id)
+    
 class BrowseVideoHandler(RequestHandlerBase):
 
     def get(self, requestedText:str):
@@ -78,7 +88,7 @@ class BrowseVideoHandler(RequestHandlerBase):
         
 class ThumbnailHandler(RequestHandlerBase):
     def get(self, requestedId:str):
-        self.logger.info(f'Request from IP="{self.request.remote_ip}" for thumbnail of clip with id "{requestedId}".')
+        #self.logger.info(f'Request from IP="{self.request.remote_ip}" for thumbnail of clip with id "{requestedId}".')
         
         database = self.clipDatabase
         entry = database.Get(requestedId)
@@ -86,7 +96,8 @@ class ThumbnailHandler(RequestHandlerBase):
             self.send_error(404)
             return
         
-        img = io.open(entry.ThumbnailFilePath, "rb").read()
+        path = entry.ThumbnailFilePath
+        img = io.open(path, "rb").read()
         self.set_header('Content-type', 'image/jpg')
         self.set_header('Content-length', len(img))
         self.write(img)

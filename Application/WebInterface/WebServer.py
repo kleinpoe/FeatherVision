@@ -6,7 +6,7 @@ import tornado.web, tornado.ioloop, tornado.websocket
 from Infrastructure.Clock import Clock
 from ClipDatabase.ClipDatabase import ClipDatabase
 from WebInterface.StreamingHandlerManager import StreamingHandlerManager
-from WebInterface.Handlers.MainHandler import BrowseVideoHandler, MainHandler, ThumbnailHandler, WatchVideoHandler
+from WebInterface.Handlers.MainHandler import BrowseVideoHandler, DeleteClipsHandler, MainHandler, ThumbnailHandler, WatchVideoHandler
 from WebInterface.Handlers.StreamingHandler import StreamingHandler
 from Config.Config import Config  
 
@@ -39,10 +39,12 @@ class WebServer:
 
         requestHandlers = [(r"/ws/", StreamingHandler),
             (r"/", MainHandler),
+            (r"/stream", MainHandler),
             (r"/index.html", MainHandler),
             (r"/watch/(.+)", WatchVideoHandler),
             (r"/browse/(.+)", BrowseVideoHandler),
             (r"/thumbnails/(.+)", ThumbnailHandler),
+            (r"/deleteclips", DeleteClipsHandler),
             (r"/static/(.*)", tornado.web.StaticFileHandler, dict(path=settings['static_path']))]
         
         self.application = tornado.web.Application(requestHandlers,**settings)

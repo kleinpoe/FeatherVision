@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from logging import Logger
+import os
 from threading import Lock
 from typing import Optional
 import uuid
@@ -44,9 +45,12 @@ class ClipDatabase:
     def Remove(self, id:str) -> None:
         # Todo delete files
         with self.lock:
-            self.memoryStorage.pop(id)
+            removedItem = self.memoryStorage.pop(id)
             query = Query()
             self.database.remove(query.Id == id)
+        os.remove(removedItem.AnnotatedClipFilePath)
+        os.remove(removedItem.ThumbnailFilePath)
+        os.remove(removedItem.HighResClipFilePath)
             
     def RemoveOlderThan(self, datetime:datetime) -> None:
         with self.lock:
@@ -100,7 +104,7 @@ class ClipDatabase:
                                        HighResClipDuration=clipSaverResult.ClipDuration,
                                        HighResClipFilePath=clipSaverResult.HighResClipFilePath,
                                        AnnotatedClipFilePath=clipSaverResult.AnnotatedClipFilePath,
-                                       ThumbnailFilePath=clipSaverResult.AnnotatedClipFilePath,
+                                       ThumbnailFilePath=clipSaverResult.ThumbnailFilePath,
                                        Id=identifier)
             return entry
         
