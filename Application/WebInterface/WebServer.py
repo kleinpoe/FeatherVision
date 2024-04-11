@@ -3,10 +3,15 @@ from logging import Logger
 from typing import Callable
 import tornado.web, tornado.ioloop, tornado.websocket
 
+from WebInterface.Handlers.BrowseVideoHandler import BrowseVideoHandler
+from WebInterface.Handlers.ClipHandler import ClipHandler
+from WebInterface.Handlers.DeleteClipsHandler import DeleteClipsHandler
+from WebInterface.Handlers.ThumbnailHandler import ThumbnailHandler
+from WebInterface.Handlers.WatchVideoHandler import WatchVideoHandler
 from Infrastructure.Clock import Clock
 from ClipDatabase.ClipDatabase import ClipDatabase
 from WebInterface.StreamingHandlerManager import StreamingHandlerManager
-from WebInterface.Handlers.MainHandler import BrowseVideoHandler, DeleteClipsHandler, MainHandler, ThumbnailHandler, WatchVideoHandler
+from WebInterface.Handlers.MainHandler import MainHandler
 from WebInterface.Handlers.StreamingHandler import StreamingHandler
 from Config.Config import Config  
 
@@ -42,6 +47,7 @@ class WebServer:
             (r"/stream", MainHandler),
             (r"/index.html", MainHandler),
             (r"/watch/(.+)", WatchVideoHandler),
+            (r"/clip/(.+)", ClipHandler),
             (r"/browse/(.+)", BrowseVideoHandler),
             (r"/thumbnails/(.+)", ThumbnailHandler),
             (r"/deleteclips", DeleteClipsHandler),

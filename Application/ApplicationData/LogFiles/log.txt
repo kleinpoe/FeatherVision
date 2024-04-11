@@ -3275,3 +3275,236 @@ FileNotFoundError: [Errno 2] No such file or directory: 'Application/Webinterfac
 2024-04-09 20:41:43 INFO     Camera                              Shutting down Camera.
 2024-04-09 20:41:43 INFO     WebServer                           Shutting down Web Server.
 2024-04-09 20:41:43 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 20:52:13 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 20:52:13 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 20:52:14 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 20:52:14 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 20:52:14 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,35.3°C RAM=14.5% HDD=1.3% Network=[sent:933.8MB,received=281.9MB] Connected to internet
+2024-04-11 20:52:16 WARNING  web                                 404 GET /favicon.ico (2003:cf:bf0f:f800:160:ccd4:2d50:75a7) 2.92ms
+2024-04-11 20:52:16 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-04-11 20:52:18 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="today".
+2024-04-11 20:52:18 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.2" was closed.
+2024-04-11 20:52:21 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="24-04-09".
+2024-04-11 20:52:25 INFO     PerformanceMonitor                  CPU=[68.6, 76.7, 72.5, 71.2]%,40.2°C RAM=16.8% HDD=1.3% Network=[sent:935.5MB,received=282.1MB] Connected to internet
+2024-04-11 20:52:25 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 20:52:25 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 20:52:25 WARNING  MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/3ed16e43-90db-4561-94bb-57be5a468493". Id was not found!
+2024-04-11 20:52:35 INFO     PerformanceMonitor                  CPU=[72.9, 75.0, 71.5, 82.2]%,39.7°C RAM=17.4% HDD=1.3% Network=[sent:935.6MB,received=282.1MB] Connected to internet
+2024-04-11 20:52:45 INFO     PerformanceMonitor                  CPU=[76.9, 71.9, 76.0, 75.0]%,41.4°C RAM=17.8% HDD=1.3% Network=[sent:935.6MB,received=282.1MB] Connected to internet
+2024-04-11 20:52:56 INFO     PerformanceMonitor                  CPU=[85.6, 73.3, 75.5, 72.8]%,41.4°C RAM=18.7% HDD=1.3% Network=[sent:935.6MB,received=282.2MB] Connected to internet
+2024-04-11 20:52:58 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="6cb2ec13-0f73-45b9-b18a-485842c25287".
+2024-04-11 20:52:58 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/6cb2ec13-0f73-45b9-b18a-485842c25287".
+2024-04-11 20:52:58 WARNING  MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/6cb2ec13-0f73-45b9-b18a-485842c25287". Id was not found!
+2024-04-11 20:53:05 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 20:53:05 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 20:53:05 WARNING  MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/3ed16e43-90db-4561-94bb-57be5a468493". Id was not found!
+2024-04-11 20:53:06 INFO     PerformanceMonitor                  CPU=[77.6, 75.0, 78.6, 77.9]%,41.4°C RAM=19.5% HDD=1.3% Network=[sent:935.6MB,received=282.2MB] Connected to internet
+2024-04-11 20:53:07 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-11 20:53:07 INFO     main                                Shutting down threads.
+2024-04-11 20:53:07 INFO     Camera                              Shutting down Camera.
+2024-04-11 20:53:08 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 20:53:08 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 20:56:28 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 20:56:28 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 20:56:28 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 20:56:28 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 20:56:28 INFO     main                                Shutting down threads.
+2024-04-11 20:56:28 INFO     Camera                              Shutting down Camera.
+2024-04-11 20:56:28 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,35.3°C RAM=14.8% HDD=1.3% Network=[sent:936.8MB,received=283.4MB] Connected to internet
+2024-04-11 20:56:29 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 20:56:29 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 20:56:41 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 20:56:41 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 20:56:42 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 20:56:42 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 20:56:42 INFO     main                                Shutting down threads.
+2024-04-11 20:56:42 INFO     Camera                              Shutting down Camera.
+2024-04-11 20:56:42 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,35.9°C RAM=14.7% HDD=1.3% Network=[sent:936.9MB,received=283.6MB] Connected to internet
+2024-04-11 20:56:42 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 20:56:42 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 20:56:51 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 20:56:51 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 20:56:51 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 20:56:51 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 20:56:51 INFO     main                                Shutting down threads.
+2024-04-11 20:56:51 INFO     Camera                              Shutting down Camera.
+2024-04-11 20:56:51 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,35.9°C RAM=14.7% HDD=1.3% Network=[sent:937.0MB,received=283.7MB] Connected to internet
+2024-04-11 20:56:52 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 20:56:52 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 20:57:03 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 20:57:03 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 20:57:03 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 20:57:03 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 20:57:03 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,36.4°C RAM=14.7% HDD=1.3% Network=[sent:937.1MB,received=283.8MB] Connected to internet
+2024-04-11 20:57:06 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 20:57:06 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 20:57:06 WARNING  MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/3ed16e43-90db-4561-94bb-57be5a468493". Id was not found!
+2024-04-11 20:57:13 INFO     PerformanceMonitor                  CPU=[66.9, 77.4, 72.4, 72.2]%,41.4°C RAM=17.5% HDD=1.3% Network=[sent:937.2MB,received=283.9MB] Connected to internet
+2024-04-11 20:57:24 INFO     PerformanceMonitor                  CPU=[76.5, 76.3, 74.7, 81.9]%,42.5°C RAM=18.3% HDD=1.3% Network=[sent:937.2MB,received=284.0MB] Connected to internet
+2024-04-11 20:57:34 INFO     PerformanceMonitor                  CPU=[80.2, 82.1, 79.3, 88.9]%,43.5°C RAM=18.9% HDD=1.3% Network=[sent:937.3MB,received=284.1MB] Connected to internet
+2024-04-11 20:57:44 INFO     PerformanceMonitor                  CPU=[79.5, 86.4, 77.7, 81.9]%,42.5°C RAM=20.1% HDD=1.3% Network=[sent:937.4MB,received=284.2MB] Connected to internet
+2024-04-11 20:57:54 INFO     PerformanceMonitor                  CPU=[82.3, 74.7, 78.8, 78.4]%,43.0°C RAM=20.8% HDD=1.3% Network=[sent:937.4MB,received=284.2MB] Connected to internet
+2024-04-11 20:58:04 INFO     PerformanceMonitor                  CPU=[71.6, 76.0, 81.5, 74.4]%,42.5°C RAM=21.0% HDD=1.3% Network=[sent:937.5MB,received=284.3MB] Connected to internet
+2024-04-11 20:58:14 INFO     PerformanceMonitor                  CPU=[82.5, 78.6, 72.6, 78.4]%,44.1°C RAM=21.9% HDD=1.3% Network=[sent:937.5MB,received=284.4MB] Connected to internet
+2024-04-11 20:58:17 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-11 20:58:17 INFO     main                                Shutting down threads.
+2024-04-11 20:58:17 INFO     Camera                              Shutting down Camera.
+2024-04-11 20:58:17 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 20:58:17 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 20:58:18 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 20:58:18 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 20:58:19 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 20:58:19 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 20:58:19 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,39.1°C RAM=14.4% HDD=1.3% Network=[sent:937.6MB,received=284.5MB] Connected to internet
+2024-04-11 20:58:27 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 20:58:27 INFO     MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 20:58:27 WARNING  MainHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/3ed16e43-90db-4561-94bb-57be5a468493". Id was not found!
+2024-04-11 20:58:29 INFO     PerformanceMonitor                  CPU=[71.6, 66.1, 76.2, 71.1]%,43.0°C RAM=17.1% HDD=1.3% Network=[sent:937.6MB,received=284.6MB] Connected to internet
+2024-04-11 20:58:39 INFO     PerformanceMonitor                  CPU=[79.7, 75.2, 72.3, 80.9]%,43.5°C RAM=17.9% HDD=1.3% Network=[sent:937.7MB,received=284.6MB] Connected to internet
+2024-04-11 20:58:49 INFO     PerformanceMonitor                  CPU=[76.6, 78.2, 80.5, 72.5]%,43.5°C RAM=18.8% HDD=1.3% Network=[sent:937.7MB,received=284.6MB] Connected to internet
+2024-04-11 20:58:59 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-11 20:58:59 INFO     main                                Shutting down threads.
+2024-04-11 20:58:59 INFO     Camera                              Shutting down Camera.
+2024-04-11 20:58:59 INFO     PerformanceMonitor                  CPU=[75.6, 75.0, 73.9, 83.1]%,43.5°C RAM=19.6% HDD=1.3% Network=[sent:937.7MB,received=284.7MB] Connected to internet
+2024-04-11 20:59:00 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 20:59:00 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 21:00:29 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 21:00:29 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 21:00:29 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 21:00:29 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 21:00:29 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,37.5°C RAM=20.8% HDD=1.3% Network=[sent:938.8MB,received=285.8MB] Connected to internet
+2024-04-11 21:00:32 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:00:32 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:00:32 WARNING  WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="clip/3ed16e43-90db-4561-94bb-57be5a468493". Id was not found!
+2024-04-11 21:00:38 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-11 21:00:38 INFO     main                                Shutting down threads.
+2024-04-11 21:00:38 INFO     Camera                              Shutting down Camera.
+2024-04-11 21:00:39 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 21:00:39 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 21:01:18 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 21:01:18 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 21:01:18 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 21:01:18 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 21:01:19 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,38.0°C RAM=14.3% HDD=1.3% Network=[sent:939.0MB,received=286.1MB] Connected to internet
+2024-04-11 21:01:24 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:01:24 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:01:24 ERROR    web                                 Uncaught exception GET /clip/3ed16e43-90db-4561-94bb-57be5a468493 (2003:cf:bf0f:f800:160:ccd4:2d50:75a7)
+HTTPServerRequest(protocol='http', host='raspberrypoecam2:8000', method='GET', uri='/clip/3ed16e43-90db-4561-94bb-57be5a468493', version='HTTP/1.1', remote_ip='2003:cf:bf0f:f800:160:ccd4:2d50:75a7')
+Traceback (most recent call last):
+  File "/home/pi/FeatherVision/.venv/lib/python3.11/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/FeatherVision/Application/WebInterface/Handlers/ClipHandler.py", line 15, in get
+    movie = io.open(path, "rb").read()
+            ^^
+NameError: name 'io' is not defined
+2024-04-11 21:01:24 ERROR    web                                 500 GET /clip/3ed16e43-90db-4561-94bb-57be5a468493 (2003:cf:bf0f:f800:160:ccd4:2d50:75a7) 5.09ms
+2024-04-11 21:01:28 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-11 21:01:28 INFO     main                                Shutting down threads.
+2024-04-11 21:01:28 INFO     Camera                              Shutting down Camera.
+2024-04-11 21:01:29 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 21:01:29 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 21:01:37 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 21:01:37 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 21:01:37 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 21:01:37 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 21:01:38 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,39.7°C RAM=14.5% HDD=1.3% Network=[sent:939.2MB,received=286.3MB] Connected to internet
+2024-04-11 21:01:40 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:01:40 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:01:48 INFO     PerformanceMonitor                  CPU=[72.6, 67.0, 67.6, 68.2]%,43.0°C RAM=17.5% HDD=1.3% Network=[sent:947.7MB,received=286.6MB] Connected to internet
+2024-04-11 21:01:48 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="6cb2ec13-0f73-45b9-b18a-485842c25287".
+2024-04-11 21:01:48 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "6cb2ec13-0f73-45b9-b18a-485842c25287".
+2024-04-11 21:01:52 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:01:52 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:01:56 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:01:56 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:01:58 INFO     PerformanceMonitor                  CPU=[72.9, 74.1, 77.8, 75.8]%,42.5°C RAM=18.1% HDD=1.3% Network=[sent:958.3MB,received=287.0MB] Connected to internet
+2024-04-11 21:02:01 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-11 21:02:01 INFO     main                                Shutting down threads.
+2024-04-11 21:02:01 INFO     Camera                              Shutting down Camera.
+2024-04-11 21:02:02 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 21:02:02 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 21:07:11 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 21:07:11 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 21:07:11 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 21:07:11 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 21:07:11 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,35.9°C RAM=15.0% HDD=1.3% Network=[sent:958.8MB,received=287.7MB] Connected to internet
+2024-04-11 21:07:13 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:07:13 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:07:22 INFO     PerformanceMonitor                  CPU=[66.5, 71.9, 70.7, 68.9]%,42.5°C RAM=17.8% HDD=1.3% Network=[sent:958.8MB,received=287.7MB] Connected to internet
+2024-04-11 21:07:32 INFO     PerformanceMonitor                  CPU=[75.3, 77.7, 78.1, 75.1]%,43.0°C RAM=18.2% HDD=1.3% Network=[sent:958.9MB,received=287.8MB] Connected to internet
+2024-04-11 21:07:42 INFO     PerformanceMonitor                  CPU=[78.5, 74.0, 73.0, 75.0]%,43.0°C RAM=19.1% HDD=1.3% Network=[sent:958.9MB,received=287.9MB] Connected to internet
+2024-04-11 21:07:52 INFO     PerformanceMonitor                  CPU=[79.1, 78.5, 82.6, 73.1]%,43.5°C RAM=20.1% HDD=1.3% Network=[sent:959.0MB,received=287.9MB] Connected to internet
+2024-04-11 21:08:02 INFO     PerformanceMonitor                  CPU=[82.3, 76.1, 79.7, 74.1]%,44.1°C RAM=21.2% HDD=1.3% Network=[sent:959.1MB,received=288.0MB] Connected to internet
+2024-04-11 21:08:12 INFO     PerformanceMonitor                  CPU=[77.4, 79.1, 82.5, 85.1]%,43.5°C RAM=22.4% HDD=1.3% Network=[sent:959.2MB,received=288.2MB] Connected to internet
+2024-04-11 21:08:22 INFO     PerformanceMonitor                  CPU=[86.4, 75.1, 75.7, 77.5]%,45.2°C RAM=23.4% HDD=1.3% Network=[sent:959.4MB,received=288.3MB] Connected to internet
+2024-04-11 21:08:33 INFO     PerformanceMonitor                  CPU=[77.7, 81.1, 72.9, 72.7]%,44.1°C RAM=24.3% HDD=1.3% Network=[sent:959.4MB,received=288.4MB] Connected to internet
+2024-04-11 21:08:39 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-11 21:08:39 INFO     main                                Shutting down threads.
+2024-04-11 21:08:39 INFO     Camera                              Shutting down Camera.
+2024-04-11 21:08:40 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 21:08:40 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 21:08:41 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 21:08:41 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 21:08:41 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 21:08:41 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 21:08:41 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,43.0°C RAM=15.7% HDD=1.3% Network=[sent:959.5MB,received=288.5MB] Connected to internet
+2024-04-11 21:08:43 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:08:43 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:08:44 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:08:52 INFO     PerformanceMonitor                  CPU=[67.9, 77.4, 66.6, 70.2]%,44.1°C RAM=18.7% HDD=1.3% Network=[sent:968.0MB,received=288.8MB] Connected to internet
+2024-04-11 21:09:02 INFO     PerformanceMonitor                  CPU=[72.0, 76.3, 79.6, 74.9]%,45.2°C RAM=19.3% HDD=1.3% Network=[sent:968.1MB,received=288.9MB] Connected to internet
+2024-04-11 21:09:12 INFO     PerformanceMonitor                  CPU=[78.0, 79.6, 77.5, 75.3]%,45.8°C RAM=20.2% HDD=1.3% Network=[sent:968.1MB,received=288.9MB] Connected to internet
+2024-04-11 21:09:17 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="today".
+2024-04-11 21:09:20 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="24-04-09".
+2024-04-11 21:09:22 INFO     PerformanceMonitor                  CPU=[74.0, 78.5, 77.4, 68.8]%,45.2°C RAM=21.0% HDD=1.3% Network=[sent:968.1MB,received=289.0MB] Connected to internet
+2024-04-11 21:09:32 INFO     PerformanceMonitor                  CPU=[75.1, 76.3, 76.6, 76.9]%,45.8°C RAM=20.7% HDD=1.3% Network=[sent:968.2MB,received=289.0MB] Connected to internet
+2024-04-11 21:09:43 INFO     PerformanceMonitor                  CPU=[74.7, 72.5, 78.5, 76.5]%,45.8°C RAM=21.5% HDD=1.3% Network=[sent:968.2MB,received=289.1MB] Connected to internet
+2024-04-11 21:09:53 INFO     PerformanceMonitor                  CPU=[77.8, 75.5, 75.5, 77.5]%,45.8°C RAM=22.4% HDD=1.3% Network=[sent:968.2MB,received=289.1MB] Connected to internet
+2024-04-11 21:10:03 INFO     PerformanceMonitor                  CPU=[80.5, 77.1, 77.7, 77.6]%,46.3°C RAM=23.2% HDD=1.3% Network=[sent:968.2MB,received=289.2MB] Connected to internet
+2024-04-11 21:10:07 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-04-11 21:10:14 INFO     PerformanceMonitor                  CPU=[86.0, 80.1, 76.6, 75.4]%,46.9°C RAM=24.1% HDD=1.3% Network=[sent:968.2MB,received=289.2MB] Connected to internet
+2024-04-11 21:10:17 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=41 Duration=0:00:08.630310
+2024-04-11 21:10:17 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:260, Duration:8.666666666666666s, Size:7.76174MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-10-03_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-10-03_HighResolution.mp4"
+2024-04-11 21:10:18 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-10-03_Thumbnail.jpg"
+2024-04-11 21:10:24 INFO     PerformanceMonitor                  CPU=[78.6, 84.1, 75.6, 76.6]%,46.9°C RAM=24.8% HDD=1.3% Network=[sent:968.3MB,received=289.3MB] Connected to internet
+2024-04-11 21:10:26 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-04-11 21:10:33 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-04-11 21:10:34 INFO     PerformanceMonitor                  CPU=[79.6, 81.1, 77.8, 77.8]%,46.9°C RAM=25.7% HDD=1.3% Network=[sent:968.3MB,received=289.3MB] Connected to internet
+2024-04-11 21:10:41 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-04-11 21:10:44 INFO     PerformanceMonitor                  CPU=[82.0, 80.0, 72.5, 75.6]%,47.4°C RAM=26.5% HDD=1.3% Network=[sent:968.3MB,received=289.4MB] Connected to internet
+2024-04-11 21:10:55 INFO     PerformanceMonitor                  CPU=[75.8, 77.9, 78.3, 75.3]%,46.9°C RAM=27.3% HDD=1.3% Network=[sent:968.3MB,received=289.4MB] Connected to internet
+2024-04-11 21:10:58 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-04-11 21:11:05 INFO     PerformanceMonitor                  CPU=[75.8, 78.6, 76.7, 79.9]%,46.3°C RAM=28.2% HDD=1.3% Network=[sent:968.3MB,received=289.5MB] Connected to internet
+2024-04-11 21:11:15 INFO     PerformanceMonitor                  CPU=[71.7, 73.1, 77.6, 79.8]%,46.9°C RAM=29.1% HDD=1.3% Network=[sent:968.4MB,received=289.5MB] Connected to internet
+2024-04-11 21:11:15 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-04-11 21:11:25 INFO     PerformanceMonitor                  CPU=[75.9, 74.3, 77.5, 74.3]%,47.4°C RAM=29.8% HDD=1.3% Network=[sent:968.4MB,received=289.5MB] Connected to internet
+2024-04-11 21:11:26 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=44 Duration=0:00:09.330031
+2024-04-11 21:11:27 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:260, Duration:8.666666666666666s, Size:7.822811MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-11-12_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-11-12_HighResolution.mp4"
+2024-04-11 21:11:28 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-11-12_Thumbnail.jpg"
+2024-04-11 21:11:32 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-04-11 21:11:35 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="today".
+2024-04-11 21:11:35 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.2" was closed.
+2024-04-11 21:11:36 INFO     PerformanceMonitor                  CPU=[90.1, 75.4, 78.2, 78.3]%,46.9°C RAM=30.5% HDD=1.3% Network=[sent:971.2MB,received=289.7MB] Connected to internet
+2024-04-11 21:11:41 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="24-04-09".
+2024-04-11 21:11:45 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:11:45 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "3ed16e43-90db-4561-94bb-57be5a468493".
+2024-04-11 21:11:46 INFO     PerformanceMonitor                  CPU=[74.7, 74.9, 73.8, 79.0]%,48.0°C RAM=31.5% HDD=1.3% Network=[sent:971.2MB,received=289.8MB] Connected to internet
+2024-04-11 21:11:56 INFO     PerformanceMonitor                  CPU=[74.4, 75.3, 79.8, 80.0]%,48.0°C RAM=32.3% HDD=1.3% Network=[sent:971.2MB,received=289.8MB] Connected to internet
+2024-04-11 21:11:57 INFO     DeleteClipsHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to delte videos with ID=['3ed16e43-90db-4561-94bb-57be5a468493']".
+2024-04-11 21:11:57 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to watch video with ID="97bb4be1-ff92-4940-8359-d12a7c9622c2".
+2024-04-11 21:11:57 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" for video file of clip with id "97bb4be1-ff92-4940-8359-d12a7c9622c2".
+2024-04-11 21:12:00 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="today".
+2024-04-11 21:12:02 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="24-04-09".
+2024-04-11 21:12:04 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="24-04-11".
+2024-04-11 21:12:05 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="24-04-09".
+2024-04-11 21:12:06 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="24-04-08".
+2024-04-11 21:12:06 INFO     PerformanceMonitor                  CPU=[76.8, 78.5, 75.9, 83.2]%,48.5°C RAM=33.1% HDD=1.3% Network=[sent:978.2MB,received=290.1MB] Connected to internet
+2024-04-11 21:12:07 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="24-04-09".
+2024-04-11 21:12:07 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:160:ccd4:2d50:75a7" to browse video with request parameter="24-04-11".
+2024-04-11 21:12:17 INFO     PerformanceMonitor                  CPU=[74.8, 77.5, 79.1, 83.3]%,49.0°C RAM=34.1% HDD=1.3% Network=[sent:978.2MB,received=290.2MB] Connected to internet
+2024-04-11 21:12:18 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-11 21:12:18 INFO     main                                Shutting down threads.
+2024-04-11 21:12:18 INFO     Camera                              Shutting down Camera.
+2024-04-11 21:12:19 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 21:12:19 INFO     main                                Shutdown successful, exiting application.

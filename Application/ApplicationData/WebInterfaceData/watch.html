@@ -34,7 +34,7 @@
 		var date = '{{ payload.date }}<br/>{{ payload.time }}'
 		var linkLeft = '{{ payload.linkLeft }}';
 		var linkRight = '{{ payload.linkRight }}';
-		var videoLink = 'clip/{{ payload.id }}';
+		var videoLink = '/clip/{{ payload.id }}';
 		var id = '{{payload.id}}'
 
 		// Links
@@ -85,7 +85,12 @@
 			}
 		} );
 
-		footerDownload.on('click', event =>{window.open(videoLink);})
+		footerDownload.on('click', event =>{
+			var link=document.createElement('a');
+			link.href = videoLink;
+			link.download = 'Clip_' + id + 'mp4';
+			link.click();
+		})
 
 		headerCamera.on('click', () => {window.location = linkHeaderCamera;})
 		headerBrowser.on('click', () => {window.location = linkHeaderBrowser;})
