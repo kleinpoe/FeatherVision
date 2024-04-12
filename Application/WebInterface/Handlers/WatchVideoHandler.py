@@ -22,10 +22,12 @@ class WatchVideoHandler(RequestHandlerBase):
             linkLeft: str
             id: str
 
+        linkLeft = "" if prev is None else f"/watch/{prev.Id}"
+        linkRight = "" if next is None else f"/watch/{next.Id}"
         payload = Payload(date=entry.DateOfRecording.strftime("%d.%m.%y"),
                           time=entry.DateOfRecording.strftime("%H:%M"),
-                          linkLeft=f"/watch/{prev.Id}",
-                          linkRight=f"/watch/{next.Id}",
+                          linkLeft=linkLeft,
+                          linkRight=linkRight,
                           id=entry.Id)
         path = self.config.WebInterface.Content.WatchClipHtml
         self.render(path,payload=payload)

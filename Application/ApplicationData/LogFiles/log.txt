@@ -3508,3 +3508,128 @@ NameError: name 'io' is not defined
 2024-04-11 21:12:18 INFO     Camera                              Shutting down Camera.
 2024-04-11 21:12:19 INFO     WebServer                           Shutting down Web Server.
 2024-04-11 21:12:19 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 21:13:38 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 21:13:38 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 21:13:39 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 21:13:39 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 21:13:39 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-04-11 21:13:39 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,40.2°C RAM=16.6% HDD=1.3% Network=[sent:978.6MB,received=290.6MB] Connected to internet
+2024-04-11 21:15:16 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 21:15:16 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 21:15:16 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 21:15:16 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 21:15:17 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,41.9°C RAM=12.5% HDD=1.3% Network=[sent:4.8MB,received=3.1MB] Connected to internet
+2024-04-11 21:15:20 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-04-11 21:15:27 INFO     PerformanceMonitor                  CPU=[66.9, 70.0, 69.2, 76.7]%,46.3°C RAM=15.2% HDD=1.3% Network=[sent:10.8MB,received=3.4MB] Connected to internet
+2024-04-11 21:15:37 INFO     PerformanceMonitor                  CPU=[74.7, 76.4, 80.4, 79.6]%,46.3°C RAM=15.5% HDD=1.3% Network=[sent:20.3MB,received=3.7MB] Connected to internet
+2024-04-11 21:15:47 INFO     PerformanceMonitor                  CPU=[88.7, 74.0, 78.8, 73.1]%,46.9°C RAM=15.6% HDD=1.3% Network=[sent:29.9MB,received=4.1MB] Connected to internet
+2024-04-11 21:15:57 INFO     PerformanceMonitor                  CPU=[81.7, 76.4, 74.3, 73.1]%,47.4°C RAM=16.4% HDD=1.3% Network=[sent:39.5MB,received=4.4MB] Connected to internet
+2024-04-11 21:16:07 INFO     PerformanceMonitor                  CPU=[85.6, 75.2, 75.7, 69.1]%,47.4°C RAM=16.7% HDD=1.3% Network=[sent:49.1MB,received=4.8MB] Connected to internet
+2024-04-11 21:16:18 INFO     PerformanceMonitor                  CPU=[74.5, 72.7, 73.7, 77.1]%,47.4°C RAM=17.7% HDD=1.3% Network=[sent:58.6MB,received=5.2MB] Connected to internet
+2024-04-11 21:16:27 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.2" was closed.
+2024-04-11 21:16:28 INFO     PerformanceMonitor                  CPU=[84.4, 73.5, 78.1, 77.0]%,47.4°C RAM=18.5% HDD=1.3% Network=[sent:67.6MB,received=5.5MB] Connected to internet
+2024-04-11 21:16:29 WARNING  web                                 404 GET /favicon.ico (2003:cf:bf0f:f800:1e6f:466c:21de:5072) 0.71ms
+2024-04-11 21:16:29 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-04-11 21:16:38 INFO     PerformanceMonitor                  CPU=[77.6, 76.3, 78.7, 78.6]%,47.4°C RAM=19.3% HDD=1.3% Network=[sent:75.5MB,received=5.7MB] Connected to internet
+2024-04-11 21:16:48 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-04-11 21:16:48 INFO     PerformanceMonitor                  CPU=[78.8, 78.5, 76.2, 74.9]%,48.0°C RAM=19.3% HDD=1.3% Network=[sent:84.6MB,received=5.9MB] Connected to internet
+2024-04-11 21:16:53 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" unstable. Skipped Frames for 1032.963ms
+2024-04-11 21:16:56 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" recovered. Skipped Frames for 3798.632ms
+2024-04-11 21:16:58 INFO     PerformanceMonitor                  CPU=[78.0, 72.6, 75.0, 82.8]%,47.4°C RAM=20.2% HDD=1.3% Network=[sent:90.6MB,received=6.1MB] Connected to internet
+2024-04-11 21:17:04 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.6 Frames=70 Duration=0:00:15.028011
+2024-04-11 21:17:05 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:431, Duration:14.366666666666667s, Size:13.498268MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-16-44_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-16-44_HighResolution.mp4"
+2024-04-11 21:17:06 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-16-44_Thumbnail.jpg"
+2024-04-11 21:17:09 INFO     PerformanceMonitor                  CPU=[77.0, 71.5, 76.8, 75.3]%,48.0°C RAM=20.8% HDD=1.3% Network=[sent:99.8MB,received=6.3MB] Connected to internet
+2024-04-11 21:17:12 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to browse video with request parameter="today".
+2024-04-11 21:17:12 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-04-11 21:17:19 INFO     PerformanceMonitor                  CPU=[81.9, 72.3, 72.0, 75.4]%,46.9°C RAM=21.8% HDD=1.3% Network=[sent:103.9MB,received=6.4MB] Connected to internet
+2024-04-11 21:17:23 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to watch video with ID="63e7b45e-285d-44b1-8ba2-71d529f3eb8a".
+2024-04-11 21:17:23 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" for video file of clip with id "63e7b45e-285d-44b1-8ba2-71d529f3eb8a".
+2024-04-11 21:17:29 INFO     PerformanceMonitor                  CPU=[75.8, 80.3, 75.5, 77.2]%,48.5°C RAM=22.8% HDD=1.3% Network=[sent:112.3MB,received=6.5MB] Connected to internet
+2024-04-11 21:17:33 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to watch video with ID="1940d6fc-5627-4bfe-b139-e82fbe74a930".
+2024-04-11 21:17:33 ERROR    web                                 Uncaught exception GET /watch/1940d6fc-5627-4bfe-b139-e82fbe74a930 (2003:cf:bf0f:f800:1e6f:466c:21de:5072)
+HTTPServerRequest(protocol='http', host='raspberrypoecam2:8000', method='GET', uri='/watch/1940d6fc-5627-4bfe-b139-e82fbe74a930', version='HTTP/1.1', remote_ip='2003:cf:bf0f:f800:1e6f:466c:21de:5072')
+Traceback (most recent call last):
+  File "/home/pi/FeatherVision/.venv/lib/python3.11/site-packages/tornado/web.py", line 1788, in _execute
+    result = method(*self.path_args, **self.path_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pi/FeatherVision/Application/WebInterface/Handlers/WatchVideoHandler.py", line 28, in get
+    linkRight=f"/watch/{next.Id}",
+                        ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'Id'
+2024-04-11 21:17:33 ERROR    web                                 500 GET /watch/1940d6fc-5627-4bfe-b139-e82fbe74a930 (2003:cf:bf0f:f800:1e6f:466c:21de:5072) 22.62ms
+2024-04-11 21:17:39 INFO     PerformanceMonitor                  CPU=[77.9, 71.5, 72.5, 74.6]%,48.0°C RAM=23.6% HDD=1.3% Network=[sent:112.3MB,received=6.5MB] Connected to internet
+2024-04-11 21:17:49 INFO     PerformanceMonitor                  CPU=[73.9, 74.9, 77.8, 77.9]%,48.5°C RAM=24.5% HDD=1.3% Network=[sent:112.3MB,received=6.6MB] Connected to internet
+2024-04-11 21:18:00 INFO     PerformanceMonitor                  CPU=[77.8, 73.5, 73.9, 75.2]%,49.0°C RAM=25.5% HDD=1.3% Network=[sent:112.3MB,received=6.6MB] Connected to internet
+2024-04-11 21:18:10 INFO     PerformanceMonitor                  CPU=[80.8, 73.0, 78.6, 71.0]%,48.5°C RAM=26.3% HDD=1.3% Network=[sent:112.3MB,received=6.7MB] Connected to internet
+2024-04-11 21:18:20 INFO     PerformanceMonitor                  CPU=[80.1, 73.9, 71.6, 74.7]%,49.6°C RAM=27.3% HDD=1.3% Network=[sent:112.4MB,received=6.7MB] Connected to internet
+2024-04-11 21:18:24 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-11 21:18:24 INFO     main                                Shutting down threads.
+2024-04-11 21:18:24 INFO     Camera                              Shutting down Camera.
+2024-04-11 21:18:24 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 21:18:24 INFO     main                                Shutdown successful, exiting application.
+2024-04-11 21:19:47 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-11 21:19:47 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-11 21:19:47 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-11 21:19:47 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-11 21:19:48 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,42.5°C RAM=12.3% HDD=1.3% Network=[sent:113.3MB,received=7.6MB] Connected to internet
+2024-04-11 21:19:53 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-04-11 21:19:56 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to browse video with request parameter="today".
+2024-04-11 21:19:56 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-04-11 21:19:58 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to watch video with ID="1940d6fc-5627-4bfe-b139-e82fbe74a930".
+2024-04-11 21:19:58 INFO     PerformanceMonitor                  CPU=[68.2, 71.7, 75.2, 70.0]%,48.5°C RAM=14.5% HDD=1.3% Network=[sent:115.5MB,received=7.7MB] Connected to internet
+2024-04-11 21:19:58 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" for video file of clip with id "1940d6fc-5627-4bfe-b139-e82fbe74a930".
+2024-04-11 21:20:08 INFO     PerformanceMonitor                  CPU=[78.5, 73.2, 79.3, 73.5]%,48.5°C RAM=15.4% HDD=1.3% Network=[sent:130.1MB,received=8.0MB] Connected to internet
+2024-04-11 21:20:14 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to watch video with ID="9d8afc44-e78d-41ba-9012-ef0c3109cdf5".
+2024-04-11 21:20:14 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" for video file of clip with id "9d8afc44-e78d-41ba-9012-ef0c3109cdf5".
+2024-04-11 21:20:18 INFO     PerformanceMonitor                  CPU=[78.0, 73.7, 73.9, 83.2]%,48.5°C RAM=15.5% HDD=1.3% Network=[sent:138.6MB,received=8.1MB] Connected to internet
+2024-04-11 21:20:24 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to browse video with request parameter="today".
+2024-04-11 21:20:28 INFO     PerformanceMonitor                  CPU=[75.1, 79.8, 73.0, 74.5]%,48.5°C RAM=16.3% HDD=1.3% Network=[sent:138.6MB,received=8.1MB] Connected to internet
+2024-04-11 21:20:30 INFO     DeleteClipsHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to delte videos with ID=['1940d6fc-5627-4bfe-b139-e82fbe74a930', '9d8afc44-e78d-41ba-9012-ef0c3109cdf5']".
+2024-04-11 21:20:36 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-04-11 21:20:38 INFO     PerformanceMonitor                  CPU=[83.0, 76.0, 75.4, 75.2]%,49.0°C RAM=17.2% HDD=1.3% Network=[sent:140.6MB,received=8.2MB] Connected to internet
+2024-04-11 21:20:49 INFO     PerformanceMonitor                  CPU=[76.0, 76.3, 76.7, 75.2]%,49.6°C RAM=18.0% HDD=1.3% Network=[sent:149.9MB,received=8.4MB] Connected to internet
+2024-04-11 21:20:59 INFO     PerformanceMonitor                  CPU=[73.8, 77.4, 73.4, 80.9]%,49.6°C RAM=18.8% HDD=1.3% Network=[sent:158.5MB,received=8.6MB] Connected to internet
+2024-04-11 21:21:09 INFO     PerformanceMonitor                  CPU=[72.5, 75.9, 87.0, 75.8]%,50.1°C RAM=19.7% HDD=1.3% Network=[sent:167.7MB,received=8.7MB] Connected to internet
+2024-04-11 21:21:12 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-04-11 21:21:18 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" unstable. Skipped Frames for 1032.984ms
+2024-04-11 21:21:19 INFO     PerformanceMonitor                  CPU=[74.2, 75.5, 75.0, 79.9]%,49.6°C RAM=20.5% HDD=1.3% Network=[sent:175.0MB,received=8.9MB] Connected to internet
+2024-04-11 21:21:19 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" recovered. Skipped Frames for 2099.216ms
+2024-04-11 21:21:24 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to browse video with request parameter="today".
+2024-04-11 21:21:24 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-04-11 21:21:28 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to browse video with request parameter="today".
+2024-04-11 21:21:29 INFO     PerformanceMonitor                  CPU=[71.5, 76.0, 78.5, 84.1]%,50.1°C RAM=21.3% HDD=1.3% Network=[sent:179.4MB,received=9.0MB] Connected to internet
+2024-04-11 21:21:39 INFO     PerformanceMonitor                  CPU=[75.2, 75.8, 76.3, 74.7]%,50.1°C RAM=22.2% HDD=1.3% Network=[sent:179.4MB,received=9.1MB] Connected to internet
+2024-04-11 21:21:42 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-04-11 21:21:50 INFO     PerformanceMonitor                  CPU=[79.0, 70.6, 75.7, 76.8]%,49.6°C RAM=23.0% HDD=1.3% Network=[sent:186.6MB,received=9.4MB] Connected to internet
+2024-04-11 21:22:00 INFO     PerformanceMonitor                  CPU=[81.4, 74.8, 75.3, 80.7]%,49.6°C RAM=23.8% HDD=1.3% Network=[sent:196.0MB,received=9.7MB] Connected to internet
+2024-04-11 21:22:07 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" unstable. Skipped Frames for 1032.977ms
+2024-04-11 21:22:07 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" recovered. Skipped Frames for 1132.906ms
+2024-04-11 21:22:10 INFO     PerformanceMonitor                  CPU=[74.9, 75.1, 74.4, 85.8]%,50.1°C RAM=24.7% HDD=1.3% Network=[sent:203.5MB,received=10.0MB] Connected to internet
+2024-04-11 21:22:13 DEBUG    DetectionHistory                    Detected the first object for a potential new clip.
+2024-04-11 21:22:20 INFO     PerformanceMonitor                  CPU=[75.6, 86.7, 76.9, 76.2]%,50.1°C RAM=25.5% HDD=1.3% Network=[sent:213.0MB,received=10.4MB] Connected to internet
+2024-04-11 21:22:23 INFO     AnnotatedClipSaver                  Writing annotated Clip: W854xH480 FPS=4.3 Frames=37 Duration=0:00:08.396932
+2024-04-11 21:22:23 INFO     HighResClipSaver                    Writing High-Resolution Video: Frames:236, Duration:7.866666666666666s, Size:7.295796MB. Temporary file: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-22-10_Temporary.h264", Video File: "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-22-10_HighResolution.mp4"
+2024-04-11 21:22:24 INFO     ThumbnailSaver                      Creating Thumbnail at "/home/pi/FeatherVision/Application/ApplicationData/Clips/2024/4/11/Clip_2024-04-11_21-22-10_Thumbnail.jpg"
+2024-04-11 21:22:29 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to browse video with request parameter="today".
+2024-04-11 21:22:30 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-04-11 21:22:30 INFO     PerformanceMonitor                  CPU=[77.4, 74.8, 81.2, 75.4]%,50.7°C RAM=26.2% HDD=1.3% Network=[sent:221.8MB,received=10.8MB] Connected to internet
+2024-04-11 21:22:32 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to watch video with ID="00a78957-8731-4e59-8297-76e1fd7f3ace".
+2024-04-11 21:22:32 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" for video file of clip with id "00a78957-8731-4e59-8297-76e1fd7f3ace".
+2024-04-11 21:22:41 INFO     PerformanceMonitor                  CPU=[80.6, 70.9, 73.7, 75.2]%,50.7°C RAM=27.1% HDD=1.3% Network=[sent:229.7MB,received=10.9MB] Connected to internet
+2024-04-11 21:22:41 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to browse video with request parameter="today".
+2024-04-11 21:22:43 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to watch video with ID="63e7b45e-285d-44b1-8ba2-71d529f3eb8a".
+2024-04-11 21:22:43 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" for video file of clip with id "63e7b45e-285d-44b1-8ba2-71d529f3eb8a".
+2024-04-11 21:22:47 INFO     WatchVideoHandler                   Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to watch video with ID="00a78957-8731-4e59-8297-76e1fd7f3ace".
+2024-04-11 21:22:47 INFO     ClipHandler                         Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" for video file of clip with id "00a78957-8731-4e59-8297-76e1fd7f3ace".
+2024-04-11 21:22:50 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to browse video with request parameter="today".
+2024-04-11 21:22:51 INFO     PerformanceMonitor                  CPU=[81.5, 72.0, 73.5, 74.9]%,50.1°C RAM=28.0% HDD=1.3% Network=[sent:229.7MB,received=11.0MB] Connected to internet
+2024-04-11 21:22:58 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to browse video with request parameter="24-04-09".
+2024-04-11 21:23:01 INFO     PerformanceMonitor                  CPU=[81.1, 71.1, 73.3, 80.2]%,50.7°C RAM=28.8% HDD=1.3% Network=[sent:230.3MB,received=11.0MB] Connected to internet
+2024-04-11 21:23:03 INFO     DeleteClipsHandler                  Request from IP="2003:cf:bf0f:f800:1e6f:466c:21de:5072" to delte videos with ID=['97bb4be1-ff92-4940-8359-d12a7c9622c1']".
+2024-04-11 21:23:11 INFO     PerformanceMonitor                  CPU=[73.8, 74.4, 75.3, 82.1]%,50.7°C RAM=29.6% HDD=1.3% Network=[sent:230.3MB,received=11.1MB] Connected to internet
+2024-04-11 21:23:19 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-11 21:23:19 INFO     main                                Shutting down threads.
+2024-04-11 21:23:19 INFO     Camera                              Shutting down Camera.
+2024-04-11 21:23:19 INFO     WebServer                           Shutting down Web Server.
+2024-04-11 21:23:19 INFO     main                                Shutdown successful, exiting application.
