@@ -37,7 +37,7 @@ class Config:
             self.LogToFile = True
             self.MaximumLogBytes = 2000000
             self.LogBackupFiles = 5
-            self.PerformanceMonitorLoggingInterval = timedelta(seconds=10)
+            self.PerformanceMonitorLoggingInterval = timedelta(minutes=5)
             self.LogLevel = logging.DEBUG
             
     class CameraConfig:
