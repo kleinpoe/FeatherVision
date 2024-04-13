@@ -4,7 +4,7 @@ from WebInterface.Handlers.RequestHandlerBase import RequestHandlerBase
 
 class ClipHandler(RequestHandlerBase):
     def get(self, requestedId:str):
-        self.logger.info(f'Request from IP="{self.request.remote_ip}" for video file of clip with id "{requestedId}".')
+        self.logger.debug(f'Request from IP="{self.request.remote_ip}" for video file of clip with id "{requestedId}".')
 
         database = self.clipDatabase
         entry = database.Get(requestedId)

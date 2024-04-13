@@ -7,7 +7,6 @@ import psutil
 import asyncio
 from asyncio import Task
 from Config.Config import Config
-from Infrastructure.NetworkChecker import NetworkChecker
 
 
 @dataclass
@@ -26,9 +25,8 @@ class CancellationToken:
 
 class PerformanceMonitor:
 
-    def __init__(self, config: Config, networkChecker: NetworkChecker, logger: Logger):
+    def __init__(self, config: Config, logger: Logger):
         self.myConfig = config
-        self.myNetworkChecker = networkChecker
         self.myLogger = logger
 
     def Start(self):
@@ -45,9 +43,8 @@ class PerformanceMonitor:
         try:
             while True:
                 info = PerformanceMonitor.GetPerformanceInfo()
-                internetAvailableText = "Connected to internet" if self.myNetworkChecker.InternetAvailable() else "Disconnected from internet"
-                log = f'CPU={info.CpuUsage}%,{info.CpuTemperature:3.1f}°C RAM={info.MemoryUsage:3.1f}% HDD={info.HddUsage:3.1f}% Network=[sent:{info.MegaBytesSent:.1f}MB,received={info.MegaBytesReceived:.1f}MB]'
-                self.myLogger.info(f'{log} {internetAvailableText}')
+                log = f'CPU={info.CpuUsage}% T={info.CpuTemperature:3.1f}°C RAM={info.MemoryUsage:3.1f}% HDD={info.HddUsage:3.1f}% Network=[sent:{info.MegaBytesSent:.1f}MB,received={info.MegaBytesReceived:.1f}MB]'
+                self.myLogger.info(f'{log}')
                 time.sleep(self.myConfig.Logging.PerformanceMonitorLoggingInterval.total_seconds())
                 if self.myCancellationToken.CancellationRequested:
                     break

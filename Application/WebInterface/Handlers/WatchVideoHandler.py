@@ -6,7 +6,7 @@ from dataclasses import dataclass
 
 class WatchVideoHandler(RequestHandlerBase):
     def get(self, id:str):
-        self.logger.info(f'Request from IP="{self.request.remote_ip}" to watch video with ID="{id}".')
+        self.logger.debug(f'Request from IP="{self.request.remote_ip}" to watch video with ID="{id}".')
         database = self.clipDatabase
         entry = database.Get(id)
         if entry is None:

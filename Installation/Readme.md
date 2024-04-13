@@ -1,4 +1,4 @@
-# Installation Feather Vision
+# Installation
 
 ## Operating System
 
@@ -24,7 +24,10 @@
 7. Create Directory for your project
 8. Install git \
 `sudo apt install git`
-8. Initialize git repository or clone it
+
+## Setup Application
+
+1. Clone this git repository
 9. Install apt packages
     1. PiCamera2: Test using NP scripts \
     `sudo apt install -y python3-picamera2 --no-install-recommends`
@@ -54,7 +57,19 @@ and activate it \
     `python -m pip install tinydb`\
     `python -m pip install tinydb-serialization`
 
-12. Install Wifi Dongle: The RPI5 gets pretty hot so we put it in a metal enclosure with integrated passive cooling. As this metal hunk screens the wifi signal, we use an external wifi antenna. I chose the *BrosTrend AC650*.
+12. Run the script as a test
+    1. Execute `./main.py` and observe console output
+    2. Connect to the camera's web interface by navigating to the displayed ip adress, contained in one of the first logs. in my case: `192.168.1.4:8000`
+
+13. Autorun Application on System Start (sorry that this is not so convenient)
+    1. Edit `Application/Start.sh` and replace the paths with the ones from your installation location
+    2. Run `crontab -e` and add the line `@reboot sleep 10 && /home/pi/FeatherVision/Application/Start.sh &`
+    3. Reboot `sudo reboot` and check if you can connet.
+    4. In case you want to stop the autostarted application, you can execute `Kill.sh`
+
+13. Configure the camera by editing the `Application/Config/Config.py` file
+
+12. Install Wifi Dongle [Optional]: The RPI5 gets pretty hot so we put it in a metal enclosure with integrated passive cooling. As this metal hunk screens the wifi signal, we use an external wifi antenna. I chose the *BrosTrend AC650*.
     1. `sh -c 'wget linux.brostrend.com/install -O /tmp/install && sh /tmp/install'`
     2. Turn in *predictable network names* with `sudo raspi-config` -> advanced
     3. Reboot

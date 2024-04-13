@@ -32,7 +32,7 @@ class DetectionHistory:
         match (hasTrackedObject,thereIsATrackedObjectInHistory,timeSinceLastTrackedObjectIsAboveLimit, clipExceedsMaxDuration, clipIsLongEnough):
             case (_, True, _, True, _):
                 # The clip became too long already -> output
-                #log('The clip became too long already -> output')
+                self.logger.debug('The clip became too long already -> output')
                 clipBegin = self.EntryWhereTrackedObjectWasDetectedFirst.Timestamp - self.config.PaddingStart
                 clipEnd = entry.Timestamp
                 self.EntryWhereTrackedObjectWasDetectedFirst = None
@@ -40,7 +40,7 @@ class DetectionHistory:
                 return self.SliceByTime(clipBegin, clipEnd)
             case (False, False, _, _, _):
                 # Nothing new detected, also no last tracked object detection
-                #log('Nothing new detected, also no last tracked object detection')
+                #self.logger.debug('Nothing new detected, also no last tracked object detection')
                 return None
             case (True, False, _, _, _):
                 # The first tracked object is detected
@@ -55,7 +55,7 @@ class DetectionHistory:
                 return None
             case (False, True, True, _, True):
                 # Nothing new detected and last tracked object detection is long enough ago to return clip and tracked object detection duration is long enough -> output
-                #log('Nothing new detected and last tracked object detection is long enough ago to return clip and tracked object detection duration is long enough -> output')
+                self.logger.debug('Nothing new detected and last tracked object detection is long enough ago to return clip and tracked object detection duration is long enough -> output')
                 clipBegin = self.EntryWhereTrackedObjectWasDetectedFirst.Timestamp - self.config.PaddingStart
                 clipEnd = self.EntryWhereTrackedObjectWasDetectedLast.Timestamp + self.config.PaddingEnd
                 self.EntryWhereTrackedObjectWasDetectedFirst = None
@@ -63,7 +63,7 @@ class DetectionHistory:
                 return self.SliceByTime(clipBegin, clipEnd)
             case (False, True, True, _, False):
                 # Nothing new detected and last tracked object detection is long enough ago to return clip but tracked object detection duration is not long enough
-                #log('Nothing new detected and last tracked object detection is long enough ago to return clip but tracked object detection duration is not long enough')
+                self.logger.debug('Nothing new detected and last tracked object detection is long enough ago to return clip but clip is not long enough for output')
                 self.EntryWhereTrackedObjectWasDetectedFirst = None
                 self.EntryWhereTrackedObjectWasDetectedLast = None
                 return None

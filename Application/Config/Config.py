@@ -29,22 +29,22 @@ class Config:
     class WebInterfaceConfig:
         def __init__(self, storageConfig: 'Config.StorageConfig', runtimeConfig: RuntimeConfig):
             self.Content: Config.WebContentConfig = Config.WebContentConfig(storageConfig)
-            self.Ip: str = runtimeConfig.Ip
+            self.Ip: str = runtimeConfig.Ip # Raspberry IP
             self.Port:int = 8000 # The port for the web interface
             
     class LoggingConfig:
         def __init__(self):
-            self.LogToFile = True
-            self.MaximumLogBytes = 2000000
-            self.LogBackupFiles = 5
-            self.PerformanceMonitorLoggingInterval = timedelta(minutes=5)
-            self.LogLevel = logging.DEBUG
+            self.LogToFile = True # Enable logging to a file and not just console
+            self.MaximumLogBytes = 2000000 # The maximum byte size of the log file
+            self.LogBackupFiles = 5 # The Backup log files count
+            self.PerformanceMonitorLoggingInterval = timedelta(minutes=5) # Interval in which performance logging is done
+            self.LogLevel = logging.DEBUG # The logging level, Info is probably best
             
     class CameraConfig:
         def __init__(self):
-            self.MainResolution = (1920,1080) # Resolution of Web Interface Stream and saved videos
-            self.ObjectDetectionResolution = (854,480) # Resolution with which object detection is performed
-            self.Fps = 30 # The FramesRate (Frames per second) with which the main camera stream operates
+            self.MainResolution = (1920,1080) # Resolution of Web Interface Stream and saved videos. Tested is 1920x1080
+            self.ObjectDetectionResolution = (854,480) # Resolution with which object detection is performed. Tested is 854x480
+            self.Fps = 30 # The FramesRate (Frames per second) with which the main camera stream operates. Tested is 30
     
     class ClipGenerationConfig:
         def __init__(self):
@@ -55,7 +55,7 @@ class Config:
             self.PaddingEnd = timedelta(seconds=2)  # Append this duration to video after last detection
             self.MaximumClipLength = timedelta(seconds=60)  # Maximum video length (if detection is still present after save will make another one)
             self.MinimumClipLengthWithoutPadding = timedelta(seconds=3)  # If a potential clip has a consecutive duration of tracked objects (including allowed gaps) below this limit, it will not be saved 
-            self.AllowedTrackedObjectGapsDuration = timedelta(seconds=5)  # When a tracked objects leaves the video, we keep on recording for this duration and wait that maybe detection comes back
+            self.AllowedTrackedObjectGapsDuration = timedelta(seconds=5)  # When a tracked objects leaves the video, we keep on recording for this duration and wait that maybe detection comes back. (Must be larger than clip padding!)
             self.DetectionHistoryMaxEntries = 5000 # The number of frames the object detection history will hold. It must be shorter than what the high-resolution frame buffer can hold but longer than the max video length. Raspi 5 can handle ~5 fps object detection (might vary between object detection models)
             self.HighResolutionFrameBufferDuration = timedelta(minutes=5) # The duration of the high-resolution frame buffer. Must be longer than max clip duration.
             # AnnotatedClipSettings

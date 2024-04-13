@@ -1,2 +1,1 @@
-#!/bin/sh
-python main.py
+/home/pi/FeatherVision/.venv/bin/python /home/pi/FeatherVision/Application/main.py

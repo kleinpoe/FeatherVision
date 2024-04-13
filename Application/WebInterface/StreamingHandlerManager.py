@@ -66,7 +66,7 @@ class StreamingHandlerManager:
                     
                     if connection.CanSendSkippedFramesWarning is False:
                         lossInMilliSeconds = (frame.RawTimestamp - connection.LastFrameTimestampReceivedByClient)/1E3
-                        self.logger.warn(f'Connection to IP="{connection.request.remote_ip}" recovered. Skipped Frames for {lossInMilliSeconds}ms')
+                        self.logger.info(f'Connection to IP="{connection.request.remote_ip}" recovered. Skipped Frames for {lossInMilliSeconds}ms')
                         connection.CanSendSkippedFramesWarning = True
                     
                     connection.LastSentFrameTimestamp = frame.RawTimestamp

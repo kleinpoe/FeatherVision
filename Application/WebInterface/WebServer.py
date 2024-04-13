@@ -32,7 +32,7 @@ class WebServer:
         
         
     def Start(self):
-        self.logger.info(f"Starting Web Server. Connect to it using {self.config.WebInterface.Ip}:{self.config.WebInterface.Port}")
+        self.logger.info(f"Starting Web Server. Connect to it using >>>{self.config.WebInterface.Ip}:{self.config.WebInterface.Port}<<<")
         
         settings = {"static_path": self.config.WebInterface.Content.StaticDirectory,
                     "config": self.config,

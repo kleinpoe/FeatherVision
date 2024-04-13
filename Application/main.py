@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from ClipDatabase.ClipDatabase import ClipDatabase
 from Surveillance.DetectionBroadcaster import DetectionBroadcaster
 from Surveillance.History.DetectionHistory import DetectionHistory
@@ -18,19 +20,18 @@ from Infrastructure.Clock import Clock
 from Camera.Camera import Camera
 from WebInterface.StreamingHandlerManager import StreamingHandlerManager
 from WebInterface.WebServer import WebServer
-from Config.RuntimeConfig import RuntimeConfig
+from Config.RuntimeConfig import Environment, RuntimeConfig
 from Config.Config import Config
 from Infrastructure.LoggerFactory import LoggerFactory
-from Infrastructure.NetworkChecker import NetworkChecker
 from Infrastructure.PerformanceMonitor import PerformanceMonitor
 
 # infrastructure
-runtimeConfig = RuntimeConfig()
+environment = Environment()
+runtimeConfig = RuntimeConfig(environment)
 config = Config(runtimeConfig)
 loggerFactory = LoggerFactory(config)
 logger = loggerFactory.CreateLogger()
-networkChecker = NetworkChecker(logger)
-performanceMonitor = PerformanceMonitor(config, networkChecker, logger)
+performanceMonitor = PerformanceMonitor(config, logger)
 clock = Clock()
 
 #database
@@ -60,9 +61,6 @@ annotatedClipSaver = AnnotatedClipSaver(filePathProvider,frameAnnotator,logger,c
 thumbnailSaver = ThumbnailSaver(filePathProvider, config, logger)
 clipSaver = ClipSaver(highResClipSaver,annotatedClipSaver,thumbnailSaver,clock,logger,config)
 frameAnalyzer = FrameAnalyzer(detector,camera, detectionBroadcaster,detectionHistory,clipSaver,database,config,logger)
-
-
-
 
 try:
     performanceMonitor.Start()

@@ -50,12 +50,7 @@ class FrameAnalyzer:
             if optionalClip is not None:
                 result = self.clipSaver.Save(optionalClip)
                 self.clipDatabase.Add(result)
-                
-                #print('new clip:')
-                #for d in result.Detections:
-                #    detectionsText = [(f'<{x.Label} {x.Score:.2f}> ') for x in d.Detections if x.Label in self.config.ClipGeneration.TrackedObjectsLabels]
-                #    print(f't={d.Time.total_seconds():.2f}s [{detectionsText}]')
-                #print('new clip:')
+                self.logger.info(f'A new clip was saved. Duration:{result.ClipDuration.total_seconds:.1f}s Date:{result.DateOfRecording.strftime("%d.%m.%Y, %H:%M:%S")}')
                 
         
     

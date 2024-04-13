@@ -36,7 +36,7 @@ class HighResClipSaver:
         lengthInSeconds = len(richFrames) / fps
         sizeInMb = sum([len(x.Frame) for x in richFrames]) / 1E6
 
-        self.logger.info(f'Writing High-Resolution Video: Frames:{len(richFrames)}, Duration:{lengthInSeconds}s, Size:{sizeInMb}MB. Temporary file: "{temporaryFilePath}", Video File: "{highResFilePath}"')
+        self.logger.debug(f'Writing High-Resolution Video: Frames:{len(richFrames)}, Duration:{lengthInSeconds}s, Size:{sizeInMb}MB. Temporary file: "{temporaryFilePath}", Video File: "{highResFilePath}"')
 
         # Write Circular Buffer to h264 file
         with open(temporaryFilePath, "wb") as file:

@@ -22,7 +22,7 @@ class ThumbnailSaver:
         
         filePath = self.filePathProvider.GetThumbnailFilePath(timestamp, 'jpg')
         Path(filePath).parent.mkdir(parents=True, exist_ok=True)
-        self.logger.info(f'Creating Thumbnail at "{filePath}"')
+        self.logger.debug(f'Creating Thumbnail at "{filePath}"')
         
         
         start = next(i for i,x in enumerate(detectionHistoryEntries) if (x.Timestamp - detectionHistoryEntries[0].Timestamp) > self.config.ClipGeneration.PaddingStart)

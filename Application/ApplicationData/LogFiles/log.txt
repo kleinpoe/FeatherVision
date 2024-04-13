@@ -3633,3 +3633,127 @@ AttributeError: 'NoneType' object has no attribute 'Id'
 2024-04-11 21:23:19 INFO     Camera                              Shutting down Camera.
 2024-04-11 21:23:19 INFO     WebServer                           Shutting down Web Server.
 2024-04-11 21:23:19 INFO     main                                Shutdown successful, exiting application.
+2024-04-13 14:12:05 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-13 14:12:05 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-13 14:12:05 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-13 14:12:05 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-13 14:12:05 INFO     PerformanceMonitor                  CPU=[100.0, 0.0, 0.0, 0.0]%,33.6°C RAM=9.9% HDD=1.4% Network=[sent:4.9MB,received=3.2MB] Connected to internet
+2024-04-13 14:12:23 WARNING  web                                 404 GET /favicon.ico (2003:cf:bf0f:f800:e6df:c176:69f5:505b) 1.55ms
+2024-04-13 14:12:24 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-04-13 14:12:36 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" unstable. Skipped Frames for 1032.95ms
+2024-04-13 14:12:36 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" recovered. Skipped Frames for 966.333ms
+2024-04-13 14:12:36 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" unstable. Skipped Frames for 1032.986ms
+2024-04-13 14:12:36 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" recovered. Skipped Frames for 99.957ms
+2024-04-13 14:13:01 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" unstable. Skipped Frames for 1032.961ms
+2024-04-13 14:13:08 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-04-13 14:13:08 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-04-13 14:13:24 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" unstable. Skipped Frames for 1032.957ms
+2024-04-13 14:13:24 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" recovered. Skipped Frames for 1332.882ms
+2024-04-13 14:13:25 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-04-13 14:13:25 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-04-13 14:13:34 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" unstable. Skipped Frames for 1032.938ms
+2024-04-13 14:13:42 WARNING  StreamingHandlerManager             Connection to IP="192.168.1.36" recovered. Skipped Frames for 8097.075ms
+2024-04-13 14:13:43 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-04-13 14:13:43 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-04-13 14:14:16 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-04-13 14:14:16 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.36" was established.
+2024-04-13 14:14:17 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.36" was closed.
+2024-04-13 14:14:47 WARNING  web                                 404 GET /favicon.ico (2003:cf:bf0f:f800:15f2:2bb6:3fe1:4843) 1.34ms
+2024-04-13 14:14:47 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-04-13 14:16:36 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.2" was closed.
+2024-04-13 14:17:06 INFO     PerformanceMonitor                  CPU=[72.3, 72.7, 72.5, 71.6]%,46.3°C RAM=47.6% HDD=1.4% Network=[sent:196.3MB,received=9.1MB] Connected to internet
+2024-04-13 14:18:29 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-04-13 14:18:56 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:15f2:2bb6:3fe1:4843" to browse video with request parameter="today".
+2024-04-13 14:18:56 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.2" was closed.
+2024-04-13 14:18:57 INFO     BrowseVideoHandler                  Request from IP="2003:cf:bf0f:f800:15f2:2bb6:3fe1:4843" to browse video with request parameter="24-04-11".
+2024-04-13 14:21:06 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-13 14:21:06 INFO     main                                Shutting down threads.
+2024-04-13 14:21:06 INFO     Camera                              Shutting down Camera.
+2024-04-13 14:21:06 INFO     WebServer                           Shutting down Web Server.
+2024-04-13 14:21:06 INFO     main                                Shutdown successful, exiting application.
+2024-04-13 14:21:50 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-13 14:21:50 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-13 14:21:51 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-13 14:21:51 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-13 14:21:51 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,44.1°C RAM=10.0% HDD=1.4% Network=[sent:223.0MB,received=10.6MB] Connected to internet
+2024-04-13 14:21:59 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-13 14:21:59 INFO     main                                Shutting down threads.
+2024-04-13 14:21:59 INFO     Camera                              Shutting down Camera.
+2024-04-13 14:22:00 INFO     WebServer                           Shutting down Web Server.
+2024-04-13 14:22:00 INFO     main                                Shutdown successful, exiting application.
+2024-04-13 14:24:38 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-13 14:24:38 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-13 14:24:39 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-13 14:24:39 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-13 14:24:39 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]%,41.9°C RAM=11.5% HDD=1.4% Network=[sent:223.5MB,received=11.2MB] Connected to internet
+2024-04-13 14:24:42 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-13 14:24:42 INFO     main                                Shutting down threads.
+2024-04-13 14:24:42 INFO     Camera                              Shutting down Camera.
+2024-04-13 14:24:43 INFO     WebServer                           Shutting down Web Server.
+2024-04-13 14:24:43 INFO     main                                Shutdown successful, exiting application.
+2024-04-13 15:17:15 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-13 15:17:15 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-13 15:17:16 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-13 15:17:16 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]% T=44.1°C RAM=14.7% HDD=1.4% Network=[sent:245.3MB,received=31.7MB]
+2024-04-13 15:17:16 INFO     WebServer                           Starting Web Server. Connect to it using 192.168.1.4:8000
+2024-04-13 15:18:03 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-13 15:18:03 INFO     main                                Shutting down threads.
+2024-04-13 15:18:03 INFO     Camera                              Shutting down Camera.
+2024-04-13 15:18:03 INFO     WebServer                           Shutting down Web Server.
+2024-04-13 15:18:03 INFO     main                                Shutdown successful, exiting application.
+2024-04-13 15:18:04 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-13 15:18:04 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-13 15:18:05 INFO     PerformanceMonitor                  CPU=[100.0, 0.0, 0.0, 0.0]% T=45.8°C RAM=15.4% HDD=1.4% Network=[sent:245.7MB,received=32.1MB]
+2024-04-13 15:18:05 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-13 15:18:05 INFO     WebServer                           Starting Web Server. Connect to it using >>>192.168.1.4:8000<<<
+2024-04-13 15:18:22 DEBUG    MainHandler                         Request from IP="192.168.1.2" for streaming page.
+2024-04-13 15:18:22 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-04-13 15:18:22 WARNING  web                                 404 GET /favicon.ico (192.168.1.2) 1.73ms
+2024-04-13 15:18:29 INFO     BrowseVideoHandler                  Request from IP="192.168.1.2" to browse video with request parameter="today".
+2024-04-13 15:18:29 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.2" was closed.
+2024-04-13 15:18:30 DEBUG    MainHandler                         Request from IP="192.168.1.2" for streaming page.
+2024-04-13 15:18:30 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-04-13 15:18:40 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-13 15:18:40 INFO     main                                Shutting down threads.
+2024-04-13 15:18:40 INFO     Camera                              Shutting down Camera.
+2024-04-13 15:18:41 INFO     WebServer                           Shutting down Web Server.
+2024-04-13 15:18:41 INFO     main                                Shutdown successful, exiting application.
+2024-04-13 15:38:01 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-13 15:38:01 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-13 15:38:01 INFO     PerformanceMonitor                  CPU=[0.0, 100.0, 0.0, 0.0]% T=41.9°C RAM=10.7% HDD=1.4% Network=[sent:5.8MB,received=4.3MB]
+2024-04-13 15:38:01 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-13 15:38:01 INFO     WebServer                           Starting Web Server. Connect to it using >>>192.168.1.4:8000<<<
+2024-04-13 15:38:05 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-13 15:38:05 INFO     main                                Shutting down threads.
+2024-04-13 15:38:05 INFO     Camera                              Shutting down Camera.
+2024-04-13 15:38:06 INFO     WebServer                           Shutting down Web Server.
+2024-04-13 15:38:06 INFO     main                                Shutdown successful, exiting application.
+2024-04-13 15:42:20 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-13 15:42:20 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-13 15:42:20 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-13 15:42:20 INFO     WebServer                           Starting Web Server. Connect to it using >>>192.168.1.4:8000<<<
+2024-04-13 15:42:20 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]% T=41.4°C RAM=10.8% HDD=1.4% Network=[sent:7.2MB,received=5.6MB]
+2024-04-13 15:42:25 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-13 15:42:25 INFO     main                                Shutting down threads.
+2024-04-13 15:42:25 INFO     Camera                              Shutting down Camera.
+2024-04-13 15:42:25 INFO     WebServer                           Shutting down Web Server.
+2024-04-13 15:42:25 INFO     main                                Shutdown successful, exiting application.
+2024-04-13 15:44:35 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-13 15:44:35 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-13 15:44:36 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-13 15:44:36 INFO     WebServer                           Starting Web Server. Connect to it using >>>192.168.1.4:8000<<<
+2024-04-13 15:44:36 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]% T=41.9°C RAM=10.9% HDD=1.4% Network=[sent:8.1MB,received=6.3MB]
+2024-04-13 15:44:36 INFO     main                                Exiting Application due to Keyboard Interrupt.
+2024-04-13 15:44:36 INFO     main                                Shutting down threads.
+2024-04-13 15:44:36 INFO     Camera                              Shutting down Camera.
+2024-04-13 15:44:36 INFO     WebServer                           Shutting down Web Server.
+2024-04-13 15:44:36 INFO     main                                Shutdown successful, exiting application.
+2024-04-13 15:45:28 INFO     PerformanceMonitor                  Starting Performance Monitoring
+2024-04-13 15:45:28 INFO     Camera                              Starting Camera. FPS=30 MainResolution=(1920, 1080)
+2024-04-13 15:45:28 INFO     PerformanceMonitor                  CPU=[0.0, 0.0, 0.0, 0.0]% T=41.4°C RAM=4.6% HDD=1.4% Network=[sent:0.0MB,received=0.1MB]
+2024-04-13 15:45:28 INFO     FrameAnalyzer                       Started Frame Analyses
+2024-04-13 15:45:28 INFO     WebServer                           Starting Web Server. Connect to it using >>>192.168.1.4:8000<<<
+2024-04-13 15:46:21 DEBUG    MainHandler                         Request from IP="192.168.1.2" for streaming page.
+2024-04-13 15:46:21 INFO     StreamingHandlerManager             A new Streaming Connection from IP="192.168.1.2" was established.
+2024-04-13 15:46:34 INFO     StreamingHandlerManager             Streaming Connection from IP="192.168.1.2" was closed.
+2024-04-13 15:50:28 INFO     PerformanceMonitor                  CPU=[76.0, 74.3, 74.7, 75.6]% T=52.4°C RAM=38.9% HDD=1.4% Network=[sent:21.5MB,received=6.6MB]
