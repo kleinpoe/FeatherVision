@@ -173,3 +173,4 @@ Application/ApplicationData/TensorflowLiteModels/*
 Application/ApplicationData/ClipDatabase/*
 
 
+Application/ApplicationData/Database/Clips.json
