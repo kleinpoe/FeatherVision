@@ -7,6 +7,7 @@ import psutil
 import asyncio
 from asyncio import Task
 from Config.Config import Config
+import objgraph
 
 
 @dataclass
@@ -42,6 +43,7 @@ class PerformanceMonitor:
         self.myLogger.info("Starting Performance Monitoring")
         try:
             while True:
+                #objgraph.show_most_common_types(limit=10)
                 info = PerformanceMonitor.GetPerformanceInfo()
                 log = f'CPU={info.CpuUsage}% T={info.CpuTemperature:3.1f}°C RAM={info.MemoryUsage:3.1f}% HDD={info.HddUsage:3.1f}% Network=[sent:{info.MegaBytesSent:.1f}MB,received={info.MegaBytesReceived:.1f}MB]'
                 self.myLogger.info(f'{log}')

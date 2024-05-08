@@ -17,7 +17,11 @@ class LoggerFactory:
                                                 backupCount=self.config.Logging.LogBackupFiles))
         handlers.append(logging.StreamHandler())
 
-        logging.basicConfig(format='%(asctime)s %(levelname)-8s %(module)-35s %(message)s', datefmt='%Y-%m-%d %H:%M:%S', encoding='utf-8', level=logging.WARN, handlers=handlers)
+        logging.basicConfig(format='%(asctime)s %(levelname)-8s %(module)-35s %(message)s', 
+                            datefmt='%Y-%m-%d %H:%M:%S', 
+                            encoding='utf-8', 
+                            level=logging.WARN, 
+                            handlers=handlers)
         logging.captureWarnings(True)
         LoggerName: str = "ApplicationLogger"
         ApplicationLogger = logging.getLogger(LoggerName)

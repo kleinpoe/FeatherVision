@@ -56,8 +56,9 @@ class Config:
             self.MaximumClipLength = timedelta(seconds=60)  # Maximum video length (if detection is still present after save will make another one)
             self.MinimumClipLengthWithoutPadding = timedelta(seconds=3)  # If a potential clip has a consecutive duration of tracked objects (including allowed gaps) below this limit, it will not be saved 
             self.AllowedTrackedObjectGapsDuration = timedelta(seconds=5)  # When a tracked objects leaves the video, we keep on recording for this duration and wait that maybe detection comes back. (Must be larger than clip padding!)
-            self.DetectionHistoryMaxEntries = 5000 # The number of frames the object detection history will hold. It must be shorter than what the high-resolution frame buffer can hold but longer than the max video length. Raspi 5 can handle ~5 fps object detection (might vary between object detection models)
-            self.HighResolutionFrameBufferDuration = timedelta(minutes=5) # The duration of the high-resolution frame buffer. Must be longer than max clip duration.
+            self.DetectionHistoryMaxEntries = 2000 # The number of frames the object detection history will hold. It must be shorter than what the high-resolution frame buffer can hold but longer than the max video length. Raspi 5 can handle ~5 fps object detection (might vary between object detection models)
+            self.DetectionHistoryMinimumScore = 0.3 # Minimum score for the annotated image (can be used to determine right threshold)
+            self.HighResolutionFrameBufferDuration = timedelta(minutes=5) # The duration of the high-resolution frame buffer. Must be longer than max clip duration. One frame occupies roughly 20-40kb (Full HD)
             # AnnotatedClipSettings
             self.MinimumScoreForAnnotatedClip = 0.4
             self.ShowAlsoUntrackedObjectsInAnnotatedClip = True

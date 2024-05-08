@@ -45,6 +45,7 @@ class FrameAnalyzer:
         while True and not self.stopRequested:
             objectDetectionFrame = self.camera.CaptureObjectDetectionFrame()
             detections = self.detector.Detect(objectDetectionFrame.Frame)
+            detections = [x for x in detections if x.Score > self.config.ClipGeneration.DetectionHistoryMinimumScore]
             self.detectionBroadcaster.Broadcast(detections)
             optionalClip = self.history.CheckClip( DetectionHistoryEntry(detections,objectDetectionFrame.Timestamp,objectDetectionFrame.Frame) )
             if optionalClip is not None:

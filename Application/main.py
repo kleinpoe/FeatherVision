@@ -69,6 +69,8 @@ try:
     webServer.Start()
 except KeyboardInterrupt:
     logger.info("Exiting Application due to Keyboard Interrupt.")
+except Exception as e:
+    logger.exception(e)
 finally:
     logger.info("Shutting down threads.")
     frameAnalyzer.Stop()

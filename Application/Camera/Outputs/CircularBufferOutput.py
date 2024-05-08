@@ -17,9 +17,9 @@ class CircularBufferOutput(Output):
 
     def outputframe(self, frame: bytes, isKeyframe: bool, timestamp: int):
         timestampAsDatetime = self.referenceTimestamp + timedelta( microseconds= timestamp)
-        frame = HighResolutionFrame(frame,isKeyframe,timestampAsDatetime,timestamp)
+        highResFrame = HighResolutionFrame(frame,isKeyframe,timestampAsDatetime,timestamp)
         with self.bufferLock:
-            self.buffer.append(frame)
+            self.buffer.append(highResFrame)
 
     def GetFrames(self, timestampMin:datetime, timestampMax:datetime) -> list[HighResolutionFrame]:
         shallowCopiedBuffer = []
