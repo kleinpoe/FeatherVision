@@ -1,6 +1,7 @@
 from logging import Logger
 import threading
 
+from Infrastructure.PerformanceMonitor import PerformanceMonitor
 from Surveillance.History.StaticDetectionFilter import StaticDetectionFilter
 from ClipDatabase.ClipDatabase import ClipDatabase
 from Surveillance.DetectionBroadcaster import DetectionBroadcaster
@@ -21,6 +22,7 @@ class FrameAnalyzer:
                  detectionHistory: DetectionHistory, 
                  clipSaver: ClipSaver,
                  clipDatabase: ClipDatabase,
+                 performanceMonitor: PerformanceMonitor,
                  config: Config,
                  logger: Logger):
         self.detector = detector
@@ -30,6 +32,7 @@ class FrameAnalyzer:
         self.history = detectionHistory
         self.clipSaver = clipSaver
         self.clipDatabase = clipDatabase
+        self.performanceMonitor = performanceMonitor
         self.config = config
         self.logger = logger
         self.stopRequested = False
@@ -54,9 +57,13 @@ class FrameAnalyzer:
                 self.detectionBroadcaster.Broadcast(detections)
                 optionalClip = self.history.CheckClip( DetectionHistoryEntry(detections,objectDetectionFrame.Timestamp,objectDetectionFrame.Frame) )
                 if optionalClip is not None:
-                        result = self.clipSaver.Save(optionalClip)
-                        self.clipDatabase.Add(result)
-                        self.logger.info(f'A new clip was saved. Duration:{result.ClipDuration.total_seconds:.1f}s Date:{result.DateOfRecording.strftime("%d.%m.%Y, %H:%M:%S")}')
+                    result = self.clipSaver.Save(optionalClip)
+                    self.clipDatabase.Add(result)
+                    self.logger.info(f'A new clip was saved. Duration:{result.ClipDuration.total_seconds:.1f}s Date:{result.DateOfRecording.strftime("%d.%m.%Y, %H:%M:%S")}')
+                    if self.performanceMonitor.GetHddUsageInPercent > self.config.Storage.MaximumStorageOccupationForSaving:
+                        self.logger.info(f'The Storage is Low. Occupied: {self.performanceMonitor.GetHddUsageInPercent:.1f}%, Maximum: {self.config.Storage.MaximumStorageOccupationForSaving:.1f}%. Deleting Oldest Clips.')
+                    while self.performanceMonitor.GetHddUsageInPercent > self.config.Storage.MaximumStorageOccupationForSaving:
+                        self.clipDatabase.RemoveOldest()
             except Exception as e:
                 self.logger.error("An exception occured during frame analysis")
                 self.logger.exception(e)

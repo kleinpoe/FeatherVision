@@ -52,6 +52,9 @@ class PerformanceMonitor:
                     break
         except asyncio.CancelledError as e:
             self.myLogger.info('PerformanceMonitor was stopped')
+            
+    def GetHddUsageInPercent(self) -> float:
+        return psutil.disk_usage('/').percent
 
     @classmethod
     def GetCpuTemperature(cl):
@@ -74,7 +77,3 @@ class PerformanceMonitor:
         MegaBytesReceived = psutil.net_io_counters().bytes_recv / 1E6
         MegaBytesSent = psutil.net_io_counters().bytes_sent / 1E6
         return PerformanceInfo(CpuUsage, MemUsage, HddUsage, CpuTemp, MegaBytesReceived, MegaBytesSent)
-
-    @classmethod
-    def HardwareSituationIsCritical(cl, performanceInfo: PerformanceInfo) -> bool:
-        return performanceInfo.CpuUsage < 1 or performanceInfo.MemoryUsage > 95

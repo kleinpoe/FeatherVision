@@ -62,7 +62,7 @@ frameAnnotator = FrameAnnotator(config)
 annotatedClipSaver = AnnotatedClipSaver(filePathProvider,frameAnnotator,logger,config)
 thumbnailSaver = ThumbnailSaver(filePathProvider, config, logger)
 clipSaver = ClipSaver(highResClipSaver,annotatedClipSaver,thumbnailSaver,clock,logger,config)
-frameAnalyzer = FrameAnalyzer(detector,staticFilter,camera, detectionBroadcaster,detectionHistory,clipSaver,database,config,logger)
+frameAnalyzer = FrameAnalyzer(detector,staticFilter,camera, detectionBroadcaster,detectionHistory,clipSaver,database,performanceMonitor,config,logger)
 
 try:
     performanceMonitor.Start()

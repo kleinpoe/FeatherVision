@@ -59,6 +59,11 @@ class ClipDatabase:
             entries = [x for x in self.memoryStorage.values() if x.DateOfRecording < datetime]
         for entry in entries:
             self.Remove(entry)
+            
+    def RemoveOldest(self) -> None:
+        firstEntry = self.GetOldest()
+        if firstEntry is not None:
+            self.Remove(firstEntry)
         
     def Get(self, id:str)->Optional['ClipDatabase.Entry']:
         with self.lock:
@@ -68,6 +73,11 @@ class ClipDatabase:
     def GetNewest(self)->Optional['ClipDatabase.Entry']:
         with self.lock:
             entry = max(self.memoryStorage.values(), key=lambda x: x.DateOfRecording, default=None)
+        return entry
+    
+    def GetOldest(self)->Optional['ClipDatabase.Entry']:
+        with self.lock:
+            entry = min(self.memoryStorage.values(), key=lambda x: x.DateOfRecording, default=None)
         return entry
     
     def GetPreviousAndNext(self, entry: 'ClipDatabase.Entry')->tuple[Optional['ClipDatabase.Entry'],Optional['ClipDatabase.Entry']]:
