@@ -49,7 +49,6 @@ class Config:
     class ClipGenerationConfig:
         def __init__(self):
             self.TrackedObjectsLabels = ['bird', 'squirrel', 'cat', 'dog', 'horse', 'bear'] # These must align with the given object detections labels file
-            self.MinimumScore = 0.4  # Threshold when score for a detected tracked object will be enough to consider them for clip 0 - 1
             # It is possible to configure this so it will not work. Clip Padding must be smaller than max duration without tracked objects. Also history must have enough entries to hold more than max clip duration
             self.PaddingStart = timedelta(seconds=2)  # Prepend this duration to video before first detection
             self.PaddingEnd = timedelta(seconds=2)  # Append this duration to video after last detection
@@ -57,11 +56,19 @@ class Config:
             self.MinimumClipLengthWithoutPadding = timedelta(seconds=3)  # If a potential clip has a consecutive duration of tracked objects (including allowed gaps) below this limit, it will not be saved 
             self.AllowedTrackedObjectGapsDuration = timedelta(seconds=5)  # When a tracked objects leaves the video, we keep on recording for this duration and wait that maybe detection comes back. (Must be larger than clip padding!)
             self.DetectionHistoryMaxEntries = 2000 # The number of frames the object detection history will hold. It must be shorter than what the high-resolution frame buffer can hold but longer than the max video length. Raspi 5 can handle ~5 fps object detection (might vary between object detection models)
-            self.DetectionHistoryMinimumScore = 0.3 # Minimum score for the annotated image (can be used to determine right threshold)
             self.HighResolutionFrameBufferDuration = timedelta(minutes=5) # The duration of the high-resolution frame buffer. Must be longer than max clip duration. One frame occupies roughly 20-40kb (Full HD)
-            # AnnotatedClipSettings
-            self.MinimumScoreForAnnotatedClip = 0.4
+            
+            self.MinimumScore = 0.4  # Threshold when score for a detected tracked object will be enough to consider them for clip 0 - 1
+            self.DetectionHistoryMinimumScore = 0.3 # Minimum score under which a detection will be completely discarded
+            self.MinimumScoreForAnnotatedClip = 0.3 # Minimum score for a detection to appear in the annotated clip (can be used to determine right threshold, should be lower than MinimumScore)
             self.ShowAlsoUntrackedObjectsInAnnotatedClip = True
+            self.MinimumScoreForStream = 0.3 # Minimum score for a detection to be streamed
+            self.ShowAlsoUntrackedObjectsInStream = True
+            
+            self.FilterStaticObjects = True # If an object is constantly detected, it can be removed automatically, otherwise you may get unlimited recordings
+            self.StaticObjectThreshold = 20 # In pixel, if the border of the detected rectangle is in this threshold it is assumed to be equal. For Full HD, 20 worked well.
+            self.ObjectIsStaticWhenDetectedLongerThan = timedelta(seconds=30) # If a detection is present for more than this time, ignore it.
+            self.ObjectIsNotStaticAnymoreWhenNotPresentFor = timedelta(seconds=600) # If a static object is not present for this time, it is not considered as static anymore
 
     class LocationConfig:
         def __init__(self):
@@ -82,7 +89,7 @@ class Config:
             
     class DetectionConfig:
         def __init__(self, storageConfig: 'Config.StorageConfig'):
-            self.TensorFlowModelFilePath = os.path.join(storageConfig.TensorFlowModelDirectory, 'mobilenet_v2.tflite')
+            self.TensorFlowModelFilePath = os.path.join(storageConfig.TensorFlowModelDirectory, 'efficientdetlite2.tflite')
             self.LabelsFilePath = os.path.join(storageConfig.TensorFlowModelDirectory, 'coco_labels.txt')
             
     class DatabaseConfig:

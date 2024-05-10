@@ -31,3 +31,7 @@ class Rectangle:
         actualTop = min(top,bottom)
         actualBottom = max(top,bottom)
         return Rectangle(Position=(actualTop,actualLeft), Size=(actualBottom-actualTop, actualRight-actualLeft))
+    
+    @classmethod
+    def Average(cl, rectangle1: 'Rectangle', rectangle2: 'Rectangle'):
+        return Rectangle.FromPadding(((rectangle1.Top + rectangle2.Top)/2.0,(rectangle1.Left + rectangle2.Left)/2.0, (rectangle1.Bottom + rectangle2.Bottom)/2.0, (rectangle1.Right + rectangle2.Right)/2.0 ))

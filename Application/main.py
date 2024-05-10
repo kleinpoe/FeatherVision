@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from Surveillance.History.StaticDetectionFilter import StaticDetectionFilter
 from ClipDatabase.ClipDatabase import ClipDatabase
 from Surveillance.DetectionBroadcaster import DetectionBroadcaster
 from Surveillance.History.DetectionHistory import DetectionHistory
@@ -53,6 +54,7 @@ camera = Camera(output,frameConverter,referenceTimestamp,config,logger)
 imagePreparation = ImagePreparation()
 detector = ObjectDetector(imagePreparation,config)
 detectionBroadcaster = DetectionBroadcaster(webServer.GetCallback(streamingHandlerManager.UpdateDetections), config)
+staticFilter = StaticDetectionFilter(config, logger)
 detectionHistory = DetectionHistory(config,logger)
 filePathProvider = FilePathProvider(config)
 highResClipSaver = HighResClipSaver(circularBufferOutput,filePathProvider,config,logger)
@@ -60,7 +62,7 @@ frameAnnotator = FrameAnnotator(config)
 annotatedClipSaver = AnnotatedClipSaver(filePathProvider,frameAnnotator,logger,config)
 thumbnailSaver = ThumbnailSaver(filePathProvider, config, logger)
 clipSaver = ClipSaver(highResClipSaver,annotatedClipSaver,thumbnailSaver,clock,logger,config)
-frameAnalyzer = FrameAnalyzer(detector,camera, detectionBroadcaster,detectionHistory,clipSaver,database,config,logger)
+frameAnalyzer = FrameAnalyzer(detector,staticFilter,camera, detectionBroadcaster,detectionHistory,clipSaver,database,config,logger)
 
 try:
     performanceMonitor.Start()

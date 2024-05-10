@@ -4,7 +4,7 @@ html, body
   margin: 0;
   overflow: hidden;
   font-family: Arial, sans-serif;
-
+  user-select: none; 
   max-height: 999999px;
 }
 .wrapper 

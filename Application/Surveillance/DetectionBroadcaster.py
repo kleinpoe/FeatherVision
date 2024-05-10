@@ -11,6 +11,12 @@ class DetectionBroadcaster:
         self.config = config
 
     def Broadcast(self, detections: list[Detection]):
-        # filter more?
-        resultsOverThresholdScore = [result for result in detections if result.Score > self.config.ClipGeneration.MinimumScore]
-        self.broadcastDetections(detections=resultsOverThresholdScore)
+        
+        def isAboveThreshold(detection: Detection):
+            return detection.Score > self.config.ClipGeneration.MinimumScoreForStream
+        
+        def isTracked(detection: Detection):
+            return self.config.ClipGeneration.ShowAlsoUntrackedObjectsInStream or (detection.Label in self.config.ClipGeneration.TrackedObjectsLabels)
+        
+        filteredDetections = [result for result in detections if isAboveThreshold(result) and isTracked(result)]
+        self.broadcastDetections(detections=filteredDetections)

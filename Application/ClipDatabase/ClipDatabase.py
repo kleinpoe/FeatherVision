@@ -54,7 +54,7 @@ class ClipDatabase:
         os.remove(removedItem.ThumbnailFilePath)
         os.remove(removedItem.HighResClipFilePath)
             
-    def RemoveOlderThan(self, datetime:datetime) -> None:
+    def RemoveOlderThan(self, datetime:datetime) -> list['ClipDatabase.Entry']:
         with self.lock:
             entries = [x for x in self.memoryStorage.values() if x.DateOfRecording < datetime]
         for entry in entries:

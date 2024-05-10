@@ -1,4 +1,5 @@
 from typing import Optional
+from Surveillance.History.StaticDetectionFilter import StaticDetectionFilter
 from Config.Config import Config
 from Surveillance.History.DetectionHistoryEntry import DetectionHistoryEntry
 
@@ -8,7 +9,7 @@ from logging import Logger
 
 
 class DetectionHistory:
-    def __init__(self, config:Config, logger:Logger):
+    def __init__(self,config:Config, logger:Logger):
         
         self.config = config.ClipGeneration
         self.logger = logger
@@ -21,6 +22,7 @@ class DetectionHistory:
 
     def CheckClip(self, entry:DetectionHistoryEntry) -> Optional[list[DetectionHistoryEntry]]:
 
+    
         self.history.append(entry)
 
         hasTrackedObject = any(detection.Label in self.config.TrackedObjectsLabels and detection.Score >= self.config.MinimumScore for detection in entry.Detections)
