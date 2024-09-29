@@ -59,7 +59,7 @@ class FrameAnalyzer:
                 if optionalClip is not None:
                     result = self.clipSaver.Save(optionalClip)
                     self.clipDatabase.Add(result)
-                    self.logger.info(f'A new clip was saved. Duration:{result.ClipDuration.total_seconds:.1f}s Date:{result.DateOfRecording.strftime("%d.%m.%Y, %H:%M:%S")}')
+                    self.logger.info(f'A new clip was saved. Duration:{result.ClipDuration.total_seconds:.1f}s Date:{result.DateOfRecording}')
                     if self.performanceMonitor.GetHddUsageInPercent > self.config.Storage.MaximumStorageOccupationForSaving:
                         self.logger.info(f'The Storage is Low. Occupied: {self.performanceMonitor.GetHddUsageInPercent:.1f}%, Maximum: {self.config.Storage.MaximumStorageOccupationForSaving:.1f}%. Deleting Oldest Clips.')
                     while self.performanceMonitor.GetHddUsageInPercent > self.config.Storage.MaximumStorageOccupationForSaving:

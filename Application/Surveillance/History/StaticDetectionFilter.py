@@ -18,8 +18,15 @@ class Entry:
     def IsSimilarIfYesUpdateIsStatic(self, detection: Detection, timestamp: datetime) -> bool:
         threshold = self.config.ClipGeneration.StaticObjectThreshold
         otherBoundingBox = detection.BoundingBox
-        isSimilar = abs(self.BoundingBox.Bottom - otherBoundingBox.Bottom) < threshold and abs(self.BoundingBox.Left - otherBoundingBox.Left) < threshold and abs(self.BoundingBox.Top - otherBoundingBox.Top) < threshold and abs(self.BoundingBox.Right - otherBoundingBox.Right) < threshold
+        rectangleDifferences = [abs(self.BoundingBox.Bottom - otherBoundingBox.Bottom),
+                                abs(self.BoundingBox.Left - otherBoundingBox.Left),
+                                abs(self.BoundingBox.Top - otherBoundingBox.Top),
+                                abs(self.BoundingBox.Right - otherBoundingBox.Right)]
+        rectangleIsSimilar = all([x < threshold for x in rectangleDifferences])
+        labelIsSimilar = self.Label == detection.Label
+        isSimilar = rectangleIsSimilar and labelIsSimilar
         if isSimilar:
+            #self.logger.info(f'Found similar object {rectangleDifferences}, {threshold}, {self.Label}')
             self.LastDetectionTime = timestamp
             self.BoundingBox = Rectangle.Average(self.BoundingBox, otherBoundingBox)
             if not self.IsStatic:
@@ -47,6 +54,7 @@ class StaticDetectionFilter:
         self.entries: list[Entry] = []
         
     def IsStatic(self, detection: Detection, timestamp: datetime) -> bool:
+        #self.logger.info(f"Checking object {detection.Label}")
         for entry in self.entries:
             isSimilar = entry.IsSimilarIfYesUpdateIsStatic(detection, timestamp)
             if isSimilar:

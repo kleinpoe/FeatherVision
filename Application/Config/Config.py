@@ -53,12 +53,12 @@ class Config:
             self.PaddingStart = timedelta(seconds=2)  # Prepend this duration to video before first detection
             self.PaddingEnd = timedelta(seconds=2)  # Append this duration to video after last detection
             self.MaximumClipLength = timedelta(seconds=60)  # Maximum video length (if detection is still present after save will make another one)
-            self.MinimumClipLengthWithoutPadding = timedelta(seconds=3)  # If a potential clip has a consecutive duration of tracked objects (including allowed gaps) below this limit, it will not be saved 
+            self.MinimumClipLengthWithoutPadding = timedelta(seconds=2)  # If a potential clip has a consecutive duration of tracked objects (including allowed gaps) below this limit, it will not be saved 
             self.AllowedTrackedObjectGapsDuration = timedelta(seconds=5)  # When a tracked objects leaves the video, we keep on recording for this duration and wait that maybe detection comes back. (Must be larger than clip padding!)
             self.DetectionHistoryMaxEntries = 2000 # The number of frames the object detection history will hold. It must be shorter than what the high-resolution frame buffer can hold but longer than the max video length. Raspi 5 can handle ~5 fps object detection (might vary between object detection models)
             self.HighResolutionFrameBufferDuration = timedelta(minutes=5) # The duration of the high-resolution frame buffer. Must be longer than max clip duration. One frame occupies roughly 20-40kb (Full HD)
             
-            self.MinimumScore = 0.4  # Threshold when score for a detected tracked object will be enough to consider them for clip 0 - 1
+            self.MinimumScore = 0.3  # Threshold when score for a detected tracked object will be enough to consider them for clip 0 - 1
             self.DetectionHistoryMinimumScore = 0.3 # Minimum score under which a detection will be completely discarded
             self.MinimumScoreForAnnotatedClip = 0.3 # Minimum score for a detection to appear in the annotated clip (can be used to determine right threshold, should be lower than MinimumScore)
             self.ShowAlsoUntrackedObjectsInAnnotatedClip = True
@@ -66,7 +66,7 @@ class Config:
             self.ShowAlsoUntrackedObjectsInStream = True
             
             self.FilterStaticObjects = True # If an object is constantly detected, it can be removed automatically, otherwise you may get unlimited recordings
-            self.StaticObjectThreshold = 20 # In pixel, if the border of the detected rectangle is in this threshold it is assumed to be equal. For Full HD, 20 worked well.
+            self.StaticObjectThreshold = 0.02 # In percent relative to the image width/height, if the border of the detected rectangle is in this threshold it is assumed to be equal. 
             self.ObjectIsStaticWhenDetectedLongerThan = timedelta(seconds=30) # If a detection is present for more than this time, ignore it.
             self.ObjectIsNotStaticAnymoreWhenNotPresentFor = timedelta(seconds=600) # If a static object is not present for this time, it is not considered as static anymore
 
