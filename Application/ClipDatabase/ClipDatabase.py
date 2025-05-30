@@ -44,7 +44,7 @@ class ClipDatabase:
             
     def Remove(self, id:str) -> None:
         # Todo delete files
-        if id not in self.memoryStorage.keys:
+        if id not in self.memoryStorage.keys():
             self.logger.warn(f'Cannot Remove Clip with id "{id}". It does not exist.')
         with self.lock:
             removedItem = self.memoryStorage.pop(id)

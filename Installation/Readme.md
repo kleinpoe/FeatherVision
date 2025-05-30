@@ -2,7 +2,8 @@
 
 ## Operating System
 
-1. Install Raspberry OS lite (64 bit)
+This section is independent of the project but I wrote it down to remember
+1. Install Raspberry OS lite (64 bit) on Raspberry PI 5 8GB
 2. Flash SD Card with custom options (SSH, Wifi, ...)
 3. Test connect to raspberry with SSH
 4. Setup connection without password (windows)
