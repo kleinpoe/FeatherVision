@@ -166,6 +166,9 @@ cython_debug/
 *.jpg
 *.jpeg
 
+# Tensor Flow Models
+*.tflite
+
 
 Application/ApplicationData/LogFiles/*
 Application/ApplicationData/Clips/*

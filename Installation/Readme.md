@@ -70,7 +70,24 @@ and activate it \
 
 13. Configure the camera by editing the `Application/Config/Config.py` file
 
-12. Install Wifi Dongle [Optional]: The RPI5 gets pretty hot so we put it in a metal enclosure with integrated passive cooling. As this metal hunk screens the wifi signal, we use an external wifi antenna. I chose the *BrosTrend AC650*.
+14. Download and add the object detection model (see next section
+
+## Object detection models
+
+14. For the camera to work you need object detection models. These come not from me so I don't want to add it to the repos. You need to download it yourself (in the confi file you can set the name). You always need some tflite model and the matching labels file. Put it in the `ApplicationData\TensorFlowLiteModels` directory. 
+I am no expert in this. 
+
+I have used the efficientdet models which worked fine for me. There are different quality levels of it you may experiment with them. You can find them here:
+https://www.kaggle.com/models/tensorflow/efficientdet/tfLite/lite2-detection-metadata
+
+(I have not used this for some time I hope you can find it)
+
+
+
+
+## Wifi-Dongle (optional)
+
+The RPI5 gets pretty hot so we put it in a metal enclosure with integrated passive cooling. As this metal hunk screens the wifi signal, we use an external wifi antenna. I chose the *BrosTrend AC650*.
     1. `sh -c 'wget linux.brostrend.com/install -O /tmp/install && sh /tmp/install'`
     2. Turn in *predictable network names* with `sudo raspi-config` -> advanced
     3. Reboot
