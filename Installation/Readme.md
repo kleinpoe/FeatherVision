@@ -74,10 +74,10 @@ and activate it \
 
 ## Object detection models
 
-14. For the camera to work you need object detection models. These come not from me so I don't want to add it to the repos. You need to download it yourself (in the confi file you can set the name). You always need some tflite model and the matching labels file. Put it in the `ApplicationData\TensorFlowLiteModels` directory. 
+For the camera to work you need object detection models. These come not from me so I don't want to add it to the repos. You need to download it yourself (in the config file you can set the name). You always need some tflite model and the matching labels file. Put it in the `ApplicationData\TensorFlowLiteModels` directory. 
 I am no expert in this. 
 
-I have used the efficientdet models which worked fine for me. There are different quality levels of it you may experiment with them. You can find them here:
+I have used the efficientdet models which worked fine for me. There are different quality levels of it. You may experiment with them. You can find them here:
 https://www.kaggle.com/models/tensorflow/efficientdet/tfLite/lite2-detection-metadata
 
 (I have not used this for some time I hope you can find it)
